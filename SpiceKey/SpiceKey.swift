@@ -19,7 +19,7 @@ public final class SpiceKey {
     public private(set) var eventHotKey: EventHotKeyRef?
     public private(set) var identifier: UInt32?
     
-    public init(keyCombination: KeyCombination,
+    public init(_ keyCombination: KeyCombination,
                 keyDownHandler: Handler? = nil,
                 keyUpHandler: Handler? = nil) {
         self.keyCombination = keyCombination

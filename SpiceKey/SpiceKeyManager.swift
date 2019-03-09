@@ -53,11 +53,11 @@ final class SpiceKeyManager {
         count += 1
         spiceKeys[spiceKey.uuid] = spiceKey
         
-        let keyCode = spiceKey.keyCombination.key.keyCode
+        let keyCode32 = spiceKey.keyCombination.key.keyCode32
         let flags32 = spiceKey.keyCombination.modifierFlags.flags32
         let hotKeyID = EventHotKeyID(signature: signature, id: count)
         var eventHotKey: EventHotKeyRef? = nil
-        let error = RegisterEventHotKey(keyCode, flags32, hotKeyID,
+        let error = RegisterEventHotKey(keyCode32, flags32, hotKeyID,
                                         GetEventDispatcherTarget(),
                                         0, &eventHotKey)
         if error != noErr {

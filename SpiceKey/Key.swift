@@ -320,7 +320,7 @@ public enum Key {
         }
     }
     
-    public var keyCode: UInt32 {
+    public var keyCode: UInt16 {
         var keyCode: Int
         switch self {
         case .a: keyCode = kVK_ANSI_A
@@ -396,7 +396,11 @@ public enum Key {
             //        case .pageUp:        keyCode = kVK_PageUp
             //        case .pageDown:      keyCode = kVK_PageDown
         }
-        return UInt32(keyCode)
+        return UInt16(keyCode)
+    }
+    
+    internal var keyCode32: UInt32 {
+        return UInt32(self.keyCode)
     }
 }
 

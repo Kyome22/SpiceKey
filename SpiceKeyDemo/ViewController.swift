@@ -42,7 +42,7 @@ class ViewController: NSViewController, ShortcutTextViewDelegate {
             return
         }
         if shortcuts[id - 1].shortcut.replacingOccurrences(of: modifierFlags.string, with: "").count == 0 {
-            let spiceKey = SpiceKey(keyCombination: KeyCombination(key: key, modifierFlags: modifierFlags), keyDownHandler: {
+            let spiceKey = SpiceKey(KeyCombination(key, modifierFlags), keyDownHandler: {
                 self.stateLabel.stringValue = "Shortcut: \(id), down"
             }) {
                 self.stateLabel.stringValue = "Shortcut: \(id), up"

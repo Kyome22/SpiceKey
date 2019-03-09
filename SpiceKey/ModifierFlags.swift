@@ -47,6 +47,26 @@ public enum ModifierFlags {
         }
     }
     
+    public var string: String {
+        switch self {
+        case .ctrl:             return "⌃"
+        case .opt:              return "⌥"
+        case .sft:              return "⇧"
+        case .cmd:              return "⌘"
+        case .ctrlOpt:          return "⌃⌥"
+        case .ctrlSft:          return "⌃⇧"
+        case .ctrlCmd:          return "⌃⌘"
+        case .optSft:           return "⌥⇧"
+        case .optCmd:           return "⌥⌘"
+        case .sftCmd:           return "⇧⌘"
+        case .ctrlOptSft:       return "⌃⌥⇧"
+        case .ctrlOptCmd:       return "⌃⌥⌘"
+        case .ctrlSftCmd:       return "⌃⇧⌘"
+        case .optSftCmd:        return "⌥⇧⌘"
+        case .ctrlOptSftCmd:    return "⌃⌥⇧⌘"
+        }
+    }
+    
     public var flags: NSEvent.ModifierFlags {
         switch self {
         case .ctrl:             return [.control]
@@ -67,7 +87,7 @@ public enum ModifierFlags {
         }
     }
     
-    public var flags32: UInt32 {
+    internal var flags32: UInt32 {
         var flags: UInt32 = 0
         if self.flags.contains(.control) {
             flags |= UInt32(controlKey)
@@ -82,25 +102,5 @@ public enum ModifierFlags {
             flags |= UInt32(cmdKey)
         }
         return flags
-    }
-    
-    public var string: String {
-        switch self {
-        case .ctrl:             return "⌃"
-        case .opt:              return "⌥"
-        case .sft:              return "⇧"
-        case .cmd:              return "⌘"
-        case .ctrlOpt:          return "⌃⌥"
-        case .ctrlSft:          return "⌃⇧"
-        case .ctrlCmd:          return "⌃⌘"
-        case .optSft:           return "⌥⇧"
-        case .optCmd:           return "⌥⌘"
-        case .sftCmd:           return "⇧⌘"
-        case .ctrlOptSft:       return "⌃⌥⇧"
-        case .ctrlOptCmd:       return "⌃⌥⌘"
-        case .ctrlSftCmd:       return "⌃⇧⌘"
-        case .optSftCmd:        return "⌥⇧⌘"
-        case .ctrlOptSftCmd:    return "⌃⌥⇧⌘"
-        }
     }
 }

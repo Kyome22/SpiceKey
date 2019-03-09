@@ -13,7 +13,7 @@ public struct KeyCombination {
     public var modifierFlags: ModifierFlags
     // public var interval: Double = 0.0
     
-    public init(key: Key, modifierFlags: ModifierFlags) {
+    public init(_ key: Key, _ modifierFlags: ModifierFlags) {
         self.key = key
         self.modifierFlags = modifierFlags
     }
