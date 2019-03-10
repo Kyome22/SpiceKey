@@ -18,9 +18,34 @@
 		1C686844222C1CBE00BD9C03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C686842222C1CBE00BD9C03 /* Main.storyboard */; };
 		1C68684B222C1E4800BD9C03 /* ShortcutTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68684A222C1E4800BD9C03 /* ShortcutTextView.swift */; };
 		1C68684D222C1E9A00BD9C03 /* ShortcutField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68684C222C1E9A00BD9C03 /* ShortcutField.swift */; };
-		1C68684F222C1FFB00BD9C03 /* SpiceKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C686820222BA1A200BD9C03 /* SpiceKey.framework */; };
 		1C686851222C23DE00BD9C03 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C686850222C23DE00BD9C03 /* Extensions.swift */; };
+		1C6B71ED2234C931005B6EEF /* SpiceKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C686820222BA1A200BD9C03 /* SpiceKey.framework */; };
+		1C6B71EE2234C931005B6EEF /* SpiceKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C686820222BA1A200BD9C03 /* SpiceKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1C6B71EF2234C931005B6EEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C686817222BA1A200BD9C03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C68681F222BA1A200BD9C03;
+			remoteInfo = SpiceKey;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C6B71F12234C932005B6EEF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1C6B71EE2234C931005B6EEF /* SpiceKey.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1C686820222BA1A200BD9C03 /* SpiceKey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpiceKey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C68684F222C1FFB00BD9C03 /* SpiceKey.framework in Frameworks */,
+				1C6B71ED2234C931005B6EEF /* SpiceKey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,10 +179,12 @@
 				1C686836222C1CBC00BD9C03 /* Sources */,
 				1C686837222C1CBC00BD9C03 /* Frameworks */,
 				1C686838222C1CBC00BD9C03 /* Resources */,
+				1C6B71F12234C932005B6EEF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1C6B71F02234C931005B6EEF /* PBXTargetDependency */,
 			);
 			name = SpiceKeyDemo;
 			productName = SpiceKeyDemo;
@@ -247,6 +274,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1C6B71F02234C931005B6EEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C68681F222BA1A200BD9C03 /* SpiceKey */;
+			targetProxy = 1C6B71EF2234C931005B6EEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1C686842222C1CBE00BD9C03 /* Main.storyboard */ = {
@@ -439,6 +474,7 @@
 		1C686848222C1CBE00BD9C03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpiceKeyDemo/SpiceKeyDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +494,7 @@
 		1C686849222C1CBE00BD9C03 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpiceKeyDemo/SpiceKeyDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;

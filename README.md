@@ -3,10 +3,14 @@ Global Shortcuts for macOS written by Swift.
 
 ## Installation
 
-For installation with [CocoaPods](http://cocoapods.org), simply add the following to your `Podfile`:
-
-```ruby
+### CocoaPods
+```
 pod 'SpiceKey'
+```
+
+### Carthage
+```
+github "Kyome22/SpiceKey"
 ```
 
 ## Demo
