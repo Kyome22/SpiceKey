@@ -1,5 +1,5 @@
 # SpiceKey
-Global Shortcuts for macOS written by Swift.
+Global Shortcuts for macOS written in Swift.
 
 ## Installation
 
@@ -28,8 +28,8 @@ Set `⌘ + A` shortcut.
 ```swift
 let key = Key.a
 let modifierFlags = ModifierFlags.cmd
-let keyCombo = KeyCombination(key: key, modifierFlags: modifierFlags)
-let spiceKey = SpiceKey(keyCombination: keyCombo, keyDownHandler: {
+let keyCombo = KeyCombination(key, modifierFlags)
+let spiceKey = SpiceKey(keyCombo, keyDownHandler: {
     // process (key down)
 }) {
     // process (key up)
