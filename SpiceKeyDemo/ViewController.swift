@@ -13,7 +13,13 @@ class ViewController: NSViewController, ShortcutTextViewDelegate {
 
     @IBOutlet weak var shortcutTextView1: ShortcutTextView!
     @IBOutlet weak var shortcutTextView2: ShortcutTextView!
+    @IBOutlet weak var longPressPopup: NSPopUpButton!
+    @IBOutlet weak var bothSidePopup: NSPopUpButton!
     @IBOutlet weak var stateLabel: NSTextField!
+    private var longPress: Int = 0
+    private var bothSide: Int = 0
+    private var longPressSpiceKey: SpiceKey? = nil
+    private var bothSideSpiceKey: SpiceKey? = nil
     
     var shortcuts = [(view: ShortcutTextView, shortcut: String, spiceKey: SpiceKey?)]()
     
@@ -23,6 +29,14 @@ class ViewController: NSViewController, ShortcutTextViewDelegate {
         shortcutTextView2.setFirst(vc: self, id: 2, isExisting: false)
         shortcuts.append((view: shortcutTextView1, shortcut: "", spiceKey: nil))
         shortcuts.append((view: shortcutTextView2, shortcut: "", spiceKey: nil))
+        longPressSpiceKey = SpiceKey(ModifierFlags.ctrl, 1.0, modifierKeylongPressHandler: {
+            self.stateLabel.stringValue = "Long Press"
+        })
+        longPressSpiceKey?.register()
+        bothSideSpiceKey = SpiceKey(ModifierFlag.control, bothSideModifierKeysPressHandler: {
+            self.stateLabel.stringValue = "Both Side"
+        })
+        bothSideSpiceKey?.register()
     }
 
     override var representedObject: Any? {
@@ -82,5 +96,41 @@ class ViewController: NSViewController, ShortcutTextViewDelegate {
         shortcutTextView2.setLabel(shortcut: shortcuts[1].shortcut)
     }
 
+    @IBAction func longPressPopupChange(_ sender: NSPopUpButton) {
+        if longPress != sender.indexOfSelectedItem {
+            longPressSpiceKey?.unregister()
+            var modifierFlags: ModifierFlags!
+            switch sender.indexOfSelectedItem {
+            case 0: modifierFlags = ModifierFlags.ctrl
+            case 1: modifierFlags = ModifierFlags.opt
+            case 2: modifierFlags = ModifierFlags.sft
+            case 3: modifierFlags = ModifierFlags.cmd
+            default: break
+            }
+            longPressSpiceKey = SpiceKey(modifierFlags, 1.0, modifierKeylongPressHandler: {
+                self.stateLabel.stringValue = "Long Press"
+            })
+            longPressSpiceKey?.register()
+        }
+    }
+    
+    @IBAction func bothSidePopupChange(_ sender: NSPopUpButton) {
+        if bothSide != sender.indexOfSelectedItem {
+            bothSideSpiceKey?.unregister()
+            var modifierFlag: ModifierFlag!
+            switch sender.indexOfSelectedItem {
+            case 0: modifierFlag = ModifierFlag.control
+            case 1: modifierFlag = ModifierFlag.option
+            case 2: modifierFlag = ModifierFlag.shift
+            case 3: modifierFlag = ModifierFlag.command
+            default: break
+            }
+            bothSideSpiceKey = SpiceKey(modifierFlag, bothSideModifierKeysPressHandler: {
+                self.stateLabel.stringValue = "Both Side"
+            })
+            bothSideSpiceKey?.register()
+        }
+    }
+    
 }
 

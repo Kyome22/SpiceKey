@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1308F022A14D750042EC06 /* ModifierFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1308EF22A14D750042EC06 /* ModifierFlag.swift */; };
 		1C68682C222BA1EA00BD9C03 /* KeyCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */; };
 		1C68682E222BA20200BD9C03 /* SpiceKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68682D222BA20200BD9C03 /* SpiceKeyManager.swift */; };
 		1C686830222BA21B00BD9C03 /* SpiceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68682F222BA21B00BD9C03 /* SpiceKey.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C1308EF22A14D750042EC06 /* ModifierFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierFlag.swift; sourceTree = "<group>"; };
 		1C686820222BA1A200BD9C03 /* SpiceKey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpiceKey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C686824222BA1A200BD9C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombination.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */,
 				1C686831222BA25000BD9C03 /* Key.swift */,
 				1C686833222BA28100BD9C03 /* ModifierFlags.swift */,
+				1C1308EF22A14D750042EC06 /* ModifierFlag.swift */,
 				1C686824222BA1A200BD9C03 /* Info.plist */,
 			);
 			path = SpiceKey;
@@ -207,11 +210,12 @@
 					};
 					1C686839222C1CBC00BD9C03 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
 			buildConfigurationList = 1C68681A222BA1A200BD9C03 /* Build configuration list for PBXProject "SpiceKey" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -253,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C1308F022A14D750042EC06 /* ModifierFlag.swift in Sources */,
 				1C68682E222BA20200BD9C03 /* SpiceKeyManager.swift in Sources */,
 				1C686832222BA25000BD9C03 /* Key.swift in Sources */,
 				1C686830222BA21B00BD9C03 /* SpiceKey.swift in Sources */,
@@ -487,7 +492,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKeyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -507,7 +512,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKeyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

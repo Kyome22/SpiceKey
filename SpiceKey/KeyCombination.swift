@@ -11,15 +11,13 @@ import AppKit
 public struct KeyCombination {
     public var key: Key
     public var modifierFlags: ModifierFlags
-    // public var interval: Double = 0.0
     
     public init(_ key: Key, _ modifierFlags: ModifierFlags) {
         self.key = key
         self.modifierFlags = modifierFlags
     }
-    
-    //    public init(modifierFlags: ModifierFlags, interval: Double) {
-    //        self.modifierFlags = modifierFlags
-    //        self.interval = interval
-    //    }
+}
+
+public func ==(lhs: KeyCombination, rhs: KeyCombination) -> Bool {
+    return lhs.key == rhs.key && lhs.modifierFlags == rhs.modifierFlags
 }

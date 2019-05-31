@@ -10,6 +10,7 @@ import AppKit
 import Carbon
 
 public enum ModifierFlags {
+    case empty
     case ctrl           // ⌃
     case opt            // ⌥
     case sft            // ⇧
@@ -25,7 +26,7 @@ public enum ModifierFlags {
     case ctrlSftCmd     // ⌃⇧⌘
     case optSftCmd      // ⌥⇧⌘
     case ctrlOptSftCmd  // ⌃⌥⇧⌘
-    
+
     public init?(flags: NSEvent.ModifierFlags) {
         switch flags {
         case [.control]: self = .ctrl
@@ -47,43 +48,66 @@ public enum ModifierFlags {
         }
     }
     
+    public init(_ modifierFlag: ModifierFlag) {
+        switch modifierFlag {
+        case .control: self = .ctrl
+        case .option:  self = .opt
+        case .shift:   self = .sft
+        case .command: self = .cmd
+        }
+    }
+    
+    public init?(control: Bool, option: Bool, shift: Bool, command: Bool) {
+        if !(control || option || shift || command) {
+            return nil
+        }
+        var flags = NSEvent.ModifierFlags()
+        if control { flags = flags.union(.control) }
+        if option { flags = flags.union(.option) }
+        if shift { flags = flags.union(.shift) }
+        if command { flags = flags.union(.command) }
+        self.init(flags: flags)
+    }
+    
     public var string: String {
         switch self {
-        case .ctrl:             return "⌃"
-        case .opt:              return "⌥"
-        case .sft:              return "⇧"
-        case .cmd:              return "⌘"
-        case .ctrlOpt:          return "⌃⌥"
-        case .ctrlSft:          return "⌃⇧"
-        case .ctrlCmd:          return "⌃⌘"
-        case .optSft:           return "⌥⇧"
-        case .optCmd:           return "⌥⌘"
-        case .sftCmd:           return "⇧⌘"
-        case .ctrlOptSft:       return "⌃⌥⇧"
-        case .ctrlOptCmd:       return "⌃⌥⌘"
-        case .ctrlSftCmd:       return "⌃⇧⌘"
-        case .optSftCmd:        return "⌥⇧⌘"
-        case .ctrlOptSftCmd:    return "⌃⌥⇧⌘"
+        case .empty:         return ""
+        case .ctrl:          return "⌃"
+        case .opt:           return "⌥"
+        case .sft:           return "⇧"
+        case .cmd:           return "⌘"
+        case .ctrlOpt:       return "⌃⌥"
+        case .ctrlSft:       return "⌃⇧"
+        case .ctrlCmd:       return "⌃⌘"
+        case .optSft:        return "⌥⇧"
+        case .optCmd:        return "⌥⌘"
+        case .sftCmd:        return "⇧⌘"
+        case .ctrlOptSft:    return "⌃⌥⇧"
+        case .ctrlOptCmd:    return "⌃⌥⌘"
+        case .ctrlSftCmd:    return "⌃⇧⌘"
+        case .optSftCmd:     return "⌥⇧⌘"
+        case .ctrlOptSftCmd: return "⌃⌥⇧⌘"
         }
     }
     
     public var flags: NSEvent.ModifierFlags {
         switch self {
-        case .ctrl:             return [.control]
-        case .opt:              return [.option]
-        case .sft:              return [.shift]
-        case .cmd:              return [.command]
-        case .ctrlOpt:          return [.control, .option]
-        case .ctrlSft:          return [.control, .shift]
-        case .ctrlCmd:          return [.control, .command]
-        case .optSft:           return [.option,  .shift]
-        case .optCmd:           return [.option,  .command]
-        case .sftCmd:           return [.shift,   .command]
-        case .ctrlOptSft:       return [.control, .option, .shift]
-        case .ctrlOptCmd:       return [.control, .option, .command]
-        case .ctrlSftCmd:       return [.control, .shift,  .command]
-        case .optSftCmd:        return [.option,  .shift,  .command]
-        case .ctrlOptSftCmd:    return [.control, .option, .shift, .command]
+        case .empty:         return NSEvent.ModifierFlags()
+        case .ctrl:          return [.control]
+        case .opt:           return [.option]
+        case .sft:           return [.shift]
+        case .cmd:           return [.command]
+        case .ctrlOpt:       return [.control, .option]
+        case .ctrlSft:       return [.control, .shift]
+        case .ctrlCmd:       return [.control, .command]
+        case .optSft:        return [.option,  .shift]
+        case .optCmd:        return [.option,  .command]
+        case .sftCmd:        return [.shift,   .command]
+        case .ctrlOptSft:    return [.control, .option, .shift]
+        case .ctrlOptCmd:    return [.control, .option, .command]
+        case .ctrlSftCmd:    return [.control, .shift,  .command]
+        case .optSftCmd:     return [.option,  .shift,  .command]
+        case .ctrlOptSftCmd: return [.control, .option, .shift, .command]
         }
     }
     

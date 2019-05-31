@@ -37,6 +37,24 @@ let spiceKey = SpiceKey(keyCombo, keyDownHandler: {
 spiceKey.register()
 ```
 
+Set `long press ⌘` shortcut.
+
+```swift
+let longPressSpiceKey = SpiceKey(ModifierFlags.ctrl, 1.0, modifierKeylongPressHandler: {
+    // process
+})
+longPressSpiceKey?.register()       
+```
+
+Set `press both side of ⌘` shortcut.
+
+```swift
+let bothSideSpiceKey = SpiceKey(ModifierFlag.control, bothSideModifierKeysPressHandler: {
+    // process
+})
+bothSideSpiceKey?.register()
+```
+
 - Create a Key and a ModifierFlags from NSEvent.
 
 ```swift
