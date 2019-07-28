@@ -27,7 +27,7 @@ final class SpiceKeyManager {
     private var monitors = [Any?]()
     private var keyFlag: (left: Bool, right: Bool) = (false, false)
     private var modifierFlags: ModifierFlags = .empty
-    private var workItem: DispatchWorkItem? = nil
+    private var timer: Timer? = nil
     
     private init() {
         let eventSpecs: [EventTypeSpec] = [
@@ -193,7 +193,7 @@ final class SpiceKeyManager {
         }
         
         // long tap
-        workItem?.cancel()
+        timer?.invalidate()
         let modifierFlags = ModifierFlags(control: flags.contains(.control),
                                           option:  flags.contains(.option),
                                           shift:   flags.contains(.shift),
@@ -202,10 +202,11 @@ final class SpiceKeyManager {
             return spiceKey.interval > 0.0 && spiceKey.modifierFlags! == modifierFlags
         }
         if let spiceKey = longPressSpiceKeys.first {
-            workItem = DispatchWorkItem(block: {
-                spiceKey.modifierKeyLongPressHandler!()
+            timer = Timer.scheduledTimer(withTimeInterval: spiceKey.interval, repeats: false, block: { (t) in
+                DispatchQueue.main.async {
+                    spiceKey.modifierKeyLongPressHandler!()
+                }
             })
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + spiceKey.interval, execute: workItem!)
         }
     }
     

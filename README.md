@@ -40,6 +40,7 @@ spiceKey.register()
 Set `long press ⌘` shortcut.
 
 ```swift
+// run after 1 sec
 let longPressSpiceKey = SpiceKey(ModifierFlags.ctrl, 1.0, modifierKeylongPressHandler: {
     // process
 })
