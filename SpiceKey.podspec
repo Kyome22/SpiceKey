@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/Kyome22/SpiceKey"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author             = { "Takuto Nakamura" => "kyomesuke@icloud.com" }
-  spec.social_media_url   = "https://twitter.com/Kyomesuke3"
+  spec.social_media_url   = "https://twitter.com/Kyomesuke"
   spec.osx.deployment_target = '10.12'
   spec.source       = { :git => "https://github.com/Kyome22/SpiceKey.git", :tag => "#{spec.version}" }
   spec.frameworks = 'Appkit', 'Carbon'
