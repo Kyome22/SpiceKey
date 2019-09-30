@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol ShortcutTextViewDelegate {
+protocol ShortcutTextViewDelegate: AnyObject {
     func didPressKey(_ id: Int, _ event: NSEvent)
     func didChangeFlag(_ id: Int, _ event: NSEvent)
     func didPushDelete(_ id: Int)
@@ -17,10 +17,10 @@ protocol ShortcutTextViewDelegate {
 
 class ShortcutTextView: NSView {
     
+    weak var delegate: ShortcutTextViewDelegate?
     var nameField: NSTextField!
     var shortcutField: ShortcutField!
     var deleteBtn: NSButton!
-    var delegate: ShortcutTextViewDelegate?
     var monitors = [Any?]()
     var isExisting: Bool = false
     var isSelected: Bool = false {

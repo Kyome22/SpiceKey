@@ -29,22 +29,22 @@ public final class SpiceKey {
                 keyDownHandler: Handler? = nil,
                 keyUpHandler: Handler? = nil) {
         self.keyCombination = keyCombination
-        self.modifierFlags = nil
+        modifierFlags = nil
         self.keyDownHandler = keyDownHandler
         self.keyUpHandler = keyUpHandler
-        self.bothSideModifierKeysPressHandler = nil
-        self.modifierKeyLongPressHandler = nil
+        bothSideModifierKeysPressHandler = nil
+        modifierKeyLongPressHandler = nil
     }
     
     public init(_ modifierFlag: ModifierFlag,
                 bothSideModifierKeysPressHandler: @escaping Handler) {
-        self.isBothSide = true
-        self.keyCombination = nil
-        self.modifierFlags = modifierFlag.flags
-        self.keyDownHandler = nil
-        self.keyUpHandler = nil
+        keyCombination = nil
+        modifierFlags = modifierFlag.flags
+        keyDownHandler = nil
+        keyUpHandler = nil
         self.bothSideModifierKeysPressHandler = bothSideModifierKeysPressHandler
-        self.modifierKeyLongPressHandler = nil
+        modifierKeyLongPressHandler = nil
+        isBothSide = true
     }
     
     public init?(_ modifierFlags: ModifierFlags,
@@ -53,13 +53,13 @@ public final class SpiceKey {
         if interval <= 0.0 || 3.0 < interval {
             return nil
         }
-        self.interval = interval
-        self.keyCombination = nil
+        keyCombination = nil
         self.modifierFlags = modifierFlags
-        self.keyDownHandler = nil
-        self.keyUpHandler = nil
-        self.bothSideModifierKeysPressHandler = nil
+        keyDownHandler = nil
+        keyUpHandler = nil
+        bothSideModifierKeysPressHandler = nil
         self.modifierKeyLongPressHandler = modifierKeylongPressHandler
+        self.interval = interval
     }
 
     internal func setting(_ eventHotKey: EventHotKeyRef, _ identifier: UInt32) {
