@@ -111,6 +111,22 @@ public enum ModifierFlags {
         }
     }
     
+    public var containsControl: Bool {
+        return self.flags.contains(NSEvent.ModifierFlags.control)
+    }
+    
+    public var containsOption: Bool {
+        return self.flags.contains(NSEvent.ModifierFlags.option)
+    }
+    
+    public var containsShift: Bool {
+        return self.flags.contains(NSEvent.ModifierFlags.shift)
+    }
+    
+    public var containsCommand: Bool {
+        return self.flags.contains(NSEvent.ModifierFlags.command)
+    }
+    
     internal var flags32: UInt32 {
         var flags: UInt32 = 0
         if self.flags.contains(.control) {

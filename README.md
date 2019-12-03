@@ -82,11 +82,11 @@ spiceKey.unregister()
 
 ```swift
 let spiceKeyData = SpiceKeyData(primaryKey: String,
-                                keyCode: UInt16,
-                                shift: Bool,
-                                control: Bool,
-                                option: Bool,
-                                command: Bool,
+                                keyCode: UInt16,     // Key.keyCode
+                                control: Bool,       // ModifierFlags.containsControl
+                                option: Bool,        // ModifierFlags.containsOption
+                                shift: Bool,         // ModifierFlags.containsShift
+                                command: Bool,       // ModifierFlags.containsCommand
                                 spiceKey: SpiceKey)
 
 do {
