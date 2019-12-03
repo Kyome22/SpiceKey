@@ -6,8 +6,7 @@
 //  Copyright © 2019 Takuto Nakamura. All rights reserved.
 //
 
-import AppKit
-import Carbon
+import AppKit.NSEvent
 
 public enum ModifierFlag {
     case control // ⌃

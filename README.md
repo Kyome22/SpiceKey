@@ -77,3 +77,36 @@ let description = modifierFlags.string + key.string
 ```swift
 spiceKey.unregister()
 ```
+
+- Save shortcut
+
+```swift
+let spiceKeyData = SpiceKeyData(primaryKey: String,
+                                keyCode: UInt16,
+                                shift: Bool,
+                                control: Bool,
+                                option: Bool,
+                                command: Bool,
+                                spiceKey: SpiceKey)
+
+do {
+    let data = try NSKeyedArchiver.archivedData(withRootObject: spiceKeyData, requiringSecureCoding: false)
+    UserDefaults.standard.set(data, forKey: "spiceKeyData")
+    UserDefaults.standard.synchronize()
+} catch {
+    Swift.print(error)
+}
+```
+
+- Load shortcut
+
+```swift
+guard let data = userDefaults.data(forKey: "spiceKeyData") else {
+    return
+}
+do {
+    let spiceKeyData = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! SpiceKeyData
+} catch {
+    Swift.print(error)
+}
+```

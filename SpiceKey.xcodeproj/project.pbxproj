@@ -22,6 +22,10 @@
 		1C686851222C23DE00BD9C03 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C686850222C23DE00BD9C03 /* Extensions.swift */; };
 		1C6B71ED2234C931005B6EEF /* SpiceKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C686820222BA1A200BD9C03 /* SpiceKey.framework */; };
 		1C6B71EE2234C931005B6EEF /* SpiceKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C686820222BA1A200BD9C03 /* SpiceKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C76B0B82396818700B86890 /* SpiceKeyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C76B0B72396818700B86890 /* SpiceKeyData.swift */; };
+		1C76B0BA23968E3B00B86890 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0B923968E3B00B86890 /* AppKit.framework */; };
+		1C76B0BC23968E4300B86890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BB23968E4300B86890 /* Foundation.framework */; };
+		1C76B0BE23968E4C00B86890 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BD23968E4C00B86890 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		1C68684A222C1E4800BD9C03 /* ShortcutTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutTextView.swift; sourceTree = "<group>"; };
 		1C68684C222C1E9A00BD9C03 /* ShortcutField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutField.swift; sourceTree = "<group>"; };
 		1C686850222C23DE00BD9C03 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1C76B0B72396818700B86890 /* SpiceKeyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyData.swift; sourceTree = "<group>"; };
+		1C76B0B923968E3B00B86890 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		1C76B0BB23968E4300B86890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1C76B0BD23968E4C00B86890 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C76B0BA23968E3B00B86890 /* AppKit.framework in Frameworks */,
+				1C76B0BE23968E4C00B86890 /* Carbon.framework in Frameworks */,
+				1C76B0BC23968E4300B86890 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +127,7 @@
 				1C686831222BA25000BD9C03 /* Key.swift */,
 				1C686833222BA28100BD9C03 /* ModifierFlags.swift */,
 				1C1308EF22A14D750042EC06 /* ModifierFlag.swift */,
+				1C76B0B72396818700B86890 /* SpiceKeyData.swift */,
 				1C686824222BA1A200BD9C03 /* Info.plist */,
 			);
 			path = SpiceKey;
@@ -140,6 +152,9 @@
 		1C68684E222C1FFB00BD9C03 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C76B0BD23968E4C00B86890 /* Carbon.framework */,
+				1C76B0BB23968E4300B86890 /* Foundation.framework */,
+				1C76B0B923968E3B00B86890 /* AppKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,6 +282,7 @@
 				1C686832222BA25000BD9C03 /* Key.swift in Sources */,
 				1C686830222BA21B00BD9C03 /* SpiceKey.swift in Sources */,
 				1C686834222BA28100BD9C03 /* ModifierFlags.swift in Sources */,
+				1C76B0B82396818700B86890 /* SpiceKeyData.swift in Sources */,
 				1C68682C222BA1EA00BD9C03 /* KeyCombination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,7 +449,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -447,7 +463,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -463,7 +479,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -477,7 +493,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

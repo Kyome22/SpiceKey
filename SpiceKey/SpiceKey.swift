@@ -6,7 +6,6 @@
 //  Copyright © 2019 Takuto Nakamura. All rights reserved.
 //
 
-import AppKit
 import Carbon
 
 public typealias Handler = () -> Void

@@ -6,8 +6,6 @@
 //  Copyright © 2019 Takuto Nakamura. All rights reserved.
 //
 
-import AppKit
-
 public struct KeyCombination {
     public var key: Key
     public var modifierFlags: ModifierFlags

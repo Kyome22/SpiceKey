@@ -6,7 +6,7 @@
 //  Copyright © 2019 Takuto Nakamura. All rights reserved.
 //
 
-import Carbon
+import Carbon.HIToolbox.Events
 
 public enum Key {
     case a

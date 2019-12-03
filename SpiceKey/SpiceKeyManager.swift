@@ -6,7 +6,7 @@
 //  Copyright © 2019 Takuto Nakamura. All rights reserved.
 //
 
-import AppKit
+import AppKit.NSEvent
 import Carbon
 
 fileprivate let LEFT_CONTROL:  UInt16 = 0x3B

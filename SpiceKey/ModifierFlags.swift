@@ -6,8 +6,8 @@
 //  Copyright © 2019 Takuto Nakamura. All rights reserved.
 //
 
-import AppKit
-import Carbon
+import AppKit.NSEvent
+import Carbon.HIToolbox.Events
 
 public enum ModifierFlags {
     case empty
