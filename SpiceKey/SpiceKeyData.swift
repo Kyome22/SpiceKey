@@ -8,14 +8,14 @@
 
 import Foundation.NSObject
 
-public class SpiceKeyData: NSObject, NSCoding {
+open class SpiceKeyData: NSObject, NSCoding {
     
-    public private(set) var primaryKey: String
-    public private(set) var keyCode: UInt16
-    public private(set) var control: Bool
-    public private(set) var option: Bool
-    public private(set) var shift: Bool
-    public private(set) var command: Bool
+    public var primaryKey: String
+    public var keyCode: UInt16
+    public var control: Bool
+    public var option: Bool
+    public var shift: Bool
+    public var command: Bool
     public var spiceKey: SpiceKey?
     
     public init(_ primaryKey: String, _ keyCode: UInt16, _ control: Bool, _ option: Bool, _ shift: Bool, _ command: Bool, _ spiceKey: SpiceKey) {
@@ -29,7 +29,7 @@ public class SpiceKeyData: NSObject, NSCoding {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        primaryKey = aDecoder.decodeObject(forKey: "primaryKey") as! String
+        primaryKey = (aDecoder.decodeObject(forKey: "primaryKey") as? String) ?? ""
         keyCode = aDecoder.decodeObject(forKey: "keyCode") as! UInt16
         control = aDecoder.decodeBool(forKey: "control")
         option = aDecoder.decodeBool(forKey: "option")
