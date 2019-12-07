@@ -13,9 +13,9 @@ public class SpiceKeyDeleteButton: NSButton {
     override public var isEnabled: Bool {
         didSet {
             if isEnabled {
-                image = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "deleteOn")
+                image = bundleImage(name: "deleteOn")
             } else {
-                image = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "arrow")
+                image = bundleImage(name: "arrow")
                 image?.isTemplate = true
             }
         }
@@ -25,14 +25,24 @@ public class SpiceKeyDeleteButton: NSButton {
         super.init(frame: frameRect)
         isBordered = false
         wantsLayer = true
-        image = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "deleteOn")
-        alternateImage = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "deleteOff")
+        image = bundleImage(name: "deleteOn")
+        alternateImage = bundleImage(name: "deleteOff")
         imagePosition = NSButton.ImagePosition.imageOnly
         imageScaling = NSImageScaling.scaleProportionallyDown
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func bundleImage(name: String) -> NSImage? {
+        var bundle = Bundle(identifier: "com.kyome.SpiceKey")
+        if bundle == nil {
+            bundle = Bundle(for: SpiceKeyDeleteButton.self)
+            let path = bundle!.path(forResource: "SpiceKey", ofType: "bundle")!
+            bundle = Bundle(path: path)
+        }
+        return bundle?.image(forResource: name)
     }
     
 }
