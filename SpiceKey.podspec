@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "SpiceKey"
-  spec.version      = "2.1"
+  spec.version      = "2.2"
   spec.summary      = "Global Shortcuts for macOS written in Swift."
   spec.description  = <<-DESC
     By using SpiceKey, you can implement an utility app with shortcuts easily.

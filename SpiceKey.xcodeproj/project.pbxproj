@@ -24,8 +24,10 @@
 		1C76B0BC23968E4300B86890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BB23968E4300B86890 /* Foundation.framework */; };
 		1C76B0BE23968E4C00B86890 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BD23968E4C00B86890 /* Carbon.framework */; };
 		1CCAB19C239C0C2300956D56 /* SpiceKeyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */; };
-		1CCAB1A1239C1C7800956D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCAB1A0239C1C7800956D56 /* Assets.xcassets */; };
 		1CCAB1A3239C1D0900956D56 /* SpiceKeyDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */; };
+		1CCAB1AF239C36BA00956D56 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCAB1AC239C36BA00956D56 /* arrow.png */; };
+		1CCAB1B0239C36BA00956D56 /* deleteOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCAB1AD239C36BA00956D56 /* deleteOn.png */; };
+		1CCAB1B1239C36BA00956D56 /* deleteOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCAB1AE239C36BA00956D56 /* deleteOff.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +75,10 @@
 		1C76B0BB23968E4300B86890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1C76B0BD23968E4C00B86890 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyField.swift; sourceTree = "<group>"; };
-		1CCAB1A0239C1C7800956D56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyDeleteButton.swift; sourceTree = "<group>"; };
+		1CCAB1AC239C36BA00956D56 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		1CCAB1AD239C36BA00956D56 /* deleteOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deleteOn.png; path = ../../../../.Trash/Assets.xcassets/deleteOn.imageset/deleteOn.png; sourceTree = "<group>"; };
+		1CCAB1AE239C36BA00956D56 /* deleteOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteOff.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,9 @@
 		1C686822222BA1A200BD9C03 /* SpiceKey */ = {
 			isa = PBXGroup;
 			children = (
+				1CCAB1AC239C36BA00956D56 /* arrow.png */,
+				1CCAB1AE239C36BA00956D56 /* deleteOff.png */,
+				1CCAB1AD239C36BA00956D56 /* deleteOn.png */,
 				1C68682D222BA20200BD9C03 /* SpiceKeyManager.swift */,
 				1C68682F222BA21B00BD9C03 /* SpiceKey.swift */,
 				1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */,
@@ -131,7 +138,6 @@
 				1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */,
 				1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */,
 				1C686824222BA1A200BD9C03 /* Info.plist */,
-				1CCAB1A0239C1C7800956D56 /* Assets.xcassets */,
 			);
 			path = SpiceKey;
 			sourceTree = "<group>";
@@ -258,7 +264,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CCAB1A1239C1C7800956D56 /* Assets.xcassets in Resources */,
+				1CCAB1B1239C36BA00956D56 /* deleteOff.png in Resources */,
+				1CCAB1B0239C36BA00956D56 /* deleteOn.png in Resources */,
+				1CCAB1AF239C36BA00956D56 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +457,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1;
+				CURRENT_PROJECT_VERSION = 2.2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -463,7 +471,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -479,7 +487,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1;
+				CURRENT_PROJECT_VERSION = 2.2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -493,7 +501,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

@@ -13,9 +13,9 @@ public class SpiceKeyDeleteButton: NSButton {
     override public var isEnabled: Bool {
         didSet {
             if isEnabled {
-                image = NSImage(imageLiteralResourceName: "deleteOn")
+                image = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "deleteOn")
             } else {
-                image = NSImage(imageLiteralResourceName: "arrow")
+                image = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "arrow")
                 image?.isTemplate = true
             }
         }
@@ -25,8 +25,8 @@ public class SpiceKeyDeleteButton: NSButton {
         super.init(frame: frameRect)
         isBordered = false
         wantsLayer = true
-        image = NSImage(imageLiteralResourceName: "deleteOn")
-        alternateImage = NSImage(imageLiteralResourceName: "deleteOff")
+        image = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "deleteOn")
+        alternateImage = Bundle(for: SpiceKeyDeleteButton.self).image(forResource: "deleteOff")
         imagePosition = NSButton.ImagePosition.imageOnly
         imageScaling = NSImageScaling.scaleProportionallyDown
     }
