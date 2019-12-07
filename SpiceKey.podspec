@@ -14,6 +14,6 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/Kyome22/SpiceKey.git", :tag => "#{spec.version}" }
   spec.source_files  = "SpiceKey/**/*.swift"
   spec.swift_version = "5"
-  spec.resource_bundles = { "SpiceKey" => ["SpiceKey/*/Assets.xcassets"] }
+  spec.resource_bundles = { "SpiceKey" => ["SpiceKey/Assets.xcassets"] }
   spec.requires_arc = true
 end
