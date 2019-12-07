@@ -9,6 +9,9 @@
 public struct KeyCombination {
     public var key: Key
     public var modifierFlags: ModifierFlags
+    public var string: String {
+        return modifierFlags.string + key.string
+    }
     
     public init(_ key: Key, _ modifierFlags: ModifierFlags) {
         self.key = key

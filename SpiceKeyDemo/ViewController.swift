@@ -9,26 +9,25 @@
 import Cocoa
 import SpiceKey
 
-class ViewController: NSViewController, ShortcutTextViewDelegate {
+class ViewController: NSViewController {
 
-    @IBOutlet weak var shortcutTextView1: ShortcutTextView!
-    @IBOutlet weak var shortcutTextView2: ShortcutTextView!
+    @IBOutlet weak var spiceKeyField1: SpiceKeyField!
+    @IBOutlet weak var spiceKeyField2: SpiceKeyField!
     @IBOutlet weak var longPressPopup: NSPopUpButton!
     @IBOutlet weak var bothSidePopup: NSPopUpButton!
     @IBOutlet weak var stateLabel: NSTextField!
+    private var spiceKey1: SpiceKey?
+    private var spiceKey2: SpiceKey?
     private var longPress: Int = 0
     private var bothSide: Int = 0
-    private var longPressSpiceKey: SpiceKey? = nil
-    private var bothSideSpiceKey: SpiceKey? = nil
-    
-    var shortcuts = [(view: ShortcutTextView, shortcut: String, spiceKey: SpiceKey?)]()
+    private var longPressSpiceKey: SpiceKey?
+    private var bothSideSpiceKey: SpiceKey?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        shortcutTextView1.setFirst(vc: self, id: 1, isExisting: false)
-        shortcutTextView2.setFirst(vc: self, id: 2, isExisting: false)
-        shortcuts.append((view: shortcutTextView1, shortcut: "", spiceKey: nil))
-        shortcuts.append((view: shortcutTextView2, shortcut: "", spiceKey: nil))
+        spiceKeyField1.delegate = self
+        spiceKeyField2.delegate = self
+        
         longPressSpiceKey = SpiceKey(ModifierFlags.ctrl, 1.0, modifierKeylongPressHandler: {
             self.stateLabel.stringValue = "Long Press"
         })
@@ -38,62 +37,18 @@ class ViewController: NSViewController, ShortcutTextViewDelegate {
         })
         bothSideSpiceKey?.register()
     }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        spiceKey1?.unregister()
+        spiceKey2?.unregister()
+        longPressSpiceKey?.unregister()
+        bothSideSpiceKey?.unregister()
+    }
 
     override var representedObject: Any? {
         didSet {
         }
-    }
-
-    func didPressKey(_ id: Int, _ event: NSEvent) {
-        let flags = event.modifierFlags.intersection(NSEvent.ModifierFlags.deviceIndependentFlagsMask)
-        guard let key = Key(keyCode: event.keyCode), let modifierFlags = ModifierFlags(flags: flags) else {
-            return
-        }
-        
-        if modifierFlags.string == "" {
-            shortcuts[id - 1].shortcut = modifierFlags.string
-            shortcuts[id - 1].view.setLabel(shortcut: shortcuts[id - 1].shortcut)
-            return
-        }
-        if shortcuts[id - 1].shortcut.replacingOccurrences(of: modifierFlags.string, with: "").isEmpty {
-            let spiceKey = SpiceKey(KeyCombination(key, modifierFlags), keyDownHandler: {
-                self.stateLabel.stringValue = "Shortcut: \(id), down"
-            }) {
-                self.stateLabel.stringValue = "Shortcut: \(id), up"
-            }
-            spiceKey.register()
-            shortcuts[id - 1].spiceKey = spiceKey
-            shortcuts[id - 1].shortcut += key.string
-            shortcuts[id - 1].view.isExisting = true
-            shortcuts[id - 1].view.setLabel(shortcut: shortcuts[id - 1].shortcut)
-        } else {
-            shortcuts[id - 1].view.setLabel(shortcut: shortcuts[id - 1].shortcut)
-        }
-    }
-    
-    func didChangeFlag(_ id: Int, _ event: NSEvent) {
-        let flags = event.modifierFlags.intersection(NSEvent.ModifierFlags.deviceIndependentFlagsMask)
-        guard let modifierFlags = ModifierFlags(flags: flags) else {
-            shortcuts[id - 1].shortcut = ""
-            shortcuts[id - 1].view.setLabel(shortcut: shortcuts[id - 1].shortcut)
-            return
-        }
-        shortcuts[id - 1].shortcut = modifierFlags.string
-        shortcuts[id - 1].view.setLabel(shortcut: shortcuts[id - 1].shortcut)
-    }
-    
-    func didPushDelete(_ id: Int) {
-        shortcuts[id - 1].spiceKey?.unregister()
-        shortcuts[id - 1].view.isExisting = false
-        shortcuts[id - 1].shortcut = ""
-        shortcuts[id - 1].view.setLabel(shortcut: "")
-    }
-    
-    func onFocus(_ id: Int) {
-        shortcutTextView1.isSelected = (id == 1)
-        shortcutTextView1.setLabel(shortcut: shortcuts[0].shortcut)
-        shortcutTextView2.isSelected = (id == 2)
-        shortcutTextView2.setLabel(shortcut: shortcuts[1].shortcut)
     }
 
     @IBAction func longPressPopupChange(_ sender: NSPopUpButton) {
@@ -134,3 +89,32 @@ class ViewController: NSViewController, ShortcutTextViewDelegate {
     
 }
 
+extension ViewController: SpiceKeyFieldDelegate {
+    
+    func didRegisterSpiceKey(_ field: SpiceKeyField, _ key: Key, _ flags: ModifierFlags) {
+        if field === spiceKeyField1 {
+            spiceKey1 = SpiceKey(KeyCombination(key, flags), keyDownHandler: {
+                self.stateLabel.stringValue = "Hot-Key 1: keyDown"
+            }, keyUpHandler: {
+                self.stateLabel.stringValue = "Hot-Key 1: KeyUp"
+            })
+            spiceKey1?.register()
+        } else if field === spiceKeyField2 {
+            spiceKey1 = SpiceKey(KeyCombination(key, flags), keyDownHandler: {
+                self.stateLabel.stringValue = "Hot-Key 2: keyDown"
+            }, keyUpHandler: {
+                self.stateLabel.stringValue = "Hot-Key 2: KeyUp"
+            })
+            spiceKey1?.register()
+        }
+    }
+    
+    func didDelete(_ field: SpiceKeyField) {
+        if field === spiceKeyField1 {
+            spiceKey1?.unregister()
+        } else if field === spiceKeyField2 {
+            spiceKey2?.unregister()
+        }
+    }
+    
+}

@@ -17,15 +17,15 @@
 		1C68683F222C1CBC00BD9C03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68683E222C1CBC00BD9C03 /* ViewController.swift */; };
 		1C686841222C1CBE00BD9C03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C686840222C1CBE00BD9C03 /* Assets.xcassets */; };
 		1C686844222C1CBE00BD9C03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C686842222C1CBE00BD9C03 /* Main.storyboard */; };
-		1C68684B222C1E4800BD9C03 /* ShortcutTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68684A222C1E4800BD9C03 /* ShortcutTextView.swift */; };
-		1C68684D222C1E9A00BD9C03 /* ShortcutField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68684C222C1E9A00BD9C03 /* ShortcutField.swift */; };
-		1C686851222C23DE00BD9C03 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C686850222C23DE00BD9C03 /* Extensions.swift */; };
 		1C6B71ED2234C931005B6EEF /* SpiceKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C686820222BA1A200BD9C03 /* SpiceKey.framework */; };
 		1C6B71EE2234C931005B6EEF /* SpiceKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C686820222BA1A200BD9C03 /* SpiceKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C76B0B82396818700B86890 /* SpiceKeyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C76B0B72396818700B86890 /* SpiceKeyData.swift */; };
 		1C76B0BA23968E3B00B86890 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0B923968E3B00B86890 /* AppKit.framework */; };
 		1C76B0BC23968E4300B86890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BB23968E4300B86890 /* Foundation.framework */; };
 		1C76B0BE23968E4C00B86890 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BD23968E4C00B86890 /* Carbon.framework */; };
+		1CCAB19C239C0C2300956D56 /* SpiceKeyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */; };
+		1CCAB1A1239C1C7800956D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCAB1A0239C1C7800956D56 /* Assets.xcassets */; };
+		1CCAB1A3239C1D0900956D56 /* SpiceKeyDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,13 +68,13 @@
 		1C686843222C1CBE00BD9C03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C686845222C1CBE00BD9C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C686846222C1CBE00BD9C03 /* SpiceKeyDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpiceKeyDemo.entitlements; sourceTree = "<group>"; };
-		1C68684A222C1E4800BD9C03 /* ShortcutTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutTextView.swift; sourceTree = "<group>"; };
-		1C68684C222C1E9A00BD9C03 /* ShortcutField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutField.swift; sourceTree = "<group>"; };
-		1C686850222C23DE00BD9C03 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1C76B0B72396818700B86890 /* SpiceKeyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyData.swift; sourceTree = "<group>"; };
 		1C76B0B923968E3B00B86890 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1C76B0BB23968E4300B86890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1C76B0BD23968E4C00B86890 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyField.swift; sourceTree = "<group>"; };
+		1CCAB1A0239C1C7800956D56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyDeleteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,10 @@
 				1C686833222BA28100BD9C03 /* ModifierFlags.swift */,
 				1C1308EF22A14D750042EC06 /* ModifierFlag.swift */,
 				1C76B0B72396818700B86890 /* SpiceKeyData.swift */,
+				1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */,
+				1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */,
 				1C686824222BA1A200BD9C03 /* Info.plist */,
+				1CCAB1A0239C1C7800956D56 /* Assets.xcassets */,
 			);
 			path = SpiceKey;
 			sourceTree = "<group>";
@@ -136,10 +139,7 @@
 		1C68683B222C1CBC00BD9C03 /* SpiceKeyDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1C686850222C23DE00BD9C03 /* Extensions.swift */,
 				1C68683C222C1CBC00BD9C03 /* AppDelegate.swift */,
-				1C68684C222C1E9A00BD9C03 /* ShortcutField.swift */,
-				1C68684A222C1E4800BD9C03 /* ShortcutTextView.swift */,
 				1C68683E222C1CBC00BD9C03 /* ViewController.swift */,
 				1C686840222C1CBE00BD9C03 /* Assets.xcassets */,
 				1C686842222C1CBE00BD9C03 /* Main.storyboard */,
@@ -258,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CCAB1A1239C1C7800956D56 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +284,8 @@
 				1C686830222BA21B00BD9C03 /* SpiceKey.swift in Sources */,
 				1C686834222BA28100BD9C03 /* ModifierFlags.swift in Sources */,
 				1C76B0B82396818700B86890 /* SpiceKeyData.swift in Sources */,
+				1CCAB19C239C0C2300956D56 /* SpiceKeyField.swift in Sources */,
+				1CCAB1A3239C1D0900956D56 /* SpiceKeyDeleteButton.swift in Sources */,
 				1C68682C222BA1EA00BD9C03 /* KeyCombination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,10 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C686851222C23DE00BD9C03 /* Extensions.swift in Sources */,
-				1C68684B222C1E4800BD9C03 /* ShortcutTextView.swift in Sources */,
 				1C68683F222C1CBC00BD9C03 /* ViewController.swift in Sources */,
-				1C68684D222C1E9A00BD9C03 /* ShortcutField.swift in Sources */,
 				1C68683D222C1CBC00BD9C03 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +449,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0;
+				CURRENT_PROJECT_VERSION = 2.1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -463,7 +463,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -479,7 +479,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0;
+				CURRENT_PROJECT_VERSION = 2.1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -493,7 +493,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

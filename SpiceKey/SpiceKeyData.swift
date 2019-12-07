@@ -28,22 +28,22 @@ open class SpiceKeyData: NSObject, NSCoding {
         self.spiceKey = spiceKey
     }
     
-    required public init?(coder aDecoder: NSCoder) {
-        primaryKey = (aDecoder.decodeObject(forKey: "primaryKey") as? String) ?? ""
-        keyCode = aDecoder.decodeObject(forKey: "keyCode") as! UInt16
-        control = aDecoder.decodeBool(forKey: "control")
-        option = aDecoder.decodeBool(forKey: "option")
-        shift = aDecoder.decodeBool(forKey: "shift")
-        command = aDecoder.decodeBool(forKey: "command")
+    required public init?(coder: NSCoder) {
+        primaryKey = (coder.decodeObject(forKey: "primaryKey") as? String) ?? ""
+        keyCode = coder.decodeObject(forKey: "keyCode") as! UInt16
+        control = coder.decodeBool(forKey: "control")
+        option = coder.decodeBool(forKey: "option")
+        shift = coder.decodeBool(forKey: "shift")
+        command = coder.decodeBool(forKey: "command")
     }
     
-    public func encode(with aCoder: NSCoder) {
-        aCoder.encode(primaryKey, forKey: "primaryKey")
-        aCoder.encode(keyCode, forKey: "keyCode")
-        aCoder.encode(control, forKey: "control")
-        aCoder.encode(option, forKey: "option")
-        aCoder.encode(shift, forKey: "shift")
-        aCoder.encode(command, forKey: "command")
+    public func encode(with coder: NSCoder) {
+        coder.encode(primaryKey, forKey: "primaryKey")
+        coder.encode(keyCode, forKey: "keyCode")
+        coder.encode(control, forKey: "control")
+        coder.encode(option, forKey: "option")
+        coder.encode(shift, forKey: "shift")
+        coder.encode(command, forKey: "command")
     }
     
 }
