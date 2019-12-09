@@ -42,7 +42,7 @@ public class SpiceKeyDeleteButton: NSButton {
             let path = bundle!.path(forResource: "SpiceKey", ofType: "bundle")!
             bundle = Bundle(path: path)
         }
-        return bundle?.image(forResource: name)
+        return bundle?.image(forResource: NSImage.Name(name))
     }
     
 }
