@@ -21,9 +21,9 @@ open class SpiceKeyData: NSObject, NSCoding {
     public init(_ primaryKey: String, _ keyCode: UInt16, _ control: Bool, _ option: Bool, _ shift: Bool, _ command: Bool, _ spiceKey: SpiceKey) {
         self.primaryKey = primaryKey
         self.keyCode = keyCode
-        self.shift = shift
         self.control = control
         self.option = option
+        self.shift = shift
         self.command = command
         self.spiceKey = spiceKey
     }

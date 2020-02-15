@@ -20,9 +20,20 @@ open class SpiceKeyField: NSTextField {
         return delegate as? SpiceKeyFieldDelegate
     }
     private var deleteButton: SpiceKeyDeleteButton!
+    public var id: String?
+    
+    public init(frame: NSRect, id: String? = nil) {
+        super.init(frame: frame)
+        self.id = id
+        initialize()
+    }
     
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
+        initialize()
+    }
+    
+    private func initialize() {
         isBordered = true
         isEditable = true
         isEnabled = true
