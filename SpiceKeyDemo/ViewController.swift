@@ -100,19 +100,21 @@ extension ViewController: SpiceKeyFieldDelegate {
             })
             spiceKey1?.register()
         } else if field === spiceKeyField2 {
-            spiceKey1 = SpiceKey(KeyCombination(key, flags), keyDownHandler: {
+            spiceKey2 = SpiceKey(KeyCombination(key, flags), keyDownHandler: {
                 self.stateLabel.stringValue = "Hot-Key 2: keyDown"
             }, keyUpHandler: {
                 self.stateLabel.stringValue = "Hot-Key 2: KeyUp"
             })
-            spiceKey1?.register()
+            spiceKey2?.register()
         }
     }
     
     func didDelete(_ field: SpiceKeyField) {
         if field === spiceKeyField1 {
+            Swift.print("field 1")
             spiceKey1?.unregister()
         } else if field === spiceKeyField2 {
+            Swift.print("field 2")
             spiceKey2?.unregister()
         }
     }

@@ -13,7 +13,7 @@ public class SpiceKeyDeleteButton: NSButton {
     override public var isEnabled: Bool {
         didSet {
             if isEnabled {
-                image = bundleImage(name: "deleteOn")
+                image = bundleImage(name: "delete")
             } else {
                 image = bundleImage(name: "arrow")
                 image?.isTemplate = true
@@ -23,12 +23,12 @@ public class SpiceKeyDeleteButton: NSButton {
     
     public override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        isBordered = false
-        wantsLayer = true
-        image = bundleImage(name: "deleteOn")
-        alternateImage = bundleImage(name: "deleteOff")
+        setButtonType(NSButton.ButtonType.momentaryChange)
+        image = bundleImage(name: "delete")
+        alternateImage = bundleImage(name: "delete_alt")
         imagePosition = NSButton.ImagePosition.imageOnly
         imageScaling = NSImageScaling.scaleProportionallyDown
+        isBordered = false
     }
     
     required init?(coder: NSCoder) {
@@ -39,8 +39,6 @@ public class SpiceKeyDeleteButton: NSButton {
         var bundle = Bundle(identifier: "com.kyome.SpiceKey")
         if bundle == nil {
             bundle = Bundle(for: SpiceKeyDeleteButton.self)
-            let path = bundle!.path(forResource: "SpiceKey", ofType: "bundle")!
-            bundle = Bundle(path: path)
         }
         return bundle?.image(forResource: NSImage.Name(name))
     }
