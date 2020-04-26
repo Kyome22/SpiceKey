@@ -83,6 +83,8 @@ final class SpiceKeyManager {
             let flags32 = spiceKey.keyCombination!.modifierFlags.flags32
             let hotKeyID = EventHotKeyID(signature: signature, id: count)
             var eventHotKey: EventHotKeyRef? = nil
+            
+            let _ = UCKeyboardLayout.init()
             let error = RegisterEventHotKey(keyCode32, flags32, hotKeyID,
                                             GetEventDispatcherTarget(),
                                             0, &eventHotKey)

@@ -91,7 +91,7 @@ class ViewController: NSViewController {
 
 extension ViewController: SpiceKeyFieldDelegate {
     
-    func didRegisterSpiceKey(_ field: SpiceKeyField, _ key: Key, _ flags: ModifierFlags) {
+    func didRegisterSpiceKey(_ field: SpiceKeyField, _ key: Character, _ flags: ModifierFlags) {
         if field === spiceKeyField1 {
             spiceKey1 = SpiceKey(KeyCombination(key, flags), keyDownHandler: {
                 self.stateLabel.stringValue = "Hot-Key 1: keyDown"

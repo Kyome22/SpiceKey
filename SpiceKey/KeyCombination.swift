@@ -7,13 +7,13 @@
 //
 
 public struct KeyCombination {
-    public var key: Key
+    public var key: Character
     public var modifierFlags: ModifierFlags
     public var string: String {
-        return modifierFlags.string + key.string
+        return modifierFlags.string + key.description
     }
     
-    public init(_ key: Key, _ modifierFlags: ModifierFlags) {
+    public init(_ key: Character, _ modifierFlags: ModifierFlags) {
         self.key = key
         self.modifierFlags = modifierFlags
     }

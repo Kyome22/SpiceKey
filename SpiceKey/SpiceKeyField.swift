@@ -9,7 +9,7 @@
 import Cocoa
 
 public protocol SpiceKeyFieldDelegate: NSTextFieldDelegate {
-    func didRegisterSpiceKey(_ field: SpiceKeyField, _ key: Key, _ flags: ModifierFlags)
+    func didRegisterSpiceKey(_ field: SpiceKeyField, _ key: Character, _ flags: ModifierFlags)
     func didDelete(_ field: SpiceKeyField)
 }
 
@@ -67,10 +67,10 @@ open class SpiceKeyField: NSTextField {
     }
     
     override open func performKeyEquivalent(with event: NSEvent) -> Bool {
-        if isTyping, let key = Key(keyCode: event.keyCode) {
+        if isTyping, let key = event.characters?.first {
             let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
             let modifierFlags = ModifierFlags(flags: flags)!
-            stringValue = modifierFlags.string + key.string
+            stringValue = modifierFlags.string + key.description
             isTyping = false
             isEnabled = false
             deleteButton.isEnabled = true
