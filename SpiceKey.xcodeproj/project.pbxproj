@@ -11,6 +11,7 @@
 		1C68682C222BA1EA00BD9C03 /* KeyCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */; };
 		1C68682E222BA20200BD9C03 /* SpiceKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68682D222BA20200BD9C03 /* SpiceKeyManager.swift */; };
 		1C686830222BA21B00BD9C03 /* SpiceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68682F222BA21B00BD9C03 /* SpiceKey.swift */; };
+		1C686832222BA25000BD9C03 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C686831222BA25000BD9C03 /* Key.swift */; };
 		1C686834222BA28100BD9C03 /* ModifierFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C686833222BA28100BD9C03 /* ModifierFlags.swift */; };
 		1C68683D222C1CBC00BD9C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68683C222C1CBC00BD9C03 /* AppDelegate.swift */; };
 		1C68683F222C1CBC00BD9C03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C68683E222C1CBC00BD9C03 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombination.swift; sourceTree = "<group>"; };
 		1C68682D222BA20200BD9C03 /* SpiceKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyManager.swift; sourceTree = "<group>"; };
 		1C68682F222BA21B00BD9C03 /* SpiceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKey.swift; sourceTree = "<group>"; };
+		1C686831222BA25000BD9C03 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		1C686833222BA28100BD9C03 /* ModifierFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierFlags.swift; sourceTree = "<group>"; };
 		1C68683A222C1CBC00BD9C03 /* SpiceKeyDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiceKeyDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C68683C222C1CBC00BD9C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				1C68682D222BA20200BD9C03 /* SpiceKeyManager.swift */,
 				1C68682F222BA21B00BD9C03 /* SpiceKey.swift */,
 				1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */,
+				1C686831222BA25000BD9C03 /* Key.swift */,
 				1C686833222BA28100BD9C03 /* ModifierFlags.swift */,
 				1C1308EF22A14D750042EC06 /* ModifierFlag.swift */,
 				1C76B0B72396818700B86890 /* SpiceKeyData.swift */,
@@ -277,6 +280,7 @@
 			files = (
 				1C1308F022A14D750042EC06 /* ModifierFlag.swift in Sources */,
 				1C68682E222BA20200BD9C03 /* SpiceKeyManager.swift in Sources */,
+				1C686832222BA25000BD9C03 /* Key.swift in Sources */,
 				1C686830222BA21B00BD9C03 /* SpiceKey.swift in Sources */,
 				1C686834222BA28100BD9C03 /* ModifierFlags.swift in Sources */,
 				1C76B0B82396818700B86890 /* SpiceKeyData.swift in Sources */,
