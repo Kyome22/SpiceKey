@@ -56,20 +56,16 @@ open class SpiceKeyField: NSTextField {
     
     override open func flagsChanged(with event: NSEvent) {
         let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
-        if let modifierFlags = ModifierFlags(flags: flags) {
-            isTyping = true
-            stringValue = modifierFlags.string
-        } else {
-            isTyping = false
-            stringValue = ""
-        }
+        let modifierFlags = ModifierFlags(flags: flags)
+        isTyping = (modifierFlags != .empty)
+        stringValue = modifierFlags.string
         super.flagsChanged(with: event)
     }
     
     override open func performKeyEquivalent(with event: NSEvent) -> Bool {
         if isTyping, let key = Key(keyCode: event.keyCode) {
             let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
-            let modifierFlags = ModifierFlags(flags: flags)!
+            let modifierFlags = ModifierFlags(flags: flags)
             stringValue = modifierFlags.string + key.string
             isTyping = false
             isEnabled = false

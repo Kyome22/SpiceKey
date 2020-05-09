@@ -27,7 +27,7 @@ public enum ModifierFlags {
     case optSftCmd      // ⌥⇧⌘
     case ctrlOptSftCmd  // ⌃⌥⇧⌘
 
-    public init?(flags: NSEvent.ModifierFlags) {
+    public init(flags: NSEvent.ModifierFlags) {
         switch flags {
         case [.control]: self = .ctrl
         case [.option]:  self = .opt
@@ -44,7 +44,7 @@ public enum ModifierFlags {
         case [.control, .shift,  .command]: self = .ctrlSftCmd
         case [.option,  .shift,  .command]: self = .optSftCmd
         case [.control, .option, .shift, .command]: self = .ctrlOptSftCmd
-        default: return nil
+        default: self = .empty
         }
     }
     
@@ -57,7 +57,10 @@ public enum ModifierFlags {
         }
     }
     
-    public init?(control: Bool, option: Bool, shift: Bool, command: Bool) {
+    public init?(control: Bool = false,
+                 option: Bool = false,
+                 shift: Bool = false,
+                 command: Bool = false) {
         if !(control || option || shift || command) {
             return nil
         }
