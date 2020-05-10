@@ -41,16 +41,16 @@ Set `long press ⌘` shortcut.
 
 ```swift
 // run after 1 sec
-let longPressSpiceKey = SpiceKey(ModifierFlags.ctrl, 1.0, modifierKeylongPressHandler: {
+let longPressSpiceKey = SpiceKey(ModifierFlag.command, 1.0, modifierKeyLongPressHandler: {
     // process
 })
-longPressSpiceKey?.register()       
+longPressSpiceKey?.register()
 ```
 
 Set `press both side of ⌘` shortcut.
 
 ```swift
-let bothSideSpiceKey = SpiceKey(ModifierFlag.control, bothSideModifierKeysPressHandler: {
+let bothSideSpiceKey = SpiceKey(ModifierFlag.command, bothSideModifierKeysPressHandler: {
     // process
 })
 bothSideSpiceKey?.register()
@@ -70,6 +70,8 @@ func example(event: NSEvent) {
 
 ```swift
 let description = modifierFlags.string + key.string
+// or
+KeyCombination.string
 ```
 
 - Unregister a shortcut
@@ -81,18 +83,23 @@ spiceKey.unregister()
 - Save shortcut
 
 ```swift
-let spiceKeyData = SpiceKeyData(primaryKey: String,
-                                keyCode: UInt16,     // Key.keyCode
-                                control: Bool,       // ModifierFlags.containsControl
-                                option: Bool,        // ModifierFlags.containsOption
-                                shift: Bool,         // ModifierFlags.containsShift
-                                command: Bool,       // ModifierFlags.containsCommand
-                                spiceKey: SpiceKey)
+let spiceKeyData = SpiceKeyData(_ primaryKey: String,
+                                _ keyCode: UInt16,     // Key.keyCode
+                                _ control: Bool,       // ModifierFlags.containsControl
+                                _ option: Bool,        // ModifierFlags.containsOption
+                                _ shift: Bool,         // ModifierFlags.containsShift
+                                _ command: Bool,       // ModifierFlags.containsCommand
+                                _ spiceKey: SpiceKey)
+// or
+// ler spiceKeyData = SpiceKeyData(_ primaryKey: String,
+//                                 _ keyCode: UInt16,
+//                                 _ modifierFlags: ModifierFlags,
+//                                 _ spiceKey: SpiceKey)
 
 do {
-    let data = try NSKeyedArchiver.archivedData(withRootObject: spiceKeyData, requiringSecureCoding: false)
+    let data = try NSKeyedArchiver.archivedData(withRootObject: spiceKeyData, 
+                                                requiringSecureCoding: false)
     UserDefaults.standard.set(data, forKey: "spiceKeyData")
-    UserDefaults.standard.synchronize()
 } catch {
     Swift.print(error)
 }

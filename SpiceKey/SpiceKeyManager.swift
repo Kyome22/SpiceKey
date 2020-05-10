@@ -8,61 +8,76 @@
 
 import AppKit.NSEvent
 import Carbon
+import Carbon.HIToolbox.Events
 
-fileprivate let LEFT_CONTROL:  UInt16 = 0x3B
-fileprivate let RIGHT_CONTROL: UInt16 = 0x3E
-fileprivate let LEFT_OPTION:   UInt16 = 0x3A
-fileprivate let RIGHT_OPTION:  UInt16 = 0x3D
-fileprivate let LEFT_SHIFT:    UInt16 = 0x38
-fileprivate let RIGHT_SHIFT:   UInt16 = 0x3C
-fileprivate let LEFT_COMMAND:  UInt16 = 0x37
-fileprivate let RIGHT_COMMAND: UInt16 = 0x36
+typealias SpiceKeyID = UInt32
 
 final class SpiceKeyManager {
     
     public static let shared = SpiceKeyManager()
-    internal var spiceKeys = [UUID : SpiceKey]()
+    internal var spiceKeys = [SpiceKeyID : SpiceKey]()
     private let signature = UTGetOSTypeFromString("SpiceKey" as CFString)
-    private var count: UInt32 = 0
     private var monitors = [Any?]()
-    private var keyFlag: (left: Bool, right: Bool) = (false, false)
+    private var keyFlags = [ModifierKey : Bool]()
     private var modifierFlags: ModifierFlags = .empty
     private var timer: Timer? = nil
     
     private init() {
-        let eventSpecs: [EventTypeSpec] = [
+        let hotKeySpecs: [EventTypeSpec] = [
             EventTypeSpec(eventClass: OSType(kEventClassKeyboard),
-                          eventKind: OSType(kEventHotKeyPressed)),
+                          eventKind: UInt32(kEventHotKeyPressed)),
             EventTypeSpec(eventClass: OSType(kEventClassKeyboard),
-                          eventKind: OSType(kEventHotKeyReleased))
+                          eventKind: UInt32(kEventHotKeyReleased))
         ]
         InstallEventHandler(GetEventDispatcherTarget(),
-                            eventHandleNegotiator,
-                            2, eventSpecs, nil, nil)
-        
-        let local = NSEvent.addLocalMonitorForEvents(matching: .flagsChanged) { (event) -> NSEvent? in
-            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
-            SpiceKeyManager.shared.catchModifersEvent(event.keyCode, flags)
+                            hotKeyHandleNegotiator,
+                            hotKeySpecs.count,
+                            hotKeySpecs, nil, nil)
+        monitors.append(NSEvent.addLocalMonitorForEvents(matching: .flagsChanged, handler: { (event) -> NSEvent? in
+            SpiceKeyManager.shared.modFlagHandleEvent(event)
             return event
+        }))
+        monitors.append(NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged, handler: { (event) in
+            SpiceKeyManager.shared.modFlagHandleEvent(event)
+        }))
+        
+        NotificationCenter.default.addObserver(
+            forName: NSApplication.willTerminateNotification,
+            object: nil, queue: nil) { [weak self] _ in
+                self?.removeAllSpiceKey()
+                self?.removeMonitors()
         }
-        monitors.append(local)
-        let global = NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { (event) in
-            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
-            SpiceKeyManager.shared.catchModifersEvent(event.keyCode, flags)
-        }
-        monitors.append(global)
     }
     
     deinit {
-        for monitor in monitors {
+        removeAllSpiceKey()
+        removeMonitors()
+    }
+    
+    func removeMonitors() {
+        monitors.forEach { (monitor) in
             NSEvent.removeMonitor(monitor!)
         }
         monitors.removeAll()
     }
     
+    func removeAllSpiceKey() {
+        spiceKeys.values.forEach { (spiceKey) in
+            unregister(spiceKey)
+        }
+    }
+    
+    func generateID() -> SpiceKeyID {
+        var r: SpiceKeyID = 0
+        repeat {
+            r = SpiceKeyID.random(in: 10000 ..< 100000)
+        } while spiceKeys.keys.contains(r)
+        return r
+    }
+    
     func register(_ spiceKey: SpiceKey) {
         if spiceKeys.contains(where: { (keyData) -> Bool in
-            if keyData.key == spiceKey.uuid {
+            if keyData.key == spiceKey.id {
                 return true
             }
             let exist = keyData.value
@@ -75,62 +90,54 @@ final class SpiceKeyManager {
         }) {
             return
         }
-        count += 1
-        spiceKeys[spiceKey.uuid] = spiceKey
-        
+        spiceKeys[spiceKey.id] = spiceKey
         if !spiceKey.isBothSide && spiceKey.interval == 0.0 {
             let keyCode32 = spiceKey.keyCombination!.key.keyCode32
             let flags32 = spiceKey.keyCombination!.modifierFlags.flags32
-            let hotKeyID = EventHotKeyID(signature: signature, id: count)
+            let hotKeyID = EventHotKeyID(signature: signature, id: spiceKey.id)
             var eventHotKey: EventHotKeyRef? = nil
             let error = RegisterEventHotKey(keyCode32, flags32, hotKeyID,
                                             GetEventDispatcherTarget(),
                                             0, &eventHotKey)
-            if error != noErr {
-                return
-            }
-            spiceKey.setting(eventHotKey!, count)
+            if error != noErr { return }
+            spiceKey.eventHotKey = eventHotKey
         }
     }
     
     func unregister(_ spiceKey: SpiceKey) {
         if !spiceKeys.values.contains(where: { (spiceKey_) -> Bool in
-            return spiceKey.identifier == spiceKey_.identifier
+            return spiceKey.id == spiceKey_.id
         }) {
             return
         }
         if !spiceKey.isBothSide && spiceKey.interval == 0.0 {
             UnregisterEventHotKey(spiceKey.eventHotKey)
         }
-        spiceKeys.removeValue(forKey: spiceKey.uuid)
+        spiceKeys.removeValue(forKey: spiceKey.id)
     }
     
-    func handleEvent(_ event: EventRef?) -> OSStatus {
-        if event == nil {
-            return OSStatus(eventNotHandledErr)
-        }
+    func hotKeyHandleEvent(_ event: EventRef?) -> OSStatus {
+        if event == nil { return OSStatus(eventNotHandledErr) }
         var hotKeyID = EventHotKeyID()
         let error = GetEventParameter(event,
                                       EventParamName(kEventParamDirectObject),
-                                      EventParamName(typeEventHotKeyID),
+                                      EventParamType(typeEventHotKeyID),
                                       nil,
                                       MemoryLayout<EventHotKeyID>.size,
                                       nil,
                                       &hotKeyID)
-        if error != noErr {
-            return error
-        }
+        if error != noErr { return error }
         if hotKeyID.signature == signature {
-            if let spiceKey = spiceKeys.values.filter({ (spiceKey) -> Bool in
-                return spiceKey.identifier == hotKeyID.id
-            }).first {
+            if let spiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
+                return spiceKey.id == hotKeyID.id
+            }) {
                 switch GetEventKind(event) {
-                case UInt32(kEventHotKeyPressed):
+                case OSType(kEventHotKeyPressed):
                     if let handler = spiceKey.keyDownHandler {
                         handler()
                         return noErr
                     }
-                case UInt32(kEventHotKeyReleased):
+                case OSType(kEventHotKeyReleased):
                     if let handler = spiceKey.keyUpHandler {
                         handler()
                         return noErr
@@ -144,76 +151,71 @@ final class SpiceKeyManager {
         return OSStatus(eventNotHandledErr)
     }
     
-    private func checkFlags(_ flags: NSEvent.ModifierFlags) -> (ctr: Bool, opt: Bool, sft: Bool, cmd: Bool) {
-        let ctr = flags.contains(.control)
-        let opt = flags.contains(.option)
-        let sft = flags.contains(.shift)
-        let cmd = flags.contains(.command)
-        let ctr_ = ctr && !(opt || sft || cmd)
-        let opt_ = opt && !(ctr || sft || cmd)
-        let sft_ = sft && !(ctr || opt || cmd)
-        let cmd_ = cmd && !(ctr || opt || sft)
-        return (ctr_, opt_, sft_, cmd_)
+    private func invokeBothSideSpiceKey(_ flags: ModifierFlags) {
+        if let bothSideSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
+            return spiceKey.isBothSide && spiceKey.modifierFlags == flags
+        }) {
+            bothSideSpiceKey.bothSideModifierKeysPressHandler?()
+        }
     }
     
-    func catchModifersEvent(_ keyCode: UInt16, _ flags: NSEvent.ModifierFlags) {
-        // both side
-        let flag = checkFlags(flags)
-        if flag.ctr || flag.opt || flag.sft || flag.cmd {
-            var modifierFlag: ModifierFlag!
-            if flag.ctr {
-                modifierFlag = ModifierFlag.control
-                if keyCode == LEFT_CONTROL { keyFlag.left = !keyFlag.left }
-                if keyCode == RIGHT_CONTROL { keyFlag.right = !keyFlag.right }
-            }
-            if flag.opt {
-                modifierFlag = ModifierFlag.option
-                if keyCode == LEFT_OPTION { keyFlag.left = !keyFlag.left }
-                if keyCode == RIGHT_OPTION { keyFlag.right = !keyFlag.right }
-            }
-            if flag.sft {
-                modifierFlag = ModifierFlag.shift
-                if keyCode == LEFT_SHIFT { keyFlag.left = !keyFlag.left }
-                if keyCode == RIGHT_SHIFT { keyFlag.right = !keyFlag.right }
-            }
-            if flag.cmd {
-                modifierFlag = ModifierFlag.command
-                if keyCode == LEFT_COMMAND { keyFlag.left = !keyFlag.left }
-                if keyCode == RIGHT_COMMAND { keyFlag.right = !keyFlag.right }
-            }
-            
-            if keyFlag.left && keyFlag.right {
-                let bothSideSpiceKeys = spiceKeys.values.filter { (spiceKey) -> Bool in
-                    return spiceKey.isBothSide && spiceKey.modifierFlags! == modifierFlag.flags
-                }
-                bothSideSpiceKeys.first?.bothSideModifierKeysPressHandler!()
-            }
-        } else {
-            keyFlag = (false, false)
-        }
-        
-        // long tap
-        timer?.invalidate()
-        let modifierFlags = ModifierFlags(control: flags.contains(.control),
-                                          option:  flags.contains(.option),
-                                          shift:   flags.contains(.shift),
-                                          command: flags.contains(.command))
-        let longPressSpiceKeys = spiceKeys.values.filter { (spiceKey) -> Bool in
-            return spiceKey.interval > 0.0 && spiceKey.modifierFlags! == modifierFlags
-        }
-        if let spiceKey = longPressSpiceKeys.first {
-            timer = Timer.scheduledTimer(withTimeInterval: spiceKey.interval, repeats: false, block: { (t) in
+    private func invokeLongPressSpiceKey(_ flags: ModifierFlags) {
+        if let longPressSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
+            return 0.0 < spiceKey.interval && spiceKey.modifierFlags == flags
+        }) {
+            timer = Timer.scheduledTimer(withTimeInterval: longPressSpiceKey.interval, repeats: false, block: { _ in
                 DispatchQueue.main.async {
-                    spiceKey.modifierKeyLongPressHandler!()
+                    longPressSpiceKey.modifierKeyLongPressHandler?()
                 }
             })
         }
     }
     
+    func modFlagHandleEvent(_ event: NSEvent) {
+        timer?.invalidate()
+        
+        let modifierKey = ModifierKey(keyCode: event.keyCode)
+        let nsFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+        let flags = ModifierFlags(flags: nsFlags)
+        
+        if modifierKey != nil {
+            keyFlags[modifierKey!] = !(keyFlags[modifierKey!] ?? false)
+        }
+        
+        // press both side
+        switch flags {
+        case .ctrl:
+            if keyFlags[.leftControl] == true && keyFlags[.rightControl] == true {
+                invokeBothSideSpiceKey(flags)
+            } else if keyFlags[.leftControl] == true || keyFlags[.rightControl] == true {
+                invokeLongPressSpiceKey(flags)
+            }
+        case .opt:
+            if keyFlags[.leftOption] == true && keyFlags[.rightOption] == true {
+                invokeBothSideSpiceKey(flags)
+            } else if keyFlags[.leftOption] == true || keyFlags[.rightOption] == true {
+                invokeLongPressSpiceKey(flags)
+            }
+        case .sft:
+            if keyFlags[.leftShift] == true && keyFlags[.rightShift] == true {
+                invokeBothSideSpiceKey(flags)
+            } else if keyFlags[.leftShift] == true || keyFlags[.rightShift] == true {
+                invokeLongPressSpiceKey(flags)
+            }
+        case .cmd:
+            if keyFlags[.leftCommand] == true && keyFlags[.rightCommand] == true {
+                invokeBothSideSpiceKey(flags)
+            } else if keyFlags[.leftCommand] == true || keyFlags[.rightCommand] == true {
+                invokeLongPressSpiceKey(flags)
+            }
+        default: break
+        }
+    }
+    
 }
 
-private func eventHandleNegotiator(eventHandlerCall: EventHandlerCallRef?,
-                                   event: EventRef?,
-                                   userData: UnsafeMutableRawPointer?) -> OSStatus {
-    return SpiceKeyManager.shared.handleEvent(event)
+private func hotKeyHandleNegotiator(eventHandlerCall: EventHandlerCallRef?,
+                                    event: EventRef?,
+                                    userData: UnsafeMutableRawPointer?) -> OSStatus {
+    return SpiceKeyManager.shared.hotKeyHandleEvent(event)
 }

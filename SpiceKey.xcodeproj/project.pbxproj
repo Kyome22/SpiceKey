@@ -23,6 +23,7 @@
 		1C76B0BA23968E3B00B86890 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0B923968E3B00B86890 /* AppKit.framework */; };
 		1C76B0BC23968E4300B86890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BB23968E4300B86890 /* Foundation.framework */; };
 		1C76B0BE23968E4C00B86890 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C76B0BD23968E4C00B86890 /* Carbon.framework */; };
+		1CBB55A0246851DD0049CDE7 /* ModifierKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB559F246851DD0049CDE7 /* ModifierKey.swift */; };
 		1CCAB19C239C0C2300956D56 /* SpiceKeyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */; };
 		1CCAB1A3239C1D0900956D56 /* SpiceKeyDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */; };
 		1CCAB1BC239C3E8400956D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CCAB1BB239C3E8400956D56 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		1C76B0B923968E3B00B86890 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1C76B0BB23968E4300B86890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1C76B0BD23968E4C00B86890 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		1CBB559F246851DD0049CDE7 /* ModifierKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierKey.swift; sourceTree = "<group>"; };
 		1CCAB19B239C0C2300956D56 /* SpiceKeyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyField.swift; sourceTree = "<group>"; };
 		1CCAB1A2239C1D0900956D56 /* SpiceKeyDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyDeleteButton.swift; sourceTree = "<group>"; };
 		1CCAB1BB239C3E8400956D56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				1C68682F222BA21B00BD9C03 /* SpiceKey.swift */,
 				1C68682B222BA1EA00BD9C03 /* KeyCombination.swift */,
 				1C686831222BA25000BD9C03 /* Key.swift */,
+				1CBB559F246851DD0049CDE7 /* ModifierKey.swift */,
 				1C686833222BA28100BD9C03 /* ModifierFlags.swift */,
 				1C1308EF22A14D750042EC06 /* ModifierFlag.swift */,
 				1C76B0B72396818700B86890 /* SpiceKeyData.swift */,
@@ -286,6 +289,7 @@
 				1C76B0B82396818700B86890 /* SpiceKeyData.swift in Sources */,
 				1CCAB19C239C0C2300956D56 /* SpiceKeyField.swift in Sources */,
 				1CCAB1A3239C1D0900956D56 /* SpiceKeyDeleteButton.swift in Sources */,
+				1CBB55A0246851DD0049CDE7 /* ModifierKey.swift in Sources */,
 				1C68682C222BA1EA00BD9C03 /* KeyCombination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +453,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.8;
+				CURRENT_PROJECT_VERSION = 2.9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -463,7 +467,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -479,7 +483,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.8;
+				CURRENT_PROJECT_VERSION = 2.9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -493,7 +497,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKey;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -510,12 +514,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				INFOPLIST_FILE = SpiceKeyDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKeyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -531,12 +537,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				INFOPLIST_FILE = SpiceKeyDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SpiceKeyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -26,7 +26,7 @@ public enum ModifierFlags {
     case ctrlSftCmd     // ⌃⇧⌘
     case optSftCmd      // ⌥⇧⌘
     case ctrlOptSftCmd  // ⌃⌥⇧⌘
-
+    
     public init(flags: NSEvent.ModifierFlags) {
         switch flags {
         case [.control]: self = .ctrl

@@ -28,7 +28,7 @@ class ViewController: NSViewController {
         spiceKeyField1.delegate = self
         spiceKeyField2.delegate = self
         
-        longPressSpiceKey = SpiceKey(ModifierFlags.ctrl, 1.0, modifierKeylongPressHandler: {
+        longPressSpiceKey = SpiceKey(ModifierFlag.control, 1.0, modifierKeyLongPressHandler: {
             self.stateLabel.stringValue = "Long Press"
         })
         longPressSpiceKey?.register()
@@ -54,15 +54,15 @@ class ViewController: NSViewController {
     @IBAction func longPressPopupChange(_ sender: NSPopUpButton) {
         if longPress != sender.indexOfSelectedItem {
             longPressSpiceKey?.unregister()
-            var modifierFlags: ModifierFlags!
+            var modifierFlag: ModifierFlag!
             switch sender.indexOfSelectedItem {
-            case 0: modifierFlags = ModifierFlags.ctrl
-            case 1: modifierFlags = ModifierFlags.opt
-            case 2: modifierFlags = ModifierFlags.sft
-            case 3: modifierFlags = ModifierFlags.cmd
+            case 0: modifierFlag = ModifierFlag.control
+            case 1: modifierFlag = ModifierFlag.option
+            case 2: modifierFlag = ModifierFlag.shift
+            case 3: modifierFlag = ModifierFlag.command
             default: break
             }
-            longPressSpiceKey = SpiceKey(modifierFlags, 1.0, modifierKeylongPressHandler: {
+            longPressSpiceKey = SpiceKey(modifierFlag, 1.0, modifierKeyLongPressHandler: {
                 self.stateLabel.stringValue = "Long Press"
             })
             longPressSpiceKey?.register()

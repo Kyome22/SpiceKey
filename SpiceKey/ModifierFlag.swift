@@ -13,7 +13,7 @@ public enum ModifierFlag {
     case option  // ⌥
     case shift   // ⇧
     case command // ⌘
-
+    
     public init?(flags: NSEvent.ModifierFlags) {
         switch flags {
         case NSEvent.ModifierFlags.control: self = .control

@@ -28,6 +28,16 @@ open class SpiceKeyData: NSObject, NSCoding {
         self.spiceKey = spiceKey
     }
     
+    public init(_ primaryKey: String, _ keyCode: UInt16, _ modifierFlags: ModifierFlags, _ spiceKey: SpiceKey) {
+        self.primaryKey = primaryKey
+        self.keyCode = keyCode
+        self.control = modifierFlags.containsControl
+        self.option = modifierFlags.containsOption
+        self.shift = modifierFlags.containsShift
+        self.command = modifierFlags.containsCommand
+        self.spiceKey = spiceKey
+    }
+    
     required public init?(coder: NSCoder) {
         primaryKey = (coder.decodeObject(forKey: "primaryKey") as? String) ?? ""
         keyCode = coder.decodeObject(forKey: "keyCode") as! UInt16

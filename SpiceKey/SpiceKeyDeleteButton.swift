@@ -16,7 +16,6 @@ public class SpiceKeyDeleteButton: NSButton {
                 image = bundleImage(name: "delete")
             } else {
                 image = bundleImage(name: "arrow")
-                image?.isTemplate = true
             }
         }
     }
