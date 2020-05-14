@@ -18,6 +18,17 @@ open class SpiceKeyData: NSObject, NSCoding {
     public var command: Bool
     public var spiceKey: SpiceKey?
     
+    public var key: Key? {
+        return Key(keyCode: keyCode)
+    }
+    public var modifierFlags: ModifierFlags? {
+        return ModifierFlags(control: control, option: option, shift: shift, command: command)
+    }
+    public var keyCombination: KeyCombination? {
+        guard let key = key, let modifierFlags = modifierFlags else { return nil }
+        return KeyCombination(key, modifierFlags)
+    }
+    
     public init(_ primaryKey: String, _ keyCode: CGKeyCode, _ control: Bool, _ option: Bool, _ shift: Bool, _ command: Bool, _ spiceKey: SpiceKey) {
         self.primaryKey = primaryKey
         self.keyCode = keyCode
