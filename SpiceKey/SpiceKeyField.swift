@@ -78,12 +78,10 @@ open class SpiceKeyField: NSTextField {
     
     override open func resetCursorRects() {
         let rectL = NSRect(x: 0, y: 0, width: bounds.width - 20.0, height: 20.0)
-        let cursorL: NSCursor = NSCursor.iBeam
-        addCursorRect(rectL, cursor: cursorL)
+        addCursorRect(rectL, cursor: NSCursor.iBeam)
         
         let rectR = NSRect(x: bounds.width - 20.0, y: 0, width: 20.0, height: 20.0)
-        let cursorR: NSCursor = NSCursor.pointingHand
-        addCursorRect(rectR, cursor: cursorR)
+        addCursorRect(rectR, cursor: NSCursor.pointingHand)
     }
     
     @objc func delete() {

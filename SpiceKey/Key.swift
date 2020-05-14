@@ -123,7 +123,7 @@ public enum Key {
     // case f19
     // case f20
     
-    public init?(keyCode: UInt16) {
+    public init?(keyCode: CGKeyCode) {
         switch Int(keyCode) {
         case kVK_ANSI_A: self = .a
         case kVK_ANSI_B: self = .b
@@ -320,7 +320,7 @@ public enum Key {
         }
     }
     
-    public var keyCode: UInt16 {
+    public var keyCode: CGKeyCode {
         var keyCode: Int
         switch self {
         case .a: keyCode = kVK_ANSI_A
@@ -396,7 +396,7 @@ public enum Key {
             //        case .pageUp:        keyCode = kVK_PageUp
             //        case .pageDown:      keyCode = kVK_PageDown
         }
-        return UInt16(keyCode)
+        return CGKeyCode(keyCode)
     }
     
     internal var keyCode32: UInt32 {

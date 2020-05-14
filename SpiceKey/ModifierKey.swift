@@ -19,7 +19,7 @@ public enum ModifierKey {
     case leftCommand
     case rightCommand
     
-    public init?(keyCode: UInt16) {
+    public init?(keyCode: CGKeyCode) {
         switch Int(keyCode) {
         case kVK_Control:      self = .leftControl
         case kVK_RightControl: self = .rightControl
@@ -33,7 +33,7 @@ public enum ModifierKey {
         }
     }
     
-    public var keyCode: UInt16 {
+    public var keyCode: CGKeyCode {
         var keyCode: Int
         switch self {
         case .leftControl:   keyCode = kVK_Control
@@ -45,7 +45,7 @@ public enum ModifierKey {
         case .leftCommand:   keyCode = kVK_Command
         case .rightCommand:  keyCode = kVK_RightCommand
         }
-        return UInt16(keyCode)
+        return CGKeyCode(keyCode)
     }
     
     internal var keyCode32: UInt32 {
