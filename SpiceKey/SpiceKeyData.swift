@@ -39,9 +39,9 @@ open class SpiceKeyData: NSObject, NSCoding {
         self.spiceKey = spiceKey
     }
     
-    public init(_ primaryKey: String, _ keyCode: CGKeyCode, _ modifierFlags: ModifierFlags, _ spiceKey: SpiceKey) {
+    public init(_ primaryKey: String, _ key: Key, _ modifierFlags: ModifierFlags, _ spiceKey: SpiceKey) {
         self.primaryKey = primaryKey
-        self.keyCode = keyCode
+        self.keyCode = key.keyCode
         self.control = modifierFlags.containsControl
         self.option = modifierFlags.containsOption
         self.shift = modifierFlags.containsShift

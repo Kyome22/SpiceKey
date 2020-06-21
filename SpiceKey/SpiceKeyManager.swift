@@ -173,11 +173,15 @@ final class SpiceKeyManager {
     
     func modFlagHandleEvent(_ event: NSEvent) {
         timer?.invalidate()
-        
-        let modifierKey = ModifierKey(keyCode: event.keyCode)
+
         let nsFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
         let flags = ModifierFlags(flags: nsFlags)
-        
+        if flags == .empty {
+            keyFlags.removeAll()
+            return
+        }
+
+        let modifierKey = ModifierKey(keyCode: event.keyCode)
         if modifierKey != nil {
             keyFlags[modifierKey!] = !(keyFlags[modifierKey!] ?? false)
         }
