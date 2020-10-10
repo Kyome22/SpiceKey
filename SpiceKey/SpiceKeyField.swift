@@ -49,9 +49,26 @@ open class SpiceKeyField: NSTextField {
         deleteButton.action = #selector(self.delete)
         deleteButton.isEnabled = false
     }
+
+    private func register(key: Key, modifierFlags: ModifierFlags) {
+        stringValue = modifierFlags.string + key.string
+        isTyping = false
+        isEnabled = false
+        deleteButton.isEnabled = true
+        skfDelegate?.didRegisterSpiceKey(self, key, modifierFlags)
+    }
     
     override open func textDidChange(_ notification: Notification) {
-        stringValue = ""
+        guard isTyping,
+              let event = NSApp.currentEvent,
+              let key = Key(keyCode: event.keyCode)
+        else {
+            stringValue = ""
+            return
+        }
+        let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+        let modifierFlags = ModifierFlags(flags: flags)
+        register(key: key, modifierFlags: modifierFlags)
     }
     
     override open func flagsChanged(with event: NSEvent) {
@@ -66,11 +83,7 @@ open class SpiceKeyField: NSTextField {
         if isTyping, let key = Key(keyCode: event.keyCode) {
             let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
             let modifierFlags = ModifierFlags(flags: flags)
-            stringValue = modifierFlags.string + key.string
-            isTyping = false
-            isEnabled = false
-            deleteButton.isEnabled = true
-            skfDelegate?.didRegisterSpiceKey(self, key, modifierFlags)
+            register(key: key, modifierFlags: modifierFlags)
             return true
         }
         return isTyping

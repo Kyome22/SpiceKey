@@ -179,26 +179,26 @@ public enum Key {
         case kVK_ANSI_8: self = .eight
         case kVK_ANSI_9: self = .nine
             
-            //        case kVK_ANSI_Keypad0:        self = .keypad0
-            //        case kVK_ANSI_Keypad1:        self = .keypad1
-            //        case kVK_ANSI_Keypad2:        self = .keypad2
-            //        case kVK_ANSI_Keypad3:        self = .keypad3
-            //        case kVK_ANSI_Keypad4:        self = .keypad4
-            //        case kVK_ANSI_Keypad5:        self = .keypad5
-            //        case kVK_ANSI_Keypad6:        self = .keypad6
-            //        case kVK_ANSI_Keypad7:        self = .keypad7
-            //        case kVK_ANSI_Keypad8:        self = .keypad8
-            //        case kVK_ANSI_Keypad9:        self = .keypad9
-            //        case kVK_ANSI_KeypadDecimal:  self = .keypadDecimal
-            //        case kVK_ANSI_KeypadMultiply: self = .keypadMultiply
-            //        case kVK_ANSI_KeypadPlus:     self = .keypadPlus
-            //        case kVK_ANSI_KeypadClear:    self = .keypadClear
-            //        case kVK_ANSI_KeypadDivide:   self = .keypadDivide
-            //        case kVK_ANSI_KeypadEnter:    self = .keypadEnter
-            //        case kVK_ANSI_KeypadMinus:    self = .keypadMinus
-            //        case kVK_ANSI_KeypadEquals:   self = .keypadEquals
-            //        case kVK_JIS_KeypadComma:     self = .keypadComma
-            
+        //        case kVK_ANSI_Keypad0:        self = .keypad0
+        //        case kVK_ANSI_Keypad1:        self = .keypad1
+        //        case kVK_ANSI_Keypad2:        self = .keypad2
+        //        case kVK_ANSI_Keypad3:        self = .keypad3
+        //        case kVK_ANSI_Keypad4:        self = .keypad4
+        //        case kVK_ANSI_Keypad5:        self = .keypad5
+        //        case kVK_ANSI_Keypad6:        self = .keypad6
+        //        case kVK_ANSI_Keypad7:        self = .keypad7
+        //        case kVK_ANSI_Keypad8:        self = .keypad8
+        //        case kVK_ANSI_Keypad9:        self = .keypad9
+        //        case kVK_ANSI_KeypadDecimal:  self = .keypadDecimal
+        //        case kVK_ANSI_KeypadMultiply: self = .keypadMultiply
+        //        case kVK_ANSI_KeypadPlus:     self = .keypadPlus
+        //        case kVK_ANSI_KeypadClear:    self = .keypadClear
+        //        case kVK_ANSI_KeypadDivide:   self = .keypadDivide
+        //        case kVK_ANSI_KeypadEnter:    self = .keypadEnter
+        //        case kVK_ANSI_KeypadMinus:    self = .keypadMinus
+        //        case kVK_ANSI_KeypadEquals:   self = .keypadEquals
+        //        case kVK_JIS_KeypadComma:     self = .keypadComma
+
         case kVK_Return:        self = .return
         case kVK_Tab:           self = .tab
         case kVK_Space:         self = .space
@@ -209,36 +209,36 @@ public enum Key {
         case kVK_DownArrow:     self = .downArrow
         case kVK_LeftArrow:     self = .leftArrow
         case kVK_RightArrow:    self = .rightArrow
-            //        case kVK_Mute:          self = .mute
-            //        case kVK_VolumeUp:      self = .volumeUp
-            //        case kVK_VolumeDown:    self = .volumeDown
-            //        case kVK_Help:          self = .help
-            //        case kVK_Home:          self = .home
-            //        case kVK_End:           self = .end
-            //        case kVK_PageUp:        self = .pageUp
-            //        case kVK_PageDown:      self = .pageDown
-            
-            //        case kVK_F1:  self = .f1
-            //        case kVK_F2:  self = .f2
-            //        case kVK_F3:  self = .f3
-            //        case kVK_F4:  self = .f4
-            //        case kVK_F5:  self = .f5
-            //        case kVK_F6:  self = .f6
-            //        case kVK_F7:  self = .f7
-            //        case kVK_F8:  self = .f8
-            //        case kVK_F9:  self = .f9
-            //        case kVK_F10: self = .f10
-            //        case kVK_F11: self = .f11
-            //        case kVK_F12: self = .f12
-            //        case kVK_F13: self = .f13
-            //        case kVK_F14: self = .f14
-            //        case kVK_F15: self = .f15
-            //        case kVK_F16: self = .f16
-            //        case kVK_F17: self = .f17
-            //        case kVK_F18: self = .f18
-            //        case kVK_F19: self = .f19
-            //        case kVK_F20: self = .f20
-            
+        //        case kVK_Mute:          self = .mute
+        //        case kVK_VolumeUp:      self = .volumeUp
+        //        case kVK_VolumeDown:    self = .volumeDown
+        //        case kVK_Help:          self = .help
+        //        case kVK_Home:          self = .home
+        //        case kVK_End:           self = .end
+        //        case kVK_PageUp:        self = .pageUp
+        //        case kVK_PageDown:      self = .pageDown
+
+        //        case kVK_F1:  self = .f1
+        //        case kVK_F2:  self = .f2
+        //        case kVK_F3:  self = .f3
+        //        case kVK_F4:  self = .f4
+        //        case kVK_F5:  self = .f5
+        //        case kVK_F6:  self = .f6
+        //        case kVK_F7:  self = .f7
+        //        case kVK_F8:  self = .f8
+        //        case kVK_F9:  self = .f9
+        //        case kVK_F10: self = .f10
+        //        case kVK_F11: self = .f11
+        //        case kVK_F12: self = .f12
+        //        case kVK_F13: self = .f13
+        //        case kVK_F14: self = .f14
+        //        case kVK_F15: self = .f15
+        //        case kVK_F16: self = .f16
+        //        case kVK_F17: self = .f17
+        //        case kVK_F18: self = .f18
+        //        case kVK_F19: self = .f19
+        //        case kVK_F20: self = .f20
+
         default: return nil
         }
     }
@@ -309,14 +309,14 @@ public enum Key {
         case .downArrow:     return "↓"
         case .leftArrow:     return "←"
         case .rightArrow:    return "→"
-            // case .mute:             return "Mute"
-            // case .volumeUp:         return "VolumeUp"
-            // case .volumeDown:       return "VolumeDown"
-            // case .help:             return "?⃝"
-            // case .home:             return "↖"
-            // case .end:              return "↘"
-            // case .pageUp:           return "⇞"
-            // case .pageDown:         return "⇟"
+        // case .mute:             return "Mute"
+        // case .volumeUp:         return "VolumeUp"
+        // case .volumeDown:       return "VolumeDown"
+        // case .help:             return "?⃝"
+        // case .home:             return "↖"
+        // case .end:              return "↘"
+        // case .pageUp:           return "⇞"
+        // case .pageDown:         return "⇟"
         }
     }
     
@@ -387,14 +387,14 @@ public enum Key {
         case .downArrow:     keyCode = kVK_DownArrow
         case .leftArrow:     keyCode = kVK_LeftArrow
         case .rightArrow:    keyCode = kVK_RightArrow
-            //        case .mute:          keyCode = kVK_Mute
-            //        case .volumeUp:      keyCode = kVK_VolumeUp
-            //        case .volumeDown:    keyCode = kVK_VolumeDown
-            //        case .help:          keyCode = kVK_Help
-            //        case .home:          keyCode = kVK_Home
-            //        case .end:           keyCode = kVK_End
-            //        case .pageUp:        keyCode = kVK_PageUp
-            //        case .pageDown:      keyCode = kVK_PageDown
+        //        case .mute:          keyCode = kVK_Mute
+        //        case .volumeUp:      keyCode = kVK_VolumeUp
+        //        case .volumeDown:    keyCode = kVK_VolumeDown
+        //        case .help:          keyCode = kVK_Help
+        //        case .home:          keyCode = kVK_Home
+        //        case .end:           keyCode = kVK_End
+        //        case .pageUp:        keyCode = kVK_PageUp
+        //        case .pageDown:      keyCode = kVK_PageDown
         }
         return CGKeyCode(keyCode)
     }
