@@ -29,11 +29,15 @@ class ViewController: NSViewController {
         spiceKeyField2.delegate = self
         
         longPressSpiceKey = SpiceKey(ModifierFlag.control, 1.0, modifierKeyLongPressHandler: {
-            self.stateLabel.stringValue = "Long Press"
+            self.stateLabel.stringValue = "Press Single Long"
+        }, releaseKeyHandler: {
+            self.stateLabel.stringValue = "Release Single Long"
         })
         longPressSpiceKey?.register()
         bothSideSpiceKey = SpiceKey(ModifierFlag.control, bothSideModifierKeysPressHandler: {
-            self.stateLabel.stringValue = "Both Side"
+            self.stateLabel.stringValue = "Press Both Side"
+        }, releaseKeyHandler: {
+            self.stateLabel.stringValue = "Release Both Side"
         })
         bothSideSpiceKey?.register()
     }
@@ -44,11 +48,6 @@ class ViewController: NSViewController {
         spiceKey2?.unregister()
         longPressSpiceKey?.unregister()
         bothSideSpiceKey?.unregister()
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        }
     }
 
     @IBAction func longPressPopupChange(_ sender: NSPopUpButton) {
@@ -63,7 +62,9 @@ class ViewController: NSViewController {
             default: break
             }
             longPressSpiceKey = SpiceKey(modifierFlag, 1.0, modifierKeyLongPressHandler: {
-                self.stateLabel.stringValue = "Long Press"
+                self.stateLabel.stringValue = "Press Single Long"
+            }, releaseKeyHandler: {
+                self.stateLabel.stringValue = "Release Single Long"
             })
             longPressSpiceKey?.register()
         }
@@ -81,7 +82,9 @@ class ViewController: NSViewController {
             default: break
             }
             bothSideSpiceKey = SpiceKey(modifierFlag, bothSideModifierKeysPressHandler: {
-                self.stateLabel.stringValue = "Both Side"
+                self.stateLabel.stringValue = "Press Both Side"
+            }, releaseKeyHandler: {
+                self.stateLabel.stringValue = "Release Both Side"
             })
             bothSideSpiceKey?.register()
         }

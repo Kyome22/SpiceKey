@@ -155,6 +155,7 @@ final class SpiceKeyManager {
         if let bothSideSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
             return spiceKey.isBothSide && spiceKey.modifierFlags == flags
         }) {
+            bothSideSpiceKey.invoked = true
             bothSideSpiceKey.bothSideModifierKeysPressHandler?()
         }
     }
@@ -165,9 +166,19 @@ final class SpiceKeyManager {
         }) {
             timer = Timer.scheduledTimer(withTimeInterval: longPressSpiceKey.interval, repeats: false, block: { _ in
                 DispatchQueue.main.async {
+                    longPressSpiceKey.invoked = true
                     longPressSpiceKey.modifierKeyLongPressHandler?()
                 }
             })
+        }
+    }
+
+    private func invokeReleaseKey() {
+        spiceKeys.values.forEach { (spiceKey) in
+            if spiceKey.invoked {
+                spiceKey.invoked = false
+                spiceKey.releaseKeyHandler?()
+            }
         }
     }
     
@@ -178,6 +189,7 @@ final class SpiceKeyManager {
         let flags = ModifierFlags(flags: nsFlags)
         if flags == .empty {
             keyFlags.removeAll()
+            invokeReleaseKey()
             return
         }
 
