@@ -11,6 +11,7 @@ import Carbon
 public typealias Handler = () -> Void
 
 public final class SpiceKey {
+
     internal let id: SpiceKeyID!
     internal var eventHotKey: EventHotKeyRef?
     internal var invoked: Bool = false
@@ -18,8 +19,8 @@ public final class SpiceKey {
     public let modifierFlags: ModifierFlags?
     public let keyDownHandler: Handler?
     public let keyUpHandler: Handler?
-    public let bothSideModifierKeysPressHandler: Handler?
-    public let modifierKeyLongPressHandler: Handler?
+    public let bothModifierKeysPressHandler: Handler?
+    public let modifierKeysLongPressHandler: Handler?
     public let releaseKeyHandler: Handler?
     
     public private(set) var interval: Double = 0.0
@@ -33,37 +34,37 @@ public final class SpiceKey {
         modifierFlags = nil
         self.keyDownHandler = keyDownHandler
         self.keyUpHandler = keyUpHandler
-        bothSideModifierKeysPressHandler = nil
-        modifierKeyLongPressHandler = nil
+        bothModifierKeysPressHandler = nil
+        modifierKeysLongPressHandler = nil
         releaseKeyHandler = nil
     }
     
     public init(_ modifierFlag: ModifierFlag,
-                bothSideModifierKeysPressHandler: @escaping Handler,
+                bothModifierKeysPressHandler: @escaping Handler,
                 releaseKeyHandler: Handler? = nil) {
         id = SpiceKeyManager.shared.generateID()
         keyCombination = nil
         modifierFlags = modifierFlag.flags
         keyDownHandler = nil
         keyUpHandler = nil
-        self.bothSideModifierKeysPressHandler = bothSideModifierKeysPressHandler
-        modifierKeyLongPressHandler = nil
+        self.bothModifierKeysPressHandler = bothModifierKeysPressHandler
+        modifierKeysLongPressHandler = nil
         isBothSide = true
         self.releaseKeyHandler = releaseKeyHandler
     }
     
-    public init?(_ modifierFlag: ModifierFlag,
+    public init?(_ modifierFlags: ModifierFlags,
                  _ interval: Double,
-                 modifierKeyLongPressHandler: @escaping Handler,
+                 modifierKeysLongPressHandler: @escaping Handler,
                  releaseKeyHandler: Handler? = nil) {
-        if interval <= 0.0 || 3.0 < interval { return nil }
+        guard 0.0 < interval && interval <= 3.0 else { return nil }
         id = SpiceKeyManager.shared.generateID()
         keyCombination = nil
-        self.modifierFlags = modifierFlag.flags
+        self.modifierFlags = modifierFlags
         keyDownHandler = nil
         keyUpHandler = nil
-        bothSideModifierKeysPressHandler = nil
-        self.modifierKeyLongPressHandler = modifierKeyLongPressHandler
+        bothModifierKeysPressHandler = nil
+        self.modifierKeysLongPressHandler = modifierKeysLongPressHandler
         self.interval = interval
         self.releaseKeyHandler = releaseKeyHandler
     }
@@ -75,4 +76,5 @@ public final class SpiceKey {
     public func unregister() {
         SpiceKeyManager.shared.unregister(self)
     }
+    
 }

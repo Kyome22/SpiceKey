@@ -28,13 +28,13 @@ class ViewController: NSViewController {
         spiceKeyField1.delegate = self
         spiceKeyField2.delegate = self
         
-        longPressSpiceKey = SpiceKey(ModifierFlag.control, 1.0, modifierKeyLongPressHandler: {
+        longPressSpiceKey = SpiceKey(ModifierFlags.ctrl, 1.0, modifierKeysLongPressHandler: {
             self.stateLabel.stringValue = "Press Single Long"
         }, releaseKeyHandler: {
             self.stateLabel.stringValue = "Release Single Long"
         })
         longPressSpiceKey?.register()
-        bothSideSpiceKey = SpiceKey(ModifierFlag.control, bothSideModifierKeysPressHandler: {
+        bothSideSpiceKey = SpiceKey(ModifierFlag.control, bothModifierKeysPressHandler: {
             self.stateLabel.stringValue = "Press Both Side"
         }, releaseKeyHandler: {
             self.stateLabel.stringValue = "Release Both Side"
@@ -51,17 +51,10 @@ class ViewController: NSViewController {
     }
 
     @IBAction func longPressPopupChange(_ sender: NSPopUpButton) {
-        if longPress != sender.indexOfSelectedItem {
+        if longPress != sender.indexOfSelectedItem,
+           let modifierFlags = ModifierFlags(rawValue: sender.indexOfSelectedItem + 1) {
             longPressSpiceKey?.unregister()
-            var modifierFlag: ModifierFlag!
-            switch sender.indexOfSelectedItem {
-            case 0: modifierFlag = ModifierFlag.control
-            case 1: modifierFlag = ModifierFlag.option
-            case 2: modifierFlag = ModifierFlag.shift
-            case 3: modifierFlag = ModifierFlag.command
-            default: break
-            }
-            longPressSpiceKey = SpiceKey(modifierFlag, 1.0, modifierKeyLongPressHandler: {
+            longPressSpiceKey = SpiceKey(modifierFlags, 1.0, modifierKeysLongPressHandler: {
                 self.stateLabel.stringValue = "Press Single Long"
             }, releaseKeyHandler: {
                 self.stateLabel.stringValue = "Release Single Long"
@@ -81,7 +74,7 @@ class ViewController: NSViewController {
             case 3: modifierFlag = ModifierFlag.command
             default: break
             }
-            bothSideSpiceKey = SpiceKey(modifierFlag, bothSideModifierKeysPressHandler: {
+            bothSideSpiceKey = SpiceKey(modifierFlag, bothModifierKeysPressHandler: {
                 self.stateLabel.stringValue = "Press Both Side"
             }, releaseKeyHandler: {
                 self.stateLabel.stringValue = "Release Both Side"

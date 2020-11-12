@@ -707,11 +707,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="SpiceKeyDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="299" height="266"/>
+                        <rect key="frame" x="0.0" y="0.0" width="372" height="266"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sjf-qo-SAe">
-                                <rect key="frame" x="48" y="56" width="204" height="16"/>
+                                <rect key="frame" x="84" y="56" width="204" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="9Ka-fK-O0U"/>
                                 </constraints>
@@ -722,16 +722,55 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aTt-a1-fVO">
-                                <rect key="frame" x="132" y="120" width="116" height="25"/>
+                                <rect key="frame" x="131" y="120" width="191" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="⌃ Control" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="tBG-nS-eBZ" id="5oR-UQ-CfA">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="8yZ-Ty-cU2">
                                         <items>
-                                            <menuItem title="⌃ Control" state="on" id="tBG-nS-eBZ"/>
-                                            <menuItem title="⌥ Option" id="XTa-VH-Eta"/>
-                                            <menuItem title="⇧ Shift" id="P3d-TZ-Kli"/>
+                                            <menuItem title="⌃ Control" state="on" id="tBG-nS-eBZ">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌥ Option" id="XTa-VH-Eta">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⇧ Shift" id="P3d-TZ-Kli">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
                                             <menuItem title="⌘ Command" id="3F2-Ws-Pff">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌃⌥ Ctrl Opt" id="e9c-a9-861">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌃⇧ Ctrl Sft" id="uFD-lP-Udl">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌃⌘ Ctrl Cmd" id="3I6-WG-4zH">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌥⇧ Opt Sft" id="FVh-Bd-vpB">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌥⌘ Opt Cmd" id="1o8-Yx-qgL">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⇧⌘ Sft Cmd" id="nWO-da-sbf">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌃⌥⇧ Ctrl Opt Sft" id="WaR-7g-4z2">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌃⌥⌘ Ctrl Opt Cmd" id="oyF-21-pJJ">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌃⇧⌘ Ctrl Sft Cmd" id="LAG-2V-EeI">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌥⇧⌘ Opt Sft Cmd" id="u7z-Dj-TUa">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="⌃⌥⇧⌘ Ctrl Opt Sft Cmd" id="dHL-o4-1br">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
@@ -742,7 +781,7 @@
                                 </connections>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qPp-ib-B5z">
-                                <rect key="frame" x="132" y="84" width="116" height="25"/>
+                                <rect key="frame" x="131" y="84" width="190" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="⌃ Control" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eGh-PF-HNB" id="Vgx-x5-0Nh">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -770,7 +809,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IjF-Zc-bcn" customClass="SpiceKeyField" customModule="SpiceKey">
-                                <rect key="frame" x="134" y="205" width="120" height="21"/>
+                                <rect key="frame" x="133" y="205" width="120" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="CHO-2M-G0M"/>
                                 </constraints>
@@ -781,7 +820,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B4o-Qa-vPL" customClass="SpiceKeyField" customModule="SpiceKey">
-                                <rect key="frame" x="134" y="164" width="120" height="21"/>
+                                <rect key="frame" x="133" y="164" width="120" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="QJY-Tb-N8w"/>
                                 </constraints>
@@ -842,7 +881,7 @@
                             <constraint firstItem="sjf-qo-SAe" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="f14-fT-6NL"/>
                             <constraint firstItem="xbL-U5-cVi" firstAttribute="centerY" secondItem="aTt-a1-fVO" secondAttribute="centerY" id="f26-20-Kjy"/>
                             <constraint firstItem="llY-h4-TPp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="61" id="on1-Zk-rwt"/>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xbL-U5-cVi" secondAttribute="trailing" symbolic="YES" id="rC3-ug-5ie"/>
+                            <constraint firstItem="aTt-a1-fVO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xbL-U5-cVi" secondAttribute="trailing" constant="8" symbolic="YES" id="rC3-ug-5ie"/>
                             <constraint firstItem="llY-h4-TPp" firstAttribute="centerY" secondItem="IjF-Zc-bcn" secondAttribute="centerY" id="rmd-UK-Lsk"/>
                             <constraint firstItem="qPp-ib-B5z" firstAttribute="top" secondItem="aTt-a1-fVO" secondAttribute="bottom" constant="15" id="uhY-Hn-IxT"/>
                             <constraint firstItem="B4o-Qa-vPL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fvY-V9-a5T" secondAttribute="trailing" symbolic="YES" id="v8L-BG-8IR"/>
@@ -861,7 +900,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57.5" y="627"/>
+            <point key="canvasLocation" x="68.5" y="627"/>
         </scene>
     </scenes>
 </document>
