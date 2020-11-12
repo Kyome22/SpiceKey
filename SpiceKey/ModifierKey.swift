@@ -8,7 +8,8 @@
 
 import Carbon.HIToolbox.Events
 
-public enum ModifierKey {
+// 使わなくなった
+public enum ModifierKey: Int {
     
     case leftControl
     case rightControl

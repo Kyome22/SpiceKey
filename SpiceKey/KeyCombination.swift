@@ -7,6 +7,7 @@
 //
 
 public struct KeyCombination {
+
     public var key: Key
     public var modifierFlags: ModifierFlags
     public var string: String {
@@ -18,6 +19,7 @@ public struct KeyCombination {
         self.modifierFlags = modifierFlags
     }
 }
+
 
 public func ==(lhs: KeyCombination, rhs: KeyCombination) -> Bool {
     return lhs.key == rhs.key && lhs.modifierFlags == rhs.modifierFlags

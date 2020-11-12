@@ -41,7 +41,7 @@ Set `long press ⌘` shortcut.
 
 ```swift
 // run after 1 sec
-let longPressSpiceKey = SpiceKey(ModifierFlag.command, 1.0, modifierKeyLongPressHandler: {
+let longPressSpiceKey = SpiceKey(ModifierFlags.cmd, 1.0, modifierKeysLongPressHandler: {
     // process
 })
 longPressSpiceKey?.register()
@@ -50,7 +50,7 @@ longPressSpiceKey?.register()
 Set `press both side of ⌘` shortcut.
 
 ```swift
-let bothSideSpiceKey = SpiceKey(ModifierFlag.command, bothSideModifierKeysPressHandler: {
+let bothSideSpiceKey = SpiceKey(ModifierFlag.command, bothModifierKeysPressHandler: {
     // process
 })
 bothSideSpiceKey?.register()
@@ -71,7 +71,7 @@ func example(event: NSEvent) {
 ```swift
 let description = modifierFlags.string + key.string
 // or
-KeyCombination.string
+let description = keyCombination.string
 ```
 
 - Unregister a shortcut
@@ -90,7 +90,7 @@ let spiceKeyData = SpiceKeyData(_ primaryKey: String,
                                 _ shift: Bool,         // ModifierFlags.containsShift
                                 _ command: Bool,       // ModifierFlags.containsCommand
                                 _ spiceKey: SpiceKey)
-// or
+// OR
 // ler spiceKeyData = SpiceKeyData(_ primaryKey: String,
 //                                 _ keyCode: CGKeyCode,
 //                                 _ modifierFlags: ModifierFlags,
