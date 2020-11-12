@@ -16,6 +16,7 @@ final class SpiceKeyManager {
     
     public static let shared = SpiceKeyManager()
     internal var spiceKeys = [SpiceKeyID : SpiceKey]()
+    private var hotKeyEventHandlerRef: EventHandlerRef? = nil
     private let signature = UTGetOSTypeFromString("SpiceKey" as CFString)
     private var monitors = [Any?]()
     private var keyFlags = [ModifierKey : Bool]()
@@ -32,7 +33,9 @@ final class SpiceKeyManager {
         InstallEventHandler(GetEventDispatcherTarget(),
                             hotKeyHandleNegotiator,
                             hotKeySpecs.count,
-                            hotKeySpecs, nil, nil)
+                            hotKeySpecs,
+                            nil,
+                            &hotKeyEventHandlerRef)
         monitors.append(NSEvent.addLocalMonitorForEvents(matching: .flagsChanged, handler: { (event) -> NSEvent? in
             SpiceKeyManager.shared.modFlagHandleEvent(event)
             return event
@@ -41,15 +44,17 @@ final class SpiceKeyManager {
             SpiceKeyManager.shared.modFlagHandleEvent(event)
         }))
         
-        NotificationCenter.default.addObserver(
-            forName: NSApplication.willTerminateNotification,
-            object: nil, queue: nil) { [weak self] _ in
-                self?.removeAllSpiceKey()
-                self?.removeMonitors()
+
+        NotificationCenter.default.addObserver(forName: NSApplication.willTerminateNotification,
+                                               object: nil, queue: nil) { [weak self] _ in
+            self?.deinitialize()
         }
     }
-    
-    deinit {
+
+    private func deinitialize() {
+        if hotKeyEventHandlerRef != nil {
+            RemoveEventHandler(hotKeyEventHandlerRef)
+        }
         removeAllSpiceKey()
         removeMonitors()
     }
