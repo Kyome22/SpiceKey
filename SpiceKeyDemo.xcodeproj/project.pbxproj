@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		1C22C6D12581C4A00080C525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C22C6D02581C4A00080C525 /* ViewController.swift */; };
 		1C22C6D32581C4A30080C525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C22C6D22581C4A30080C525 /* Assets.xcassets */; };
 		1C22C6D62581C4A30080C525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C22C6D42581C4A30080C525 /* Main.storyboard */; };
+		1C22C6E42581D6A60080C525 /* SpiceKey in Frameworks */ = {isa = PBXBuildFile; productRef = 1C22C6E32581D6A60080C525 /* SpiceKey */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C22C6E42581D6A60080C525 /* SpiceKey in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +81,9 @@
 			dependencies = (
 			);
 			name = SpiceKeyDemo;
+			packageProductDependencies = (
+				1C22C6E32581D6A60080C525 /* SpiceKey */,
+			);
 			productName = SpiceKeyDemo;
 			productReference = 1C22C6CB2581C4A00080C525 /* SpiceKeyDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -106,6 +111,9 @@
 				Base,
 			);
 			mainGroup = 1C22C6C22581C4A00080C525;
+			packageReferences = (
+				1C22C6E22581D6A60080C525 /* XCRemoteSwiftPackageReference "SpiceKey" */,
+			);
 			productRefGroup = 1C22C6CC2581C4A00080C525 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -332,6 +340,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C22C6E22581D6A60080C525 /* XCRemoteSwiftPackageReference "SpiceKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kyome22/SpiceKey";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C22C6E32581D6A60080C525 /* SpiceKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C22C6E22581D6A60080C525 /* XCRemoteSwiftPackageReference "SpiceKey" */;
+			productName = SpiceKey;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C22C6C32581C4A00080C525 /* Project object */;
 }

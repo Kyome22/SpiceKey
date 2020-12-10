@@ -1,22 +1,12 @@
 # SpiceKey
+
 Global Shortcuts for macOS written in Swift.
 
-## Installation
-
-### CocoaPods
-```
-pod 'SpiceKey'
-```
-
-### Carthage
-```
-github "Kyome22/SpiceKey"
-```
-
 ## Demo
+
 Demo App is in this Project.
 
-![image](https://github.com/Kyome22/SpiceKey/blob/master/images/DemoApp.png)
+![demo](https://github.com/Kyome22/SpiceKey/raw/master/Materials/DemoApp.png)
 
 
 ## Usage
@@ -31,29 +21,35 @@ let modifierFlags = ModifierFlags.cmd
 let keyCombo = KeyCombination(key, modifierFlags)
 let spiceKey = SpiceKey(keyCombo, keyDownHandler: {
     // process (key down)
-}) {
+}, keyUpHandler: {
     // process (key up)
-}
+})
+spiceKey.register()
+```
+
+Set `press both side of ⌘` shortcut.
+
+```swift
+let flag = ModifierFlag.command
+let spiceKey = SpiceKey(flag, bothModifierKeysPressHandler: {
+    // process (press)
+}, releaseKeyHandler: {
+    // process (release)
+})
 spiceKey.register()
 ```
 
 Set `long press ⌘` shortcut.
 
 ```swift
-// run after 1 sec
-let longPressSpiceKey = SpiceKey(ModifierFlags.cmd, 1.0, modifierKeysLongPressHandler: {
-    // process
+// run after 0.6 sec
+let flags = ModifierFlags.cmd
+let spiceKey = SpiceKey(flags, 0.6, modifierKeysLongPressHandler: {
+    // process (press)
+}, releaseKeyHandler: {
+    // process (release)
 })
-longPressSpiceKey?.register()
-```
-
-Set `press both side of ⌘` shortcut.
-
-```swift
-let bothSideSpiceKey = SpiceKey(ModifierFlag.command, bothModifierKeysPressHandler: {
-    // process
-})
-bothSideSpiceKey?.register()
+spiceKey.register()
 ```
 
 - Create a Key and a ModifierFlags from NSEvent.
@@ -83,37 +79,32 @@ spiceKey.unregister()
 - Save shortcut
 
 ```swift
-let spiceKeyData = SpiceKeyData(_ primaryKey: String,
-                                _ keyCode: CGKeyCode,  // Key.keyCode
-                                _ control: Bool,       // ModifierFlags.containsControl
-                                _ option: Bool,        // ModifierFlags.containsOption
-                                _ shift: Bool,         // ModifierFlags.containsShift
-                                _ command: Bool,       // ModifierFlags.containsCommand
-                                _ spiceKey: SpiceKey)
-// OR
-// ler spiceKeyData = SpiceKeyData(_ primaryKey: String,
-//                                 _ keyCode: CGKeyCode,
-//                                 _ modifierFlags: ModifierFlags,
-//                                 _ spiceKey: SpiceKey)
+let key = Key.a
+let flags = ModifierFlags.optCmd
+let spiceKey = SpiceKey(...)
 
-do {
-    let data = try NSKeyedArchiver.archivedData(withRootObject: spiceKeyData, 
-                                                requiringSecureCoding: false)
-    UserDefaults.standard.set(data, forKey: "spiceKeyData")
-} catch {
-    Swift.print(error)
-}
+let spiceKeyData = SpiceKeyData(_ primaryKey: String,
+                                _ keyCode: CGKeyCode,  // key.keyCode
+                                _ control: Bool,       // flags.containsControl
+                                _ option: Bool,        // flags.containsOption
+                                _ shift: Bool,         // flags.containsShift
+                                _ command: Bool,       // flags.containsCommand
+                                _ spiceKey: SpiceKey)  // spiceKey
+// OR
+ler spiceKeyData = SpiceKeyData(_ primaryKey: String,
+                                _ key: Key,
+                                _ modifierFlags: ModifierFlags,
+                                _ spiceKey: SpiceKey)
+
+let data = try! NSKeyedArchiver.archivedData(withRootObject: spiceKeyData, 
+                                             requiringSecureCoding: false)
+UserDefaults.standard.set(data, forKey: "spiceKeyData")
 ```
 
 - Load shortcut
 
 ```swift
-guard let data = userDefaults.data(forKey: "spiceKeyData") else {
-    return
-}
-do {
-    let spiceKeyData = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! SpiceKeyData
-} catch {
-    Swift.print(error)
-}
+let data = userDefaults.data(forKey: "spiceKeyData")!
+let spiceKeyData = try! NSKeyedUnarchiver
+    .unarchiveTopLevelObjectWithData(data) as! SpiceKeyData
 ```
