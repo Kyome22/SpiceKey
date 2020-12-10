@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -675,7 +673,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SpiceKeyDemo" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -686,9 +684,9 @@
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="300" height="216"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -705,202 +703,15 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="SpiceKeyDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="372" height="266"/>
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sjf-qo-SAe">
-                                <rect key="frame" x="84" y="56" width="204" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="9Ka-fK-O0U"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="State" id="3ko-Wj-abe">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aTt-a1-fVO">
-                                <rect key="frame" x="131" y="120" width="191" height="25"/>
-                                <popUpButtonCell key="cell" type="push" title="⌃ Control" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="tBG-nS-eBZ" id="5oR-UQ-CfA">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="8yZ-Ty-cU2">
-                                        <items>
-                                            <menuItem title="⌃ Control" state="on" id="tBG-nS-eBZ">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌥ Option" id="XTa-VH-Eta">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⇧ Shift" id="P3d-TZ-Kli">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌘ Command" id="3F2-Ws-Pff">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌃⌥ Ctrl Opt" id="e9c-a9-861">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌃⇧ Ctrl Sft" id="uFD-lP-Udl">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌃⌘ Ctrl Cmd" id="3I6-WG-4zH">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌥⇧ Opt Sft" id="FVh-Bd-vpB">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌥⌘ Opt Cmd" id="1o8-Yx-qgL">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⇧⌘ Sft Cmd" id="nWO-da-sbf">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌃⌥⇧ Ctrl Opt Sft" id="WaR-7g-4z2">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌃⌥⌘ Ctrl Opt Cmd" id="oyF-21-pJJ">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌃⇧⌘ Ctrl Sft Cmd" id="LAG-2V-EeI">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌥⇧⌘ Opt Sft Cmd" id="u7z-Dj-TUa">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="⌃⌥⇧⌘ Ctrl Opt Sft Cmd" id="dHL-o4-1br">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="longPressPopupChange:" target="XfG-lQ-9wD" id="2y7-UX-prE"/>
-                                </connections>
-                            </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qPp-ib-B5z">
-                                <rect key="frame" x="131" y="84" width="190" height="25"/>
-                                <popUpButtonCell key="cell" type="push" title="⌃ Control" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eGh-PF-HNB" id="Vgx-x5-0Nh">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="FQv-f4-6qP">
-                                        <items>
-                                            <menuItem title="⌃ Control" state="on" id="eGh-PF-HNB"/>
-                                            <menuItem title="⌥ Option" id="Zqd-Ug-mys"/>
-                                            <menuItem title="⇧ Shift" id="Zvl-vw-qeP"/>
-                                            <menuItem title="⌘ Command" id="ZfR-69-oLU">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="bothSidePopupChange:" target="XfG-lQ-9wD" id="3m3-wd-l7p"/>
-                                </connections>
-                            </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XES-ob-EK3">
-                                <rect key="frame" x="60" y="89" width="67" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Both Side:" id="h9V-GN-X0s">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IjF-Zc-bcn" customClass="SpiceKeyField" customModule="SpiceKey">
-                                <rect key="frame" x="133" y="205" width="120" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="CHO-2M-G0M"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="7NX-Nx-K6C">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B4o-Qa-vPL" customClass="SpiceKeyField" customModule="SpiceKey">
-                                <rect key="frame" x="133" y="164" width="120" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="QJY-Tb-N8w"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="y7s-YV-xiL">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="llY-h4-TPp">
-                                <rect key="frame" x="59" y="207" width="68" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Hot-Key 1:" id="vf0-j8-vAj">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fvY-V9-a5T">
-                                <rect key="frame" x="58" y="166" width="69" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Hot-Key 2:" id="Q6f-uT-Zxz">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAZ-mt-3yc">
-                                <rect key="frame" x="159" y="10" width="96" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="CmV-yj-phr">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xbL-U5-cVi">
-                                <rect key="frame" x="52" y="125" width="75" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Long Press:" id="td2-WC-T1i">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="leading" secondItem="B4o-Qa-vPL" secondAttribute="leading" id="1du-MJ-gEH"/>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="top" secondItem="B4o-Qa-vPL" secondAttribute="bottom" constant="20" id="7hD-JX-J8P"/>
-                            <constraint firstItem="B4o-Qa-vPL" firstAttribute="top" secondItem="IjF-Zc-bcn" secondAttribute="bottom" constant="20" id="K0a-cW-KDU"/>
-                            <constraint firstItem="XES-ob-EK3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="62" id="Oqu-GL-dQf"/>
-                            <constraint firstItem="fvY-V9-a5T" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="60" id="Tnu-JQ-bdk"/>
-                            <constraint firstItem="IjF-Zc-bcn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="llY-h4-TPp" secondAttribute="trailing" symbolic="YES" id="Uiu-FZ-z8p"/>
-                            <constraint firstAttribute="trailing" secondItem="qPp-ib-B5z" secondAttribute="trailing" constant="54" id="Wm0-5k-Jrj"/>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="Wsd-8j-7an"/>
-                            <constraint firstItem="sjf-qo-SAe" firstAttribute="top" secondItem="qPp-ib-B5z" secondAttribute="bottom" constant="15" id="Y3t-nj-3ZD"/>
-                            <constraint firstItem="qPp-ib-B5z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XES-ob-EK3" secondAttribute="trailing" constant="8" symbolic="YES" id="Y8Y-aW-j40"/>
-                            <constraint firstItem="fvY-V9-a5T" firstAttribute="centerY" secondItem="B4o-Qa-vPL" secondAttribute="centerY" id="bxI-BG-RZL"/>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="leading" secondItem="IjF-Zc-bcn" secondAttribute="leading" id="eRf-P9-78n"/>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" constant="40" id="epV-r5-0YO"/>
-                            <constraint firstItem="sjf-qo-SAe" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="f14-fT-6NL"/>
-                            <constraint firstItem="xbL-U5-cVi" firstAttribute="centerY" secondItem="aTt-a1-fVO" secondAttribute="centerY" id="f26-20-Kjy"/>
-                            <constraint firstItem="llY-h4-TPp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="61" id="on1-Zk-rwt"/>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xbL-U5-cVi" secondAttribute="trailing" constant="8" symbolic="YES" id="rC3-ug-5ie"/>
-                            <constraint firstItem="llY-h4-TPp" firstAttribute="centerY" secondItem="IjF-Zc-bcn" secondAttribute="centerY" id="rmd-UK-Lsk"/>
-                            <constraint firstItem="qPp-ib-B5z" firstAttribute="top" secondItem="aTt-a1-fVO" secondAttribute="bottom" constant="15" id="uhY-Hn-IxT"/>
-                            <constraint firstItem="B4o-Qa-vPL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fvY-V9-a5T" secondAttribute="trailing" symbolic="YES" id="v8L-BG-8IR"/>
-                            <constraint firstItem="xbL-U5-cVi" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="54" id="vbi-fO-rhM"/>
-                            <constraint firstItem="XES-ob-EK3" firstAttribute="centerY" secondItem="qPp-ib-B5z" secondAttribute="centerY" id="vzH-xG-OFB"/>
-                            <constraint firstItem="aTt-a1-fVO" firstAttribute="leading" secondItem="qPp-ib-B5z" secondAttribute="leading" id="zDE-JH-b9z"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="bothSidePopup" destination="qPp-ib-B5z" id="THO-Fe-0Aj"/>
-                        <outlet property="longPressPopup" destination="aTt-a1-fVO" id="cnw-Sb-4Pr"/>
-                        <outlet property="spiceKeyField1" destination="IjF-Zc-bcn" id="yFl-NG-48j"/>
-                        <outlet property="spiceKeyField2" destination="B4o-Qa-vPL" id="gp7-sz-yAe"/>
-                        <outlet property="stateLabel" destination="sjf-qo-SAe" id="amF-It-eVk"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68.5" y="627"/>
+            <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
 </document>

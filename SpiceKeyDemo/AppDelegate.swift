@@ -2,14 +2,16 @@
 //  AppDelegate.swift
 //  SpiceKeyDemo
 //
-//  Created by Takuto Nakamura on 2019/03/03.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
+//  Created by Takuto Nakamura on 2020/12/10.
 //
 
 import Cocoa
 
-@NSApplicationMain
+@main
 class AppDelegate: NSObject, NSApplicationDelegate {
+
+    
+
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -19,9 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
-    }
 
 }
 
