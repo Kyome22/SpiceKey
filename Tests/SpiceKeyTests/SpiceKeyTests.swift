@@ -20,5 +20,6 @@ final class SpiceKeyTests: XCTestCase {
 
     static var allTests = [
         ("testExample", testExample),
+        ("testLoadImageResource", testLoadImageResource)
     ]
 }
