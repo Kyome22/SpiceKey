@@ -91,7 +91,7 @@ let spiceKeyData = SpiceKeyData(_ primaryKey: String,
                                 _ command: Bool,       // flags.containsCommand
                                 _ spiceKey: SpiceKey)  // spiceKey
 // OR
-ler spiceKeyData = SpiceKeyData(_ primaryKey: String,
+let spiceKeyData = SpiceKeyData(_ primaryKey: String,
                                 _ key: Key,
                                 _ modifierFlags: ModifierFlags,
                                 _ spiceKey: SpiceKey)
@@ -104,7 +104,7 @@ UserDefaults.standard.set(data, forKey: "spiceKeyData")
 - Load shortcut
 
 ```swift
-let data = userDefaults.data(forKey: "spiceKeyData")!
+let data = UserDefaults.standard.data(forKey: "spiceKeyData")!
 let spiceKeyData = try! NSKeyedUnarchiver
     .unarchiveTopLevelObjectWithData(data) as! SpiceKeyData
 ```
