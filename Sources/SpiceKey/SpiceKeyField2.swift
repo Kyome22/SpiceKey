@@ -145,14 +145,14 @@ open class SpiceKeyField2: NSView {
     }
     
     open override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
+//        super.draw(dirtyRect)
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .left
+        paragraphStyle.alignment = .center
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.baseWritingDirection = .leftToRight
         let textColor = isEnabled
-            ? NSColor.labelColor.cgColor
-            : NSColor.secondaryLabelColor.cgColor
+            ? NSColor.labelColor
+            : NSColor.secondaryLabelColor
         let attributes: [NSAttributedString.Key: Any] = [
             .font: NSFont.systemFont(ofSize: 13.0),
             .foregroundColor: textColor,
@@ -185,7 +185,7 @@ open class SpiceKeyField2: NSView {
     }
     
     // Typing begin/end
-    private func beginTyping() {
+    public func beginTyping() {
         if isEnabled, let window = self.window {
             if window.firstResponder != self || !isTyping {
                 window.makeFirstResponder(self)
@@ -207,8 +207,8 @@ open class SpiceKeyField2: NSView {
         delegate?.didRegisterSpiceKey(self, currentKeyCombination!)
     }
     
-    open override func touchesBegan(with event: NSEvent) {
-        beginTyping()
-    }
+//    open override func touchesBegan(with event: NSEvent) {
+//        beginTyping()
+//    }
     
 }
