@@ -27,7 +27,11 @@ open class SpiceKeyField2: NSView {
         }
     }
     
-    public private(set) var isTyping = false
+    public private(set) var isTyping = false {
+        willSet {
+            print("isTyping: \(newValue)")
+        }
+    }
     
     private var isFirstResponder: Bool {
         return (isEnabled && isTyping && self.window?.firstResponder == self)
@@ -38,7 +42,7 @@ open class SpiceKeyField2: NSView {
     }
     
     open override var focusRingMaskBounds: NSRect {
-        return self.isFirstResponder ? self.bounds : .zero
+        return isFirstResponder ? self.bounds : .zero
     }
     
     open override var acceptsFirstResponder: Bool {
@@ -68,11 +72,14 @@ open class SpiceKeyField2: NSView {
     }
     
     open override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        guard isFirstResponder else { return false }
         if isTyping, let key = Key(keyCode: event.keyCode) {
             let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
             let modifierFlags = ModifierFlags(flags: flags)
-            register(key: key, modifierFlags: modifierFlags)
-            return true
+            if modifierFlags != .empty {
+                register(key: key, modifierFlags: modifierFlags)
+                return true
+            }
         }
         return isTyping
     }
@@ -151,13 +158,14 @@ open class SpiceKeyField2: NSView {
             .foregroundColor: textColor,
             .paragraphStyle: paragraphStyle
         ]
+        let rect = CGRect(x: 2, y: 2, width: 60, height: 21)
         if let keyCombination = currentKeyCombination {
             NSString(string: keyCombination.string)
-                .draw(at: CGPoint(x: 2, y: 2), withAttributes: attributes)
+                .draw(in: rect, withAttributes: attributes)
             // これじゃダメ、やっぱりRECTじゃないと
         } else if let flags = currentFlags {
             NSString(string: flags.string)
-                .draw(at: CGPoint(x: 2, y: 2), withAttributes: attributes)
+                .draw(in: rect, withAttributes: attributes)
         }
     }
     
