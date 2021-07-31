@@ -8,7 +8,7 @@
 import Cocoa
 
 public protocol SpiceKeyField2Delegate: AnyObject {
-    func didRegisterSpiceKey(_ field: SpiceKeyField2, _ key: Key, _ flags: ModifierFlags)
+    func didRegisterSpiceKey(_ field: SpiceKeyField2, _ keyCombination : KeyCombination)
     func didDelete(_ field: SpiceKeyField2)
 }
 
@@ -52,8 +52,44 @@ open class SpiceKeyField2: NSView {
         return true
     }
     
+    open override func becomeFirstResponder() -> Bool {
+        return focusField()
+    }
     
+    open override func resignFirstResponder() -> Bool {
+        unfocusField()
+        return super.resignFirstResponder()
+    }
     
+    // Key Event
+    open override func cancelOperation(_ sender: Any?) {
+        endTyping()
+    }
+    
+    open override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        if isTyping, let key = Key(keyCode: event.keyCode) {
+            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+            let modifierFlags = ModifierFlags(flags: flags)
+            register(key: key, modifierFlags: modifierFlags)
+            return true
+        }
+        return isTyping
+    }
+    
+    open override func flagsChanged(with event: NSEvent) {
+        let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+        currentFlags = ModifierFlags(flags: flags)
+        self.needsDisplay = true
+        super.flagsChanged(with: event)
+    }
+    
+    open override func keyDown(with event: NSEvent) {
+        if !performKeyEquivalent(with: event) {
+            super.keyDown(with: event)
+        }
+    }
+    
+    // Initializer
     public init(frame: NSRect, id: String? = nil) {
         self.id = id
         super.init(frame: frame)
@@ -84,10 +120,15 @@ open class SpiceKeyField2: NSView {
     }
     
     @IBAction func delete(_ sender: NSButton) {
+        isEnabled = true
+        currentFlags = nil
+        currentKeyCombination = nil
         deleteButton.isEnabled = false
+        self.needsDisplay = true
         delegate?.didDelete(self)
     }
     
+    // Draw
     open override func drawFocusRingMask() {
         if isFirstResponder {
             let rectPath = NSBezierPath(roundedRect: self.bounds, xRadius: 4.0, yRadius: 4.0)
@@ -112,12 +153,14 @@ open class SpiceKeyField2: NSView {
         if let keyCombination = currentKeyCombination {
             NSString(string: keyCombination.string)
                 .draw(at: CGPoint(x: 2, y: 2), withAttributes: attributes)
+            // これじゃダメ、やっぱりRECTじゃないと
         } else if let flags = currentFlags {
             NSString(string: flags.string)
                 .draw(at: CGPoint(x: 2, y: 2), withAttributes: attributes)
         }
     }
     
+    // Focus/Unfocus
     private func focusField() -> Bool {
         if isEnabled {
             isTyping = true
@@ -131,4 +174,32 @@ open class SpiceKeyField2: NSView {
         isTyping = false
         self.needsDisplay = true
     }
+    
+    // Typing begin/end
+    private func beginTyping() {
+        if isEnabled, let window = self.window {
+            if window.firstResponder != self || !isTyping {
+                window.makeFirstResponder(self)
+            }
+        }
+    }
+    
+    private func endTyping() {
+        if let window = self.window, window.firstResponder == self || isTyping {
+            window.makeFirstResponder(nil)
+        }
+    }
+    
+    private func register(key: Key, modifierFlags: ModifierFlags) {
+        currentKeyCombination = KeyCombination(key, modifierFlags)
+        isEnabled = false
+        deleteButton.isEnabled = true
+        endTyping()
+        delegate?.didRegisterSpiceKey(self, currentKeyCombination!)
+    }
+    
+    open override func touchesBegan(with event: NSEvent) {
+        beginTyping()
+    }
+    
 }
