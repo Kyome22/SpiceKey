@@ -58,7 +58,7 @@ open class SpiceKeyField: NSTextField {
         skfDelegate?.didRegisterSpiceKey(self, key, modifierFlags)
     }
     
-    override open func textDidChange(_ notification: Notification) {
+    open override func textDidChange(_ notification: Notification) {
         guard isTyping,
               let event = NSApp.currentEvent,
               let key = Key(keyCode: event.keyCode)
@@ -71,7 +71,7 @@ open class SpiceKeyField: NSTextField {
         register(key: key, modifierFlags: modifierFlags)
     }
     
-    override open func flagsChanged(with event: NSEvent) {
+    open override func flagsChanged(with event: NSEvent) {
         let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
         let modifierFlags = ModifierFlags(flags: flags)
         isTyping = (modifierFlags != .empty)
@@ -79,7 +79,7 @@ open class SpiceKeyField: NSTextField {
         super.flagsChanged(with: event)
     }
     
-    override open func performKeyEquivalent(with event: NSEvent) -> Bool {
+    open override func performKeyEquivalent(with event: NSEvent) -> Bool {
         if isTyping, let key = Key(keyCode: event.keyCode) {
             let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
             let modifierFlags = ModifierFlags(flags: flags)
@@ -89,12 +89,16 @@ open class SpiceKeyField: NSTextField {
         return isTyping
     }
     
-    override open func resetCursorRects() {
+    open override func resetCursorRects() {
         let rectL = NSRect(x: 0, y: 0, width: bounds.width - 20.0, height: 20.0)
         addCursorRect(rectL, cursor: NSCursor.iBeam)
         
         let rectR = NSRect(x: bounds.width - 20.0, y: 0, width: 20.0, height: 20.0)
         addCursorRect(rectR, cursor: NSCursor.pointingHand)
+    }
+    
+    open override var needsPanelToBecomeKey: Bool {
+        return true
     }
     
     @objc func delete() {
