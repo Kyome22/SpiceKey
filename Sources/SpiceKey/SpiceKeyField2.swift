@@ -22,7 +22,8 @@ open class SpiceKeyField2: NSView {
     
     public var isEnabled = true {
         didSet {
-            
+            self.needsDisplay = true
+            self.noteFocusRingMaskChanged()
         }
     }
     
