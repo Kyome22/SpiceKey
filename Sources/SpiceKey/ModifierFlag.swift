@@ -9,6 +9,7 @@
 import AppKit.NSEvent
 
 public enum ModifierFlag: Int {
+    
     case control // ⌃
     case option  // ⌥
     case shift   // ⇧

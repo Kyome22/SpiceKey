@@ -74,7 +74,7 @@ open class SpiceKeyField2: NSView {
     open override func performKeyEquivalent(with event: NSEvent) -> Bool {
         guard isFirstResponder else { return false }
         if isTyping, let key = Key(keyCode: event.keyCode) {
-            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+            let flags = event.modifierFlags.pureFlags
             let modifierFlags = ModifierFlags(flags: flags)
             if modifierFlags != .empty {
                 register(key: key, modifierFlags: modifierFlags)
@@ -85,7 +85,7 @@ open class SpiceKeyField2: NSView {
     }
     
     open override func flagsChanged(with event: NSEvent) {
-        let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+        let flags = event.modifierFlags.pureFlags
         currentFlags = ModifierFlags(flags: flags)
         self.needsDisplay = true
         super.flagsChanged(with: event)

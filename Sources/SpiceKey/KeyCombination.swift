@@ -18,6 +18,7 @@ public struct KeyCombination {
         self.key = key
         self.modifierFlags = modifierFlags
     }
+    
 }
 
 
