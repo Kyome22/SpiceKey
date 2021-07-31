@@ -10,6 +10,7 @@ import AppKit.NSEvent
 import Carbon.HIToolbox.Events
 
 public enum ModifierFlags: Int {
+    
     case empty
     case ctrl           // ⌃
     case opt            // ⌥

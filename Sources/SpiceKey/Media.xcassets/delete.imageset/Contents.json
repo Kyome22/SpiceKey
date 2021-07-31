@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "delete_light@1x.png",
+      "filename" : "delete_light.png",
       "idiom" : "mac",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "delete_dark@1x.png",
+      "filename" : "delete_dark.png",
       "idiom" : "mac",
       "scale" : "1x"
     },
