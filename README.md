@@ -6,8 +6,8 @@ Global Shortcuts for macOS written in Swift.
 
 Demo App is in this Project.
 
-![demo](https://github.com/Kyome22/SpiceKey/raw/master/Materials/DemoApp.png)
-
+<img src="Materials/demo_app_appkit.png" alt="demo_appkit" height="177px" />
+<img src="Materials/demo_app_swiftui.png" alt="demo_swiftui" height="168px" />
 
 ## Usage
 
@@ -96,7 +96,7 @@ let spiceKeyData = SpiceKeyData(_ primaryKey: String,
                                 _ modifierFlags: ModifierFlags,
                                 _ spiceKey: SpiceKey)
 
-let data = try! NSKeyedArchiver.archivedData(withRootObject: spiceKeyData, 
+let data = try! NSKeyedArchiver.archivedData(withRootObject: spiceKeyData,
                                              requiringSecureCoding: false)
 UserDefaults.standard.set(data, forKey: "spiceKeyData")
 ```
@@ -108,3 +108,12 @@ let data = UserDefaults.standard.data(forKey: "spiceKeyData")!
 let spiceKeyData = try! NSKeyedUnarchiver
     .unarchiveTopLevelObjectWithData(data) as! SpiceKeyData
 ```
+
+## SpiceKeyField & SKTextField
+
+A special text field that can be used to register SpiceKey.
+
+- SpiceKeyField is for AppKit only.
+- SKTextField is a SpiceKeyField made available from SwiftUI.
+
+Please see the Demo App for detailed instructions.

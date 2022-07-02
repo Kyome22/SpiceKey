@@ -7,7 +7,6 @@
 //
 
 public struct KeyCombination {
-
     public var key: Key
     public var modifierFlags: ModifierFlags
     public var string: String {
@@ -18,7 +17,6 @@ public struct KeyCombination {
         self.key = key
         self.modifierFlags = modifierFlags
     }
-    
 }
 
 

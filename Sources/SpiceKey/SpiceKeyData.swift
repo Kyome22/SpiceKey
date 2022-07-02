@@ -9,7 +9,6 @@
 import Foundation.NSObject
 
 open class SpiceKeyData: NSObject, NSCoding {
-    
     public var primaryKey: String
     public var keyCode: CGKeyCode
     public var control: Bool
@@ -75,5 +74,4 @@ open class SpiceKeyData: NSObject, NSCoding {
         coder.encode(shift, forKey: "shift")
         coder.encode(command, forKey: "command")
     }
-    
 }

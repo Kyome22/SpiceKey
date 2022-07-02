@@ -9,7 +9,6 @@
 import Cocoa
 
 public class SpiceKeyDeleteButton: NSButton {
-    
     override public var isEnabled: Bool {
         didSet {
             if isEnabled {
@@ -37,5 +36,4 @@ public class SpiceKeyDeleteButton: NSButton {
     private func bundleImage(name: String) -> NSImage? {
         return Bundle.module.image(forResource: name)
     }
-    
 }

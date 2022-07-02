@@ -9,7 +9,6 @@ import AppKit.NSEvent
 import Carbon
 
 public extension NSEvent.ModifierFlags {
-    
     var pureFlags: Self {
         var flags = Self.init()
         if self.contains(.control) {
@@ -26,5 +25,4 @@ public extension NSEvent.ModifierFlags {
         }
         return flags
     }
-    
 }

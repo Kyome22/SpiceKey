@@ -2,9 +2,22 @@ import XCTest
 @testable import SpiceKey
 
 final class SpiceKeyTests: XCTestCase {
-    func testExample() {
+    func testKeyCombination() {
         let spiceKey = SpiceKey(KeyCombination(.a, .cmd))
         XCTAssertNotNil(spiceKey.keyCombination)
+        XCTAssertNil(spiceKey.modifierFlags)
+    }
+
+    func testBothSide() {
+        let spiceKey = SpiceKey(ModifierFlag.control)
+        XCTAssertNil(spiceKey.keyCombination)
+        XCTAssertNotNil(spiceKey.modifierFlags)
+    }
+
+    func testLongPress() throws {
+        let spiceKey = try XCTUnwrap(SpiceKey(ModifierFlags.ctrlOptCmd, 0.5))
+        XCTAssertNil(spiceKey.keyCombination)
+        XCTAssertNotNil(spiceKey.modifierFlags)
     }
 
     func testLoadImageResource() {
@@ -17,9 +30,4 @@ final class SpiceKeyTests: XCTestCase {
         let deleteAltImg = Bundle.module.image(forResource: "delete_alt")
         XCTAssertNotNil(deleteAltImg)
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-        ("testLoadImageResource", testLoadImageResource)
-    ]
 }

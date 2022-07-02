@@ -9,8 +9,7 @@
 import AppKit.NSEvent
 import Carbon.HIToolbox.Events
 
-public enum ModifierFlags: Int {
-    
+public enum ModifierFlags: Int, CaseIterable {
     case empty
     case ctrl           // ⌃
     case opt            // ⌥
@@ -93,6 +92,27 @@ public enum ModifierFlags: Int {
         case .ctrlOptSftCmd: return "⌃⌥⇧⌘"
         }
     }
+
+    public var title: String {
+        switch self {
+        case .empty:         return "empty"
+        case .ctrl:          return "control"
+        case .opt:           return "option"
+        case .sft:           return "shift"
+        case .cmd:           return "command"
+        case .ctrlOpt:       return "ctrl + opt"
+        case .ctrlSft:       return "ctrl + sft"
+        case .ctrlCmd:       return "ctrl + cmd"
+        case .optSft:        return "opt + sft"
+        case .optCmd:        return "opt + cmd"
+        case .sftCmd:        return "sft + cmd"
+        case .ctrlOptSft:    return "ctrl + opt + sft"
+        case .ctrlOptCmd:    return "ctrl + opt + cmd"
+        case .ctrlSftCmd:    return "ctrl + sft + cmd"
+        case .optSftCmd:     return "opt + sft + cmd"
+        case .ctrlOptSftCmd: return "ctrl + opt + sft + cmd"
+        }
+    }
     
     public var flags: NSEvent.ModifierFlags {
         switch self {
@@ -147,5 +167,4 @@ public enum ModifierFlags: Int {
         }
         return flags
     }
-    
 }

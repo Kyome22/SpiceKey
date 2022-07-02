@@ -13,7 +13,6 @@ import Carbon.HIToolbox.Events
 typealias SpiceKeyID = UInt32
 
 final class SpiceKeyManager {
-    
     public static let shared = SpiceKeyManager()
     internal var spiceKeys = [SpiceKeyID : SpiceKey]()
     private var hotKeyEventHandlerRef: EventHandlerRef? = nil
@@ -204,7 +203,6 @@ final class SpiceKeyManager {
             invokeLongPressSpiceKey(flags)
         }
     }
-    
 }
 
 private func hotKeyHandleNegotiator(eventHandlerCall: EventHandlerCallRef?,

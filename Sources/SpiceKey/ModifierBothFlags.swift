@@ -10,7 +10,6 @@ import AppKit.NSEvent
 import Carbon.HIToolbox.Events
 
 public struct ModifierBothFlags {
-
     public let isLControl: Bool
     public let isRControl: Bool
     public let isLOption: Bool
@@ -54,5 +53,4 @@ public struct ModifierBothFlags {
     public var isBothCommand: Bool {
         return !isControl && !isOption && !isShift && isLCommand && isRCommand
     }
-
 }

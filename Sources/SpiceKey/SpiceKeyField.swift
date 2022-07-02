@@ -14,7 +14,6 @@ public protocol SpiceKeyFieldDelegate: NSTextFieldDelegate {
 }
 
 open class SpiceKeyField: NSTextField {
-    
     private var isTyping: Bool = false
     private var skfDelegate: SpiceKeyFieldDelegate? {
         return delegate as? SpiceKeyFieldDelegate
@@ -41,15 +40,16 @@ open class SpiceKeyField: NSTextField {
         layer?.borderColor = CGColor(red: 0.69, green: 0.745, blue: 0.773, alpha: 1.0)
         layer?.borderWidth = 1.0
         layer?.cornerRadius = 4.0
-        let rect = NSRect(x: bounds.width - 20.0,
-                          y: 0.5 * (bounds.height - 20.0),
-                          width: 20.0,
-                          height: 20.0)
+        let rect = NSRect(origin: .zero, size: CGSize(width: 20, height: 20))
         deleteButton = SpiceKeyDeleteButton(frame: rect)
         addSubview(deleteButton)
         deleteButton.target = self
         deleteButton.action = #selector(self.delete)
         deleteButton.isEnabled = false
+
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        deleteButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 
     private func register(key: Key, modifierFlags: ModifierFlags) {
@@ -112,10 +112,9 @@ open class SpiceKeyField: NSTextField {
         skfDelegate?.didDelete(self)
     }
     
-    public func setInitialSpiceKey(string: String) {
-        stringValue = string
+    public func setInitialSpiceKey(_ spiceKey: SpiceKey) {
+        stringValue = spiceKey.string
         isEnabled = false
         deleteButton.isEnabled = true
     }
-    
 }

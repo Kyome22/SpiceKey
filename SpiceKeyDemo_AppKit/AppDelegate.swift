@@ -1,15 +1,14 @@
 //
 //  AppDelegate.swift
-//  SpiceKeyDemo
+//  SpiceKeyDemo_AppKit
 //
-//  Created by Takuto Nakamura on 2020/12/10.
+//  Created by Takuto Nakamura on 2022/07/02.
 //
 
 import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -19,9 +18,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        return true
+    }
+
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
-    
+
 }
 

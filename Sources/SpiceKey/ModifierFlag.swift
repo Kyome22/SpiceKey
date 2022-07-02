@@ -8,8 +8,7 @@
 
 import AppKit.NSEvent
 
-public enum ModifierFlag: Int {
-    
+public enum ModifierFlag: Int, CaseIterable {
     case control // ⌃
     case option  // ⌥
     case shift   // ⇧
@@ -33,7 +32,16 @@ public enum ModifierFlag: Int {
         case .command: return "⌘"
         }
     }
-    
+
+    public var title: String {
+        switch self {
+        case .control: return "control"
+        case .option:  return "option"
+        case .shift:   return "shift"
+        case .command: return "command"
+        }
+    }
+
     public var flags: ModifierFlags {
         switch self {
         case .control: return .ctrl
@@ -42,7 +50,4 @@ public enum ModifierFlag: Int {
         case .command: return .cmd
         }
     }
-    
 }
-
-

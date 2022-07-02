@@ -403,4 +403,3 @@ public enum Key {
         return UInt32(self.keyCode)
     }
 }
-

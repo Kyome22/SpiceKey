@@ -40,7 +40,7 @@ public final class SpiceKey {
     }
 
     public init(_ modifierFlag: ModifierFlag,
-                bothModifierKeysPressHandler: @escaping Handler,
+                bothModifierKeysPressHandler: Handler? = nil,
                 releaseKeyHandler: Handler? = nil) {
         id = SpiceKeyManager.shared.generateID()
         keyCombination = nil
@@ -55,7 +55,7 @@ public final class SpiceKey {
 
     public init?(_ modifierFlags: ModifierFlags,
                  _ interval: Double,
-                 modifierKeysLongPressHandler: @escaping Handler,
+                 modifierKeysLongPressHandler: Handler? = nil,
                  releaseKeyHandler: Handler? = nil) {
         guard 0.0 < interval && interval <= 3.0 else { return nil }
         id = SpiceKeyManager.shared.generateID()
@@ -77,5 +77,13 @@ public final class SpiceKey {
         SpiceKeyManager.shared.unregister(self)
     }
 
+    public var string: String {
+        if let keyCombination = keyCombination {
+            return keyCombination.string
+        } else if let modifierFlags = modifierFlags {
+            return modifierFlags.string
+        } else {
+            fatalError("Impossible")
+        }
+    }
 }
-
