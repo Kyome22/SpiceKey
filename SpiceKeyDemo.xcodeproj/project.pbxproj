@@ -32,7 +32,7 @@
 		1CC92D7028707D2D00D46424 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CC92D7328707D2D00D46424 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1CC92D7528707D2D00D46424 /* SpiceKeyDemo_AppKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpiceKeyDemo_AppKit.entitlements; sourceTree = "<group>"; };
-		1CC92D7C2870934100D46424 /* SpiceKey */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SpiceKey; sourceTree = "<group>"; };
+		1CC92D7D2871D1AC00D46424 /* SpiceKey */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SpiceKey; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 		1CC92D47286B5DA900D46424 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				1CC92D7C2870934100D46424 /* SpiceKey */,
+				1CC92D7D2871D1AC00D46424 /* SpiceKey */,
 			);
 			name = Packages;
 			sourceTree = "<group>";

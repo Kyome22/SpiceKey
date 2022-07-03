@@ -20,7 +20,7 @@ open class SpiceKeyField: NSTextField {
     }
     private var deleteButton: SpiceKeyDeleteButton!
     public var id: String?
-    
+
     public init(frame: NSRect, id: String? = nil) {
         super.init(frame: frame)
         self.id = id
@@ -36,6 +36,7 @@ open class SpiceKeyField: NSTextField {
         isBordered = true
         isEditable = true
         isEnabled = true
+        refusesFirstResponder = true
         wantsLayer = true
         layer?.borderColor = CGColor(red: 0.69, green: 0.745, blue: 0.773, alpha: 1.0)
         layer?.borderWidth = 1.0
@@ -112,8 +113,8 @@ open class SpiceKeyField: NSTextField {
         skfDelegate?.didDelete(self)
     }
     
-    public func setInitialSpiceKey(_ spiceKey: SpiceKey) {
-        stringValue = spiceKey.string
+    public func setInitialKeyCombination(_ keyCombination: KeyCombination) {
+        stringValue = keyCombination.string
         isEnabled = false
         deleteButton.isEnabled = true
     }

@@ -18,7 +18,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
+            HStack(alignment: .center, spacing: 8) {
                 Text("Key Combo:")
                 SKTextField(id: "sample")
                     .onRegistered { (id, keyCombination) in
