@@ -6,9 +6,18 @@
 //  Copyright © 2019 Takuto Nakamura. All rights reserved.
 //
 
-import Foundation.NSObject
+import Foundation
 
-open class SpiceKeyData: NSObject, NSCoding {
+open class SpiceKeyData: NSObject, NSCoding, Codable {
+    public enum CodingKeys: String, CodingKey {
+        case primaryKey
+        case keyCode
+        case control
+        case option
+        case shift
+        case command
+    }
+
     public var primaryKey: String
     public var keyCode: CGKeyCode
     public var control: Bool
@@ -56,7 +65,8 @@ open class SpiceKeyData: NSObject, NSCoding {
         self.command = modifierFlags.containsCommand
         self.spiceKey = spiceKey
     }
-    
+
+    // NSCoding
     required public init?(coder: NSCoder) {
         primaryKey = (coder.decodeObject(forKey: "primaryKey") as? String) ?? ""
         keyCode = coder.decodeObject(forKey: "keyCode") as! CGKeyCode
@@ -65,7 +75,7 @@ open class SpiceKeyData: NSObject, NSCoding {
         shift = coder.decodeBool(forKey: "shift")
         command = coder.decodeBool(forKey: "command")
     }
-    
+
     public func encode(with coder: NSCoder) {
         coder.encode(primaryKey, forKey: "primaryKey")
         coder.encode(keyCode, forKey: "keyCode")
@@ -73,5 +83,26 @@ open class SpiceKeyData: NSObject, NSCoding {
         coder.encode(option, forKey: "option")
         coder.encode(shift, forKey: "shift")
         coder.encode(command, forKey: "command")
+    }
+
+    // Codable
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        primaryKey = try container.decode(String.self, forKey: .primaryKey)
+        keyCode = try container.decode(CGKeyCode.self, forKey: .keyCode)
+        control = try container.decode(Bool.self, forKey: .control)
+        option = try container.decode(Bool.self, forKey: .option)
+        shift = try container.decode(Bool.self, forKey: .shift)
+        command = try container.decode(Bool.self, forKey: .command)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(primaryKey, forKey: .primaryKey)
+        try container.encode(keyCode, forKey: .keyCode)
+        try container.encode(control, forKey: .control)
+        try container.encode(option, forKey: .option)
+        try container.encode(shift, forKey: .shift)
+        try container.encode(command, forKey: .command)
     }
 }

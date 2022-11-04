@@ -78,6 +78,8 @@ spiceKey.unregister()
 
 - Save shortcut
 
+SpiceKeyData supports NSCoding & Codable.
+
 ```swift
 let key = Key.a
 let flags = ModifierFlags.optCmd
