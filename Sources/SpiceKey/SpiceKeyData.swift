@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 open class SpiceKeyData: NSObject, NSCoding, Codable {
     public enum CodingKeys: String, CodingKey {
