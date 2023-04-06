@@ -53,4 +53,16 @@ public struct ModifierBothFlags {
     public var isBothCommand: Bool {
         return !isControl && !isOption && !isShift && isLCommand && isRCommand
     }
+
+    public var isBoth: Bool {
+        switch (isBothControl, isBothOption, isBothShift, isBothCommand) {
+        case (true, false, false, false),
+            (false, true, false, false),
+            (false, false, true, false),
+            (false, false, false, true):
+            return true
+        default:
+            return false
+        }
+    }
 }

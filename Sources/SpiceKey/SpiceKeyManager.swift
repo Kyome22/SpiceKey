@@ -9,6 +9,7 @@
 import AppKit.NSEvent
 import Carbon
 import Carbon.HIToolbox.Events
+import Combine
 
 typealias SpiceKeyID = UInt32
 
@@ -18,6 +19,7 @@ final class SpiceKeyManager {
     private var hotKeyEventHandlerRef: EventHandlerRef? = nil
     private let signature = UTGetOSTypeFromString("SpiceKey" as CFString)
     private var monitors = [Any?]()
+    private var notifyCancellable: AnyCancellable?
     private var invoked: Bool = false
     private var timer: Timer? = nil
     
@@ -42,11 +44,11 @@ final class SpiceKeyManager {
             SpiceKeyManager.shared.modFlagHandleEvent(event)
         }))
         
-
-        NotificationCenter.default.addObserver(forName: NSApplication.willTerminateNotification,
-                                               object: nil, queue: nil) { [weak self] _ in
-            self?.deinitialize()
-        }
+        notifyCancellable = NotificationCenter.default
+            .publisher(for: NSApplication.willTerminateNotification)
+            .sink { [weak self] _ in
+                self?.deinitialize()
+            }
     }
 
     private func deinitialize() {
@@ -57,17 +59,17 @@ final class SpiceKeyManager {
         removeMonitors()
     }
     
+    func removeAllSpiceKey() {
+        spiceKeys.values.forEach { (spiceKey) in
+            unregister(spiceKey)
+        }
+    }
+
     func removeMonitors() {
         monitors.forEach { (monitor) in
             NSEvent.removeMonitor(monitor!)
         }
         monitors.removeAll()
-    }
-    
-    func removeAllSpiceKey() {
-        spiceKeys.values.forEach { (spiceKey) in
-            unregister(spiceKey)
-        }
     }
     
     func generateID() -> SpiceKeyID {
@@ -168,11 +170,12 @@ final class SpiceKeyManager {
         if let longPressSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
             return 0.0 < spiceKey.interval && spiceKey.modifierFlags == flags
         }) {
-            timer = Timer.scheduledTimer(withTimeInterval: longPressSpiceKey.interval, repeats: false, block: { [weak self] _ in
+            let interval = longPressSpiceKey.interval
+            timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
                 self?.invoked = true
                 longPressSpiceKey.invoked = true
                 longPressSpiceKey.modifierKeysLongPressHandler?()
-            })
+            }
         }
     }
 
@@ -187,7 +190,6 @@ final class SpiceKeyManager {
     
     func modFlagHandleEvent(_ event: NSEvent) {
         timer?.invalidate()
-
         let nsFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
         let flags = ModifierFlags(flags: nsFlags)
         if flags == .empty {
@@ -197,7 +199,7 @@ final class SpiceKeyManager {
         }
         if invoked { return }
         let bothFlags = ModifierBothFlags(modifierFlags: event.modifierFlags)
-        if bothFlags.isBothControl || bothFlags.isBothOption || bothFlags.isBothShift || bothFlags.isBothCommand {
+        if bothFlags.isBoth {
             invokeBothSideSpiceKey(flags)
         } else { // Long Press
             invokeLongPressSpiceKey(flags)
@@ -205,8 +207,10 @@ final class SpiceKeyManager {
     }
 }
 
-private func hotKeyHandleNegotiator(eventHandlerCall: EventHandlerCallRef?,
-                                    event: EventRef?,
-                                    userData: UnsafeMutableRawPointer?) -> OSStatus {
+private func hotKeyHandleNegotiator(
+    eventHandlerCall: EventHandlerCallRef?,
+    event: EventRef?,
+    userData: UnsafeMutableRawPointer?
+) -> OSStatus {
     return SpiceKeyManager.shared.hotKeyHandleEvent(event)
 }

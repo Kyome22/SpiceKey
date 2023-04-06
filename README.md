@@ -85,18 +85,28 @@ let key = Key.a
 let flags = ModifierFlags.optCmd
 let spiceKey = SpiceKey(...)
 
-let spiceKeyData = SpiceKeyData(_ primaryKey: String,
-                                _ keyCode: CGKeyCode,  // key.keyCode
-                                _ control: Bool,       // flags.containsControl
-                                _ option: Bool,        // flags.containsOption
-                                _ shift: Bool,         // flags.containsShift
-                                _ command: Bool,       // flags.containsCommand
-                                _ spiceKey: SpiceKey)  // spiceKey
+let spiceKeyData = SpiceKeyData(
+    _ primaryKey: String,
+    _ keyCode: CGKeyCode,  // key.keyCode
+    _ control: Bool,       // flags.containsControl
+    _ option: Bool,        // flags.containsOption
+    _ shift: Bool,         // flags.containsShift
+    _ command: Bool,       // flags.containsCommand
+    _ spiceKey: SpiceKey   // spiceKey
+)
 // OR
-let spiceKeyData = SpiceKeyData(_ primaryKey: String,
-                                _ key: Key,
-                                _ modifierFlags: ModifierFlags,
-                                _ spiceKey: SpiceKey)
+let spiceKeyData = SpiceKeyData(
+    _ primaryKey: String,
+    _ key: Key,
+    _ modifierFlags: ModifierFlags,
+    _ spiceKey: SpiceKey
+)
+// OR
+let spiceKeyData = SpiceKeyData(
+    _ primaryKey: String,
+    _ keyCombination: KeyCombination,
+    _ spiceKey: SpiceKey
+)
 
 let data = try! NSKeyedArchiver.archivedData(withRootObject: spiceKeyData,
                                              requiringSecureCoding: false)

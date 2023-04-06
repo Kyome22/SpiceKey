@@ -57,10 +57,12 @@ public enum ModifierFlags: Int, CaseIterable {
         }
     }
     
-    public init?(control: Bool = false,
-                 option: Bool = false,
-                 shift: Bool = false,
-                 command: Bool = false) {
+    public init?(
+        control: Bool = false,
+        option: Bool = false,
+        shift: Bool = false,
+        command: Bool = false
+    ) {
         if !(control || option || shift || command) {
             return nil
         }

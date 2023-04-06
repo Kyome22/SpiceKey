@@ -38,13 +38,15 @@ open class SpiceKeyData: NSObject, NSCoding, Codable {
         return KeyCombination(key, modifierFlags)
     }
     
-    public init(_ primaryKey: String,
-                _ keyCode: CGKeyCode,
-                _ control: Bool,
-                _ option: Bool,
-                _ shift: Bool,
-                _ command: Bool,
-                _ spiceKey: SpiceKey? = nil) {
+    public init(
+        _ primaryKey: String,
+        _ keyCode: CGKeyCode,
+        _ control: Bool,
+        _ option: Bool,
+        _ shift: Bool,
+        _ command: Bool,
+        _ spiceKey: SpiceKey? = nil
+    ) {
         self.primaryKey = primaryKey
         self.keyCode = keyCode
         self.control = control
@@ -54,10 +56,12 @@ open class SpiceKeyData: NSObject, NSCoding, Codable {
         self.spiceKey = spiceKey
     }
     
-    public init(_ primaryKey: String,
-                _ key: Key,
-                _ modifierFlags: ModifierFlags,
-                _ spiceKey: SpiceKey? = nil) {
+    public init(
+        _ primaryKey: String,
+        _ key: Key,
+        _ modifierFlags: ModifierFlags,
+        _ spiceKey: SpiceKey? = nil
+    ) {
         self.primaryKey = primaryKey
         self.keyCode = key.keyCode
         self.control = modifierFlags.containsControl
@@ -65,6 +69,14 @@ open class SpiceKeyData: NSObject, NSCoding, Codable {
         self.shift = modifierFlags.containsShift
         self.command = modifierFlags.containsCommand
         self.spiceKey = spiceKey
+    }
+
+    public convenience init(
+        _ primaryKey: String,
+        _ keyCombination: KeyCombination,
+        _ spiceKey: SpiceKey? = nil
+    ) {
+        self.init(primaryKey, keyCombination.key, keyCombination.modifierFlags, spiceKey)
     }
 
     // NSCoding
