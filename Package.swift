@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.8
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -11,14 +11,17 @@ let package = Package(
     products: [
         .library(
             name: "SpiceKey",
-            targets: ["SpiceKey"]),
+            targets: ["SpiceKey"]
+        )
     ],
     targets: [
         .target(
             name: "SpiceKey",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "SpiceKeyTests",
-            dependencies: ["SpiceKey"]),
+            dependencies: ["SpiceKey"]
+        )
     ]
 )
