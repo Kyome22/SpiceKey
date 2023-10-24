@@ -1,14 +1,14 @@
-//
-//  ViewController.swift
-//  SpiceKeyDemo_AppKit
-//
-//  Created by Takuto Nakamura on 2022/07/02.
-//
+/*
+ ViewController.swift
+ SpiceKeyDemo_AppKit
+
+ Created by Takuto Nakamura on 2022/07/02.
+*/
 
 import Cocoa
 import SpiceKey
 
-class ViewController: NSViewController {
+final class ViewController: NSViewController {
     @IBOutlet weak var spiceKeyField: SpiceKeyField!
     @IBOutlet weak var bothSidePopUp: NSPopUpButton!
     @IBOutlet weak var longPressPopUp: NSPopUpButton!

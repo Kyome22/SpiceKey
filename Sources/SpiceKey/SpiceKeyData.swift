@@ -1,10 +1,10 @@
-//
-//  SpiceKeyData.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2019/12/03.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ SpiceKeyData.swift
+ SpiceKey
+
+ Created by Takuto Nakamura on 2019/12/03.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
 
 import Foundation
 import CoreGraphics

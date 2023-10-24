@@ -1,10 +1,10 @@
-//
-//  Key.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2019/03/03.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ Key.swift
+ SpiceKey
+
+ Created by Takuto Nakamura on 2019/03/03.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
 
 import Carbon.HIToolbox.Events
 

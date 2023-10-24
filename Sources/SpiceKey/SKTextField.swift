@@ -1,10 +1,10 @@
-//
-//  SKTextField.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2022/06/29.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ SKTextField.swift
+ SpiceKey
+
+ Created by Takuto Nakamura on 2022/06/29.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
 
 import SwiftUI
 import Combine

@@ -1,5 +1,5 @@
-import XCTest
 @testable import SpiceKey
+import XCTest
 
 final class SpiceKeyTests: XCTestCase {
     func testKeyCombination() {

@@ -1,9 +1,9 @@
-//
-//  ContentView.swift
-//  SpiceKeyDemo_SwiftUI
-//
-//  Created by Takuto Nakamura on 2022/06/29.
-//
+/*
+ ContentView.swift
+ SpiceKeyDemo_SwiftUI
+
+ Created by Takuto Nakamura on 2022/06/29.
+*/
 
 import SwiftUI
 import SpiceKey

@@ -1,9 +1,10 @@
-//
-//  File.swift
-//  
-//
-//  Created by Takuto Nakamura on 2021/08/01.
-//
+/*
+ NSEvent.ModifierFlags+Extensions.swift
+ SpiceKey
+
+ Created by Takuto Nakamura on 2021/08/01.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
 
 import AppKit.NSEvent
 import Carbon

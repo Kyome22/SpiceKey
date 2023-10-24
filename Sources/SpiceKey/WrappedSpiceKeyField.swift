@@ -1,12 +1,12 @@
-//
-//  WrappedSpiceKeyField.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2022/07/04.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ WrappedSpiceKeyField.swift
+ SpiceKey
 
-import Cocoa
+ Created by Takuto Nakamura on 2022/07/04.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
+
+import AppKit
 
 public final class WrappedSpiceKeyField: NSView {
     let spiceKeyField: SpiceKeyField

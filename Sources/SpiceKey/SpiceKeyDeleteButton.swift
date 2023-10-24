@@ -1,12 +1,12 @@
-//
-//  SpiceKeyDeleteButton.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2019/12/08.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ SpiceKeyDeleteButton.swift
+ SpiceKey
 
-import Cocoa
+ Created by Takuto Nakamura on 2019/12/08.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
+
+import AppKit
 
 public class SpiceKeyDeleteButton: NSButton {
     override public var isEnabled: Bool {

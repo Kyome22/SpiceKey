@@ -1,9 +1,9 @@
-//
-//  AppDelegate.swift
-//  SpiceKeyDemo_AppKit
-//
-//  Created by Takuto Nakamura on 2022/07/02.
-//
+/*
+ AppDelegate.swift
+ SpiceKeyDemo_AppKit
+
+ Created by Takuto Nakamura on 2022/07/02.
+*/
 
 import Cocoa
 

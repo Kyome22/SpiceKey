@@ -1,12 +1,12 @@
-//
-//  SpiceKeyField.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2019/12/08.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ SpiceKeyField.swift
+ SpiceKey
 
-import Cocoa
+ Created by Takuto Nakamura on 2019/12/08.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
+
+import AppKit
 
 public protocol SpiceKeyFieldDelegate: NSTextFieldDelegate {
     func didRegisterSpiceKey(_ field: SpiceKeyField, _ key: Key, _ flags: ModifierFlags)

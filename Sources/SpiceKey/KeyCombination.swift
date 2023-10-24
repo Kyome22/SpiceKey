@@ -1,10 +1,10 @@
-//
-//  KeyCombination.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2019/03/03.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ KeyCombination.swift
+ SpiceKey
+
+ Created by Takuto Nakamura on 2019/03/03.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
 
 public struct KeyCombination {
     public var key: Key

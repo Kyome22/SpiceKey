@@ -1,10 +1,10 @@
-//
-//  ModifierFlags.swift
-//  SpiceKey
-//
-//  Created by Takuto Nakamura on 2019/03/03.
-//  Copyright © 2019 Takuto Nakamura. All rights reserved.
-//
+/*
+ ModifierFlags.swift
+ SpiceKey
+
+ Created by Takuto Nakamura on 2019/03/03.
+ Copyright © 2019 Takuto Nakamura. All rights reserved.
+*/
 
 import AppKit.NSEvent
 import Carbon.HIToolbox.Events

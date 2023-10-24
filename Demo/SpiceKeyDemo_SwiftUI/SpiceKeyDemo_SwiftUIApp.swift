@@ -1,9 +1,9 @@
-//
-//  SpiceKeyDemo_SwiftUIApp.swift
-//  SpiceKeyDemo_SwiftUI
-//
-//  Created by Takuto Nakamura on 2022/06/29.
-//
+/*
+ SpiceKeyDemo_SwiftUIApp.swift
+ SpiceKeyDemo_SwiftUI
+
+ Created by Takuto Nakamura on 2022/06/29.
+*/
 
 import SwiftUI
 import AppKit
@@ -19,7 +19,7 @@ struct SpiceKeyDemo_SwiftUIApp: App {
     }
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
