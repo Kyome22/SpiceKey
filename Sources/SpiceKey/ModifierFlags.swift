@@ -8,6 +8,7 @@
 
 import AppKit.NSEvent
 import Carbon.HIToolbox.Events
+import SwiftUI
 
 public enum ModifierFlags: Int, CaseIterable {
     case empty
@@ -136,7 +137,28 @@ public enum ModifierFlags: Int, CaseIterable {
         case .ctrlOptSftCmd: return [.control, .option, .shift, .command]
         }
     }
-    
+
+    public var eventModifiers: SwiftUI.EventModifiers {
+        switch self {
+        case .empty:         return []
+        case .ctrl:          return [.control]
+        case .opt:           return [.option]
+        case .sft:           return [.shift]
+        case .cmd:           return [.command]
+        case .ctrlOpt:       return [.control, .option]
+        case .ctrlSft:       return [.control, .shift]
+        case .ctrlCmd:       return [.control, .command]
+        case .optSft:        return [.option,  .shift]
+        case .optCmd:        return [.option,  .command]
+        case .sftCmd:        return [.shift,   .command]
+        case .ctrlOptSft:    return [.control, .option, .shift]
+        case .ctrlOptCmd:    return [.control, .option, .command]
+        case .ctrlSftCmd:    return [.control, .shift,  .command]
+        case .optSftCmd:     return [.option,  .shift,  .command]
+        case .ctrlOptSftCmd: return [.control, .option, .shift, .command]
+        }
+    }
+
     public var containsControl: Bool {
         return self.flags.contains(NSEvent.ModifierFlags.control)
     }

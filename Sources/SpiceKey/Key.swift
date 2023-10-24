@@ -7,6 +7,7 @@
 */
 
 import Carbon.HIToolbox.Events
+import SwiftUI
 
 public enum Key {
     case a
@@ -35,7 +36,7 @@ public enum Key {
     case x
     case y
     case z
-    
+
     case grave
     case minus
     case equal
@@ -49,9 +50,9 @@ public enum Key {
     case slash
     case yen
     case underscore
-    case eisu
-    case kana
-    
+    // case eisu
+    // case kana
+
     case zero
     case one
     case two
@@ -62,7 +63,7 @@ public enum Key {
     case seven
     case eight
     case nine
-    
+
     // case keypad0
     // case keypad1
     // case keypad2
@@ -82,7 +83,7 @@ public enum Key {
     // case keypadMinus
     // case keypadEquals
     // case keypadComma
-    
+
     case `return`
     case tab
     case space
@@ -101,7 +102,7 @@ public enum Key {
     // case end
     // case pageUp
     // case pageDown
-    
+
     // case f1
     // case f2
     // case f3
@@ -122,7 +123,7 @@ public enum Key {
     // case f18
     // case f19
     // case f20
-    
+
     public init?(keyCode: CGKeyCode) {
         switch Int(keyCode) {
         case kVK_ANSI_A: self = .a
@@ -151,7 +152,7 @@ public enum Key {
         case kVK_ANSI_X: self = .x
         case kVK_ANSI_Y: self = .y
         case kVK_ANSI_Z: self = .z
-            
+
         case kVK_ANSI_Grave:        self = .grave
         case kVK_ANSI_Minus:        self = .minus
         case kVK_ANSI_Equal:        self = .equal
@@ -165,9 +166,9 @@ public enum Key {
         case kVK_ANSI_Slash:        self = .slash
         case kVK_JIS_Yen:           self = .yen
         case kVK_JIS_Underscore:    self = .underscore
-        case kVK_JIS_Eisu:          self = .eisu
-        case kVK_JIS_Kana:          self = .kana
-            
+        // case kVK_JIS_Eisu:          self = .eisu
+        // case kVK_JIS_Kana:          self = .kana
+
         case kVK_ANSI_0: self = .zero
         case kVK_ANSI_1: self = .one
         case kVK_ANSI_2: self = .two
@@ -178,26 +179,26 @@ public enum Key {
         case kVK_ANSI_7: self = .seven
         case kVK_ANSI_8: self = .eight
         case kVK_ANSI_9: self = .nine
-            
-        //        case kVK_ANSI_Keypad0:        self = .keypad0
-        //        case kVK_ANSI_Keypad1:        self = .keypad1
-        //        case kVK_ANSI_Keypad2:        self = .keypad2
-        //        case kVK_ANSI_Keypad3:        self = .keypad3
-        //        case kVK_ANSI_Keypad4:        self = .keypad4
-        //        case kVK_ANSI_Keypad5:        self = .keypad5
-        //        case kVK_ANSI_Keypad6:        self = .keypad6
-        //        case kVK_ANSI_Keypad7:        self = .keypad7
-        //        case kVK_ANSI_Keypad8:        self = .keypad8
-        //        case kVK_ANSI_Keypad9:        self = .keypad9
-        //        case kVK_ANSI_KeypadDecimal:  self = .keypadDecimal
-        //        case kVK_ANSI_KeypadMultiply: self = .keypadMultiply
-        //        case kVK_ANSI_KeypadPlus:     self = .keypadPlus
-        //        case kVK_ANSI_KeypadClear:    self = .keypadClear
-        //        case kVK_ANSI_KeypadDivide:   self = .keypadDivide
-        //        case kVK_ANSI_KeypadEnter:    self = .keypadEnter
-        //        case kVK_ANSI_KeypadMinus:    self = .keypadMinus
-        //        case kVK_ANSI_KeypadEquals:   self = .keypadEquals
-        //        case kVK_JIS_KeypadComma:     self = .keypadComma
+
+            // case kVK_ANSI_Keypad0:        self = .keypad0
+            // case kVK_ANSI_Keypad1:        self = .keypad1
+            // case kVK_ANSI_Keypad2:        self = .keypad2
+            // case kVK_ANSI_Keypad3:        self = .keypad3
+            // case kVK_ANSI_Keypad4:        self = .keypad4
+            // case kVK_ANSI_Keypad5:        self = .keypad5
+            // case kVK_ANSI_Keypad6:        self = .keypad6
+            // case kVK_ANSI_Keypad7:        self = .keypad7
+            // case kVK_ANSI_Keypad8:        self = .keypad8
+            // case kVK_ANSI_Keypad9:        self = .keypad9
+            // case kVK_ANSI_KeypadDecimal:  self = .keypadDecimal
+            // case kVK_ANSI_KeypadMultiply: self = .keypadMultiply
+            // case kVK_ANSI_KeypadPlus:     self = .keypadPlus
+            // case kVK_ANSI_KeypadClear:    self = .keypadClear
+            // case kVK_ANSI_KeypadDivide:   self = .keypadDivide
+            // case kVK_ANSI_KeypadEnter:    self = .keypadEnter
+            // case kVK_ANSI_KeypadMinus:    self = .keypadMinus
+            // case kVK_ANSI_KeypadEquals:   self = .keypadEquals
+            // case kVK_JIS_KeypadComma:     self = .keypadComma
 
         case kVK_Return:        self = .return
         case kVK_Tab:           self = .tab
@@ -209,40 +210,39 @@ public enum Key {
         case kVK_DownArrow:     self = .downArrow
         case kVK_LeftArrow:     self = .leftArrow
         case kVK_RightArrow:    self = .rightArrow
-        //        case kVK_Mute:          self = .mute
-        //        case kVK_VolumeUp:      self = .volumeUp
-        //        case kVK_VolumeDown:    self = .volumeDown
-        //        case kVK_Help:          self = .help
-        //        case kVK_Home:          self = .home
-        //        case kVK_End:           self = .end
-        //        case kVK_PageUp:        self = .pageUp
-        //        case kVK_PageDown:      self = .pageDown
+            // case kVK_Mute:          self = .mute
+            // case kVK_VolumeUp:      self = .volumeUp
+            // case kVK_VolumeDown:    self = .volumeDown
+            // case kVK_Help:          self = .help
+            // case kVK_Home:          self = .home
+            // case kVK_End:           self = .end
+            // case kVK_PageUp:        self = .pageUp
+            // case kVK_PageDown:      self = .pageDown
 
-        //        case kVK_F1:  self = .f1
-        //        case kVK_F2:  self = .f2
-        //        case kVK_F3:  self = .f3
-        //        case kVK_F4:  self = .f4
-        //        case kVK_F5:  self = .f5
-        //        case kVK_F6:  self = .f6
-        //        case kVK_F7:  self = .f7
-        //        case kVK_F8:  self = .f8
-        //        case kVK_F9:  self = .f9
-        //        case kVK_F10: self = .f10
-        //        case kVK_F11: self = .f11
-        //        case kVK_F12: self = .f12
-        //        case kVK_F13: self = .f13
-        //        case kVK_F14: self = .f14
-        //        case kVK_F15: self = .f15
-        //        case kVK_F16: self = .f16
-        //        case kVK_F17: self = .f17
-        //        case kVK_F18: self = .f18
-        //        case kVK_F19: self = .f19
-        //        case kVK_F20: self = .f20
-
+            // case kVK_F1:  self = .f1
+            // case kVK_F2:  self = .f2
+            // case kVK_F3:  self = .f3
+            // case kVK_F4:  self = .f4
+            // case kVK_F5:  self = .f5
+            // case kVK_F6:  self = .f6
+            // case kVK_F7:  self = .f7
+            // case kVK_F8:  self = .f8
+            // case kVK_F9:  self = .f9
+            // case kVK_F10: self = .f10
+            // case kVK_F11: self = .f11
+            // case kVK_F12: self = .f12
+            // case kVK_F13: self = .f13
+            // case kVK_F14: self = .f14
+            // case kVK_F15: self = .f15
+            // case kVK_F16: self = .f16
+            // case kVK_F17: self = .f17
+            // case kVK_F18: self = .f18
+            // case kVK_F19: self = .f19
+            // case kVK_F20: self = .f20
         default: return nil
         }
     }
-    
+
     public var string: String {
         switch self {
         case .a: return "A"
@@ -271,7 +271,7 @@ public enum Key {
         case .x: return "X"
         case .y: return "Y"
         case .z: return "Z"
-            
+
         case .grave:        return "`"
         case .minus:        return "-"
         case .equal:        return "="
@@ -285,9 +285,9 @@ public enum Key {
         case .slash:        return "/"
         case .yen:          return "¥"
         case .underscore:   return "_"
-        case .eisu:         return "Eisu"
-        case .kana:         return "Kana"
-            
+        // case .eisu:         return "Eisu"
+        // case .kana:         return "Kana"
+
         case .zero:  return "0"
         case .one:   return "1"
         case .two:   return "2"
@@ -298,7 +298,7 @@ public enum Key {
         case .seven: return "7"
         case .eight: return "8"
         case .nine:  return "9"
-            
+
         case .return:        return "↩︎"
         case .tab:           return "⇥"
         case .space:         return "␣"
@@ -309,17 +309,17 @@ public enum Key {
         case .downArrow:     return "↓"
         case .leftArrow:     return "←"
         case .rightArrow:    return "→"
-        // case .mute:             return "Mute"
-        // case .volumeUp:         return "VolumeUp"
-        // case .volumeDown:       return "VolumeDown"
-        // case .help:             return "?⃝"
-        // case .home:             return "↖"
-        // case .end:              return "↘"
-        // case .pageUp:           return "⇞"
-        // case .pageDown:         return "⇟"
+            // case .mute:             return "Mute"
+            // case .volumeUp:         return "VolumeUp"
+            // case .volumeDown:       return "VolumeDown"
+            // case .help:             return "?⃝"
+            // case .home:             return "↖"
+            // case .end:              return "↘"
+            // case .pageUp:           return "⇞"
+            // case .pageDown:         return "⇟"
         }
     }
-    
+
     public var keyCode: CGKeyCode {
         var keyCode: Int
         switch self {
@@ -349,7 +349,7 @@ public enum Key {
         case .x: keyCode = kVK_ANSI_X
         case .y: keyCode = kVK_ANSI_Y
         case .z: keyCode = kVK_ANSI_Z
-            
+
         case .grave:        keyCode = kVK_ANSI_Grave
         case .minus:        keyCode = kVK_ANSI_Minus
         case .equal:        keyCode = kVK_ANSI_Equal
@@ -363,9 +363,9 @@ public enum Key {
         case .slash:        keyCode = kVK_ANSI_Slash
         case .yen:          keyCode = kVK_JIS_Yen
         case .underscore:   keyCode = kVK_JIS_Underscore
-        case .eisu:         keyCode = kVK_JIS_Eisu
-        case .kana:         keyCode = kVK_JIS_Kana
-            
+        // case .eisu:         keyCode = kVK_JIS_Eisu
+        // case .kana:         keyCode = kVK_JIS_Kana
+
         case .zero:  keyCode = kVK_ANSI_0
         case .one:   keyCode = kVK_ANSI_1
         case .two:   keyCode = kVK_ANSI_2
@@ -376,7 +376,7 @@ public enum Key {
         case .seven: keyCode = kVK_ANSI_7
         case .eight: keyCode = kVK_ANSI_8
         case .nine:  keyCode = kVK_ANSI_9
-            
+
         case .return:        keyCode = kVK_Return
         case .tab:           keyCode = kVK_Tab
         case .space:         keyCode = kVK_Space
@@ -387,19 +387,94 @@ public enum Key {
         case .downArrow:     keyCode = kVK_DownArrow
         case .leftArrow:     keyCode = kVK_LeftArrow
         case .rightArrow:    keyCode = kVK_RightArrow
-        //        case .mute:          keyCode = kVK_Mute
-        //        case .volumeUp:      keyCode = kVK_VolumeUp
-        //        case .volumeDown:    keyCode = kVK_VolumeDown
-        //        case .help:          keyCode = kVK_Help
-        //        case .home:          keyCode = kVK_Home
-        //        case .end:           keyCode = kVK_End
-        //        case .pageUp:        keyCode = kVK_PageUp
-        //        case .pageDown:      keyCode = kVK_PageDown
+            // case .mute:          keyCode = kVK_Mute
+            // case .volumeUp:      keyCode = kVK_VolumeUp
+            // case .volumeDown:    keyCode = kVK_VolumeDown
+            // case .help:          keyCode = kVK_Help
+            // case .home:          keyCode = kVK_Home
+            // case .end:           keyCode = kVK_End
+            // case .pageUp:        keyCode = kVK_PageUp
+            // case .pageDown:      keyCode = kVK_PageDown
         }
         return CGKeyCode(keyCode)
     }
-    
+
     internal var keyCode32: UInt32 {
         return UInt32(self.keyCode)
+    }
+
+    public var keyEquivalent: KeyEquivalent {
+        switch self {
+        case .a: return KeyEquivalent("a")
+        case .b: return KeyEquivalent("b")
+        case .c: return KeyEquivalent("c")
+        case .d: return KeyEquivalent("d")
+        case .e: return KeyEquivalent("e")
+        case .f: return KeyEquivalent("f")
+        case .g: return KeyEquivalent("g")
+        case .h: return KeyEquivalent("h")
+        case .i: return KeyEquivalent("i")
+        case .j: return KeyEquivalent("j")
+        case .k: return KeyEquivalent("k")
+        case .l: return KeyEquivalent("l")
+        case .m: return KeyEquivalent("m")
+        case .n: return KeyEquivalent("n")
+        case .o: return KeyEquivalent("o")
+        case .p: return KeyEquivalent("p")
+        case .q: return KeyEquivalent("q")
+        case .r: return KeyEquivalent("r")
+        case .s: return KeyEquivalent("s")
+        case .t: return KeyEquivalent("t")
+        case .u: return KeyEquivalent("u")
+        case .v: return KeyEquivalent("v")
+        case .w: return KeyEquivalent("w")
+        case .x: return KeyEquivalent("x")
+        case .y: return KeyEquivalent("y")
+        case .z: return KeyEquivalent("z")
+
+        case .grave:        return KeyEquivalent("`")
+        case .minus:        return KeyEquivalent("-")
+        case .equal:        return KeyEquivalent("=")
+        case .backslash:    return KeyEquivalent("\\")
+        case .leftBracket:  return KeyEquivalent("[")
+        case .rightBracket: return KeyEquivalent("]")
+        case .semicolon:    return KeyEquivalent(";")
+        case .quote:        return KeyEquivalent("'")
+        case .comma:        return KeyEquivalent(",")
+        case .period:       return KeyEquivalent(".")
+        case .slash:        return KeyEquivalent("/")
+        case .yen:          return KeyEquivalent("¥")
+        case .underscore:   return KeyEquivalent("_")
+
+        case .zero:  return KeyEquivalent("0")
+        case .one:   return KeyEquivalent("1")
+        case .two:   return KeyEquivalent("2")
+        case .three: return KeyEquivalent("3")
+        case .four:  return KeyEquivalent("4")
+        case .five:  return KeyEquivalent("5")
+        case .six:   return KeyEquivalent("6")
+        case .seven: return KeyEquivalent("7")
+        case .eight: return KeyEquivalent("8")
+        case .nine:  return KeyEquivalent("9")
+
+        case .return:        return .return
+        case .tab:           return .tab
+        case .space:         return .space
+        case .delete:        return .delete
+        case .escape:        return .escape
+        case .forwardDelete: return .deleteForward
+        case .upArrow:       return .upArrow
+        case .downArrow:     return .downArrow
+        case .leftArrow:     return .leftArrow
+        case .rightArrow:    return .rightArrow
+            // case .mute:             return nil
+            // case .volumeUp:         return nil
+            // case .volumeDown:       return nil
+            // case .help:             return nil
+            // case .home:             return .home
+            // case .end:              return .end
+            // case .pageUp:           return .pageUp
+            // case .pageDown:         return .pageDown
+        }
     }
 }

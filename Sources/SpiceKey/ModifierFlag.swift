@@ -7,6 +7,7 @@
 */
 
 import AppKit.NSEvent
+import SwiftUI
 
 public enum ModifierFlag: Int, CaseIterable {
     case control // ⌃
@@ -48,6 +49,15 @@ public enum ModifierFlag: Int, CaseIterable {
         case .option:  return .opt
         case .shift:   return .sft
         case .command: return .cmd
+        }
+    }
+
+    public var eventModifiers: EventModifiers {
+        switch self {
+        case .control: return .control
+        case .option:  return .option
+        case .shift:   return .shift
+        case .command: return .command
         }
     }
 }
