@@ -2,6 +2,13 @@
 
 Global Shortcuts for macOS written in Swift.
 
+## Requirements
+
+- Development with Xcode 15.0.1+
+- Written in Swift 5.9
+- swift-tools-version: 5.8
+- Compatible with macOS 11.0+
+
 ## Demo
 
 Demo App is in this Project.
