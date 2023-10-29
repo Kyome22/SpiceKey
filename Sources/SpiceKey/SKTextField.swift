@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 public struct SKTextField: NSViewRepresentable {
-    public typealias NSViewType = WrappedSpiceKeyField
+    public typealias NSViewType = SpiceKeyField
 
     private let id: String?
     private let initialKeyCombo: KeyCombination?
@@ -22,16 +22,16 @@ public struct SKTextField: NSViewRepresentable {
         self.initialKeyCombo = initialKeyCombination
     }
 
-    public func makeNSView(context: Context) -> WrappedSpiceKeyField {
-        let view = WrappedSpiceKeyField(id: id)
-        view.spiceKeyField.delegate = context.coordinator
+    public func makeNSView(context: Context) -> SpiceKeyField {
+        let spiceKeyField = SpiceKeyField(frame: .zero, id: id)
+        spiceKeyField.delegate = context.coordinator
         if let keyCombo = initialKeyCombo {
-            view.spiceKeyField.setInitialKeyCombination(keyCombo)
+            spiceKeyField.setInitialKeyCombination(keyCombo)
         }
-        return view
+        return spiceKeyField
     }
 
-    public func updateNSView(_ nsView: WrappedSpiceKeyField, context: Context) {
+    public func updateNSView(_ nsView: SpiceKeyField, context: Context) {
         context.coordinator.registeredHandler = registeredHandler
         context.coordinator.deletedHandler = deletedHandler
     }
@@ -73,8 +73,6 @@ public struct SKTextField: NSViewRepresentable {
     }
 }
 
-struct SKTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        SKTextField()
-    }
+#Preview {
+    SKTextField()
 }

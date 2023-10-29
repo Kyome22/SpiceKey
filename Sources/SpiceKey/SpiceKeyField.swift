@@ -33,14 +33,17 @@ open class SpiceKeyField: NSTextField {
     }
     
     private func initialize() {
-        isBordered = true
+        refusesFirstResponder = true
+        isSelectable = false
         isEditable = true
         isEnabled = true
-        refusesFirstResponder = true
+        isBordered = true
         wantsLayer = true
         layer?.borderColor = CGColor(red: 0.69, green: 0.745, blue: 0.773, alpha: 1.0)
         layer?.borderWidth = 1.0
         layer?.cornerRadius = 4.0
+        textColor = NSColor.secondaryLabelColor
+
         let rect = NSRect(origin: .zero, size: CGSize(width: 20, height: 20))
         deleteButton = SpiceKeyDeleteButton(frame: rect)
         addSubview(deleteButton)
@@ -55,8 +58,9 @@ open class SpiceKeyField: NSTextField {
 
     private func register(key: Key, modifierFlags: ModifierFlags) {
         stringValue = modifierFlags.string + key.string
+        isEditable = false
+        window?.makeFirstResponder(nil)
         isTyping = false
-        isEnabled = false
         deleteButton.isEnabled = true
         skfDelegate?.didRegisterSpiceKey(self, key, modifierFlags)
     }
@@ -108,14 +112,14 @@ open class SpiceKeyField: NSTextField {
     
     @objc func delete() {
         stringValue = ""
-        isEnabled = true
+        isEditable = true
         deleteButton.isEnabled = false
         skfDelegate?.didDelete(self)
     }
     
     public func setInitialKeyCombination(_ keyCombination: KeyCombination) {
         stringValue = keyCombination.string
-        isEnabled = false
+        isEditable = false
         deleteButton.isEnabled = true
     }
 }
