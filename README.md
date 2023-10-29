@@ -115,17 +115,27 @@ let spiceKeyData = SpiceKeyData(
     _ spiceKey: SpiceKey
 )
 
+// NSCoding
 let data = try! NSKeyedArchiver.archivedData(withRootObject: spiceKeyData,
                                              requiringSecureCoding: false)
+UserDefaults.standard.set(data, forKey: "spiceKeyData")
+
+// Codable
+let data = try! JSONEncoder().encode(spiceKeyData)
 UserDefaults.standard.set(data, forKey: "spiceKeyData")
 ```
 
 - Load shortcut
 
 ```swift
+// NSCoding
 let data = UserDefaults.standard.data(forKey: "spiceKeyData")!
 let spiceKeyData = try! NSKeyedUnarchiver
     .unarchiveTopLevelObjectWithData(data) as! SpiceKeyData
+
+// Codable
+let data = UserDefaults.standard.data(forKey: "spiceKeyData")!
+let spiceKeyData = try! JSONDecoder().decode(SpiceKeyData.self, from: data)
 ```
 
 ## SpiceKeyField & SKTextField
