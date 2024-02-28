@@ -17,7 +17,7 @@ final class SpiceKeyManager {
     public static let shared = SpiceKeyManager()
     internal var spiceKeys = [SpiceKeyID : SpiceKey]()
     private var hotKeyEventHandlerRef: EventHandlerRef? = nil
-    private let signature = UTGetOSTypeFromString("SpiceKey" as CFString)
+    private let signature = OSType("SpiceKey")
     private var monitors = [Any?]()
     private var notifyCancellable: AnyCancellable?
     private var invoked: Bool = false

@@ -1,5 +1,5 @@
 /*
- NSEvent.ModifierFlags+Extensions.swift
+ NSEvent.ModifierFlags+Extension.swift
  SpiceKey
 
  Created by Takuto Nakamura on 2021/08/01.
