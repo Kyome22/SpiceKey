@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Takuto Nakamura on 2024/02/29.
+  
+*/
+
+"control" = "コントロール";
+"option" = "オプション";
+"shift" = "シフト";
+"command" = "コマンド";

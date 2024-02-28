@@ -4,8 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "SpiceKey",
+    defaultLocalization: "en",
     platforms: [
-        .macOS(.v11)
+        .macOS(.v12)
     ],
     products: [
         .library(
@@ -16,7 +17,7 @@ let package = Package(
     targets: [
         .target(
             name: "SpiceKey",
-            resources: [.copy("PrivacyInfo.xcprivacy")]
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "SpiceKeyTests",

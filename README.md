@@ -7,7 +7,7 @@ Global Shortcuts for macOS written in Swift.
 - Development with Xcode 15.2+
 - Written in Swift 5.9
 - swift-tools-version: 5.9
-- Compatible with macOS 11.0+
+- Compatible with macOS 12.0+
 
 ## Demo
 

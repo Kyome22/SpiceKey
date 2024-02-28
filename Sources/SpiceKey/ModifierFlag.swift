@@ -36,10 +36,10 @@ public enum ModifierFlag: Int, CaseIterable {
 
     public var title: String {
         switch self {
-        case .control: return "control"
-        case .option:  return "option"
-        case .shift:   return "shift"
-        case .command: return "command"
+        case .control: return String(localized: "control", bundle: .module)
+        case .option:  return String(localized: "option", bundle: .module)
+        case .shift:   return String(localized: "shift", bundle: .module)
+        case .command: return String(localized: "command", bundle: .module)
         }
     }
 
