@@ -9,6 +9,10 @@ Global Shortcuts for macOS written in Swift.
 - swift-tools-version: 5.9
 - Compatible with macOS 12.0+
 
+## Privacy Manifest
+
+This library does not collect or track user information, so it does not include a PrivacyInfo.xcprivacy file.
+
 ## Demo
 
 Demo App is in this Project.
