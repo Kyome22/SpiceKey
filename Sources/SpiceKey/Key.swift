@@ -9,7 +9,7 @@
 import Carbon.HIToolbox.Events
 import SwiftUI
 
-public enum Key {
+public enum Key: Sendable {
     case a
     case b
     case c
@@ -245,78 +245,78 @@ public enum Key {
 
     public var string: String {
         switch self {
-        case .a: return "A"
-        case .b: return "B"
-        case .c: return "C"
-        case .d: return "D"
-        case .e: return "E"
-        case .f: return "F"
-        case .g: return "G"
-        case .h: return "H"
-        case .i: return "I"
-        case .j: return "J"
-        case .k: return "K"
-        case .l: return "L"
-        case .m: return "M"
-        case .n: return "N"
-        case .o: return "O"
-        case .p: return "P"
-        case .q: return "Q"
-        case .r: return "R"
-        case .s: return "S"
-        case .t: return "T"
-        case .u: return "U"
-        case .v: return "V"
-        case .w: return "W"
-        case .x: return "X"
-        case .y: return "Y"
-        case .z: return "Z"
+        case .a: "A"
+        case .b: "B"
+        case .c: "C"
+        case .d: "D"
+        case .e: "E"
+        case .f: "F"
+        case .g: "G"
+        case .h: "H"
+        case .i: "I"
+        case .j: "J"
+        case .k: "K"
+        case .l: "L"
+        case .m: "M"
+        case .n: "N"
+        case .o: "O"
+        case .p: "P"
+        case .q: "Q"
+        case .r: "R"
+        case .s: "S"
+        case .t: "T"
+        case .u: "U"
+        case .v: "V"
+        case .w: "W"
+        case .x: "X"
+        case .y: "Y"
+        case .z: "Z"
 
-        case .grave:        return "`"
-        case .minus:        return "-"
-        case .equal:        return "="
-        case .backslash:    return "\\"
-        case .leftBracket:  return "["
-        case .rightBracket: return "]"
-        case .semicolon:    return ";"
-        case .quote:        return "'"
-        case .comma:        return ","
-        case .period:       return "."
-        case .slash:        return "/"
-        case .yen:          return "¥"
-        case .underscore:   return "_"
-        // case .eisu:         return "Eisu"
-        // case .kana:         return "Kana"
+        case .grave:        "`"
+        case .minus:        "-"
+        case .equal:        "="
+        case .backslash:    "\\"
+        case .leftBracket:  "["
+        case .rightBracket: "]"
+        case .semicolon:    ";"
+        case .quote:        "'"
+        case .comma:        ","
+        case .period:       "."
+        case .slash:        "/"
+        case .yen:          "¥"
+        case .underscore:   "_"
+        // case .eisu:         "Eisu"
+        // case .kana:         "Kana"
 
-        case .zero:  return "0"
-        case .one:   return "1"
-        case .two:   return "2"
-        case .three: return "3"
-        case .four:  return "4"
-        case .five:  return "5"
-        case .six:   return "6"
-        case .seven: return "7"
-        case .eight: return "8"
-        case .nine:  return "9"
+        case .zero:  "0"
+        case .one:   "1"
+        case .two:   "2"
+        case .three: "3"
+        case .four:  "4"
+        case .five:  "5"
+        case .six:   "6"
+        case .seven: "7"
+        case .eight: "8"
+        case .nine:  "9"
 
-        case .return:        return "↩︎"
-        case .tab:           return "⇥"
-        case .space:         return "␣"
-        case .delete:        return "⌫"
-        case .escape:        return "⎋"
-        case .forwardDelete: return "⌦"
-        case .upArrow:       return "↑"
-        case .downArrow:     return "↓"
-        case .leftArrow:     return "←"
-        case .rightArrow:    return "→"
-            // case .mute:             return "Mute"
-            // case .volumeUp:         return "VolumeUp"
-            // case .volumeDown:       return "VolumeDown"
-            // case .help:             return "?⃝"
-            // case .home:             return "↖"
-            // case .end:              return "↘"
-            // case .pageUp:           return "⇞"
-            // case .pageDown:         return "⇟"
+        case .return:        "↩︎"
+        case .tab:           "⇥"
+        case .space:         "␣"
+        case .delete:        "⌫"
+        case .escape:        "⎋"
+        case .forwardDelete: "⌦"
+        case .upArrow:       "↑"
+        case .downArrow:     "↓"
+        case .leftArrow:     "←"
+        case .rightArrow:    "→"
+            // case .mute:             "Mute"
+            // case .volumeUp:         "VolumeUp"
+            // case .volumeDown:       "VolumeDown"
+            // case .help:             "?⃝"
+            // case .home:             "↖"
+            // case .end:              "↘"
+            // case .pageUp:           "⇞"
+            // case .pageDown:         "⇟"
         }
     }
 
@@ -405,76 +405,76 @@ public enum Key {
 
     public var keyEquivalent: KeyEquivalent {
         switch self {
-        case .a: return KeyEquivalent("a")
-        case .b: return KeyEquivalent("b")
-        case .c: return KeyEquivalent("c")
-        case .d: return KeyEquivalent("d")
-        case .e: return KeyEquivalent("e")
-        case .f: return KeyEquivalent("f")
-        case .g: return KeyEquivalent("g")
-        case .h: return KeyEquivalent("h")
-        case .i: return KeyEquivalent("i")
-        case .j: return KeyEquivalent("j")
-        case .k: return KeyEquivalent("k")
-        case .l: return KeyEquivalent("l")
-        case .m: return KeyEquivalent("m")
-        case .n: return KeyEquivalent("n")
-        case .o: return KeyEquivalent("o")
-        case .p: return KeyEquivalent("p")
-        case .q: return KeyEquivalent("q")
-        case .r: return KeyEquivalent("r")
-        case .s: return KeyEquivalent("s")
-        case .t: return KeyEquivalent("t")
-        case .u: return KeyEquivalent("u")
-        case .v: return KeyEquivalent("v")
-        case .w: return KeyEquivalent("w")
-        case .x: return KeyEquivalent("x")
-        case .y: return KeyEquivalent("y")
-        case .z: return KeyEquivalent("z")
+        case .a: KeyEquivalent("a")
+        case .b: KeyEquivalent("b")
+        case .c: KeyEquivalent("c")
+        case .d: KeyEquivalent("d")
+        case .e: KeyEquivalent("e")
+        case .f: KeyEquivalent("f")
+        case .g: KeyEquivalent("g")
+        case .h: KeyEquivalent("h")
+        case .i: KeyEquivalent("i")
+        case .j: KeyEquivalent("j")
+        case .k: KeyEquivalent("k")
+        case .l: KeyEquivalent("l")
+        case .m: KeyEquivalent("m")
+        case .n: KeyEquivalent("n")
+        case .o: KeyEquivalent("o")
+        case .p: KeyEquivalent("p")
+        case .q: KeyEquivalent("q")
+        case .r: KeyEquivalent("r")
+        case .s: KeyEquivalent("s")
+        case .t: KeyEquivalent("t")
+        case .u: KeyEquivalent("u")
+        case .v: KeyEquivalent("v")
+        case .w: KeyEquivalent("w")
+        case .x: KeyEquivalent("x")
+        case .y: KeyEquivalent("y")
+        case .z: KeyEquivalent("z")
 
-        case .grave:        return KeyEquivalent("`")
-        case .minus:        return KeyEquivalent("-")
-        case .equal:        return KeyEquivalent("=")
-        case .backslash:    return KeyEquivalent("\\")
-        case .leftBracket:  return KeyEquivalent("[")
-        case .rightBracket: return KeyEquivalent("]")
-        case .semicolon:    return KeyEquivalent(";")
-        case .quote:        return KeyEquivalent("'")
-        case .comma:        return KeyEquivalent(",")
-        case .period:       return KeyEquivalent(".")
-        case .slash:        return KeyEquivalent("/")
-        case .yen:          return KeyEquivalent("¥")
-        case .underscore:   return KeyEquivalent("_")
+        case .grave:        KeyEquivalent("`")
+        case .minus:        KeyEquivalent("-")
+        case .equal:        KeyEquivalent("=")
+        case .backslash:    KeyEquivalent("\\")
+        case .leftBracket:  KeyEquivalent("[")
+        case .rightBracket: KeyEquivalent("]")
+        case .semicolon:    KeyEquivalent(";")
+        case .quote:        KeyEquivalent("'")
+        case .comma:        KeyEquivalent(",")
+        case .period:       KeyEquivalent(".")
+        case .slash:        KeyEquivalent("/")
+        case .yen:          KeyEquivalent("¥")
+        case .underscore:   KeyEquivalent("_")
 
-        case .zero:  return KeyEquivalent("0")
-        case .one:   return KeyEquivalent("1")
-        case .two:   return KeyEquivalent("2")
-        case .three: return KeyEquivalent("3")
-        case .four:  return KeyEquivalent("4")
-        case .five:  return KeyEquivalent("5")
-        case .six:   return KeyEquivalent("6")
-        case .seven: return KeyEquivalent("7")
-        case .eight: return KeyEquivalent("8")
-        case .nine:  return KeyEquivalent("9")
+        case .zero:  KeyEquivalent("0")
+        case .one:   KeyEquivalent("1")
+        case .two:   KeyEquivalent("2")
+        case .three: KeyEquivalent("3")
+        case .four:  KeyEquivalent("4")
+        case .five:  KeyEquivalent("5")
+        case .six:   KeyEquivalent("6")
+        case .seven: KeyEquivalent("7")
+        case .eight: KeyEquivalent("8")
+        case .nine:  KeyEquivalent("9")
 
-        case .return:        return .return
-        case .tab:           return .tab
-        case .space:         return .space
-        case .delete:        return .delete
-        case .escape:        return .escape
-        case .forwardDelete: return .deleteForward
-        case .upArrow:       return .upArrow
-        case .downArrow:     return .downArrow
-        case .leftArrow:     return .leftArrow
-        case .rightArrow:    return .rightArrow
-            // case .mute:             return nil
-            // case .volumeUp:         return nil
-            // case .volumeDown:       return nil
-            // case .help:             return nil
-            // case .home:             return .home
-            // case .end:              return .end
-            // case .pageUp:           return .pageUp
-            // case .pageDown:         return .pageDown
+        case .return:        .return
+        case .tab:           .tab
+        case .space:         .space
+        case .delete:        .delete
+        case .escape:        .escape
+        case .forwardDelete: .deleteForward
+        case .upArrow:       .upArrow
+        case .downArrow:     .downArrow
+        case .leftArrow:     .leftArrow
+        case .rightArrow:    .rightArrow
+            // case .mute:             nil
+            // case .volumeUp:         nil
+            // case .volumeDown:       nil
+            // case .help:             nil
+            // case .home:             .home
+            // case .end:              .end
+            // case .pageUp:           .pageUp
+            // case .pageDown:         .pageDown
         }
     }
 }

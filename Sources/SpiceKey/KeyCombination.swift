@@ -6,11 +6,11 @@
  Copyright © 2019 Takuto Nakamura. All rights reserved.
 */
 
-public struct KeyCombination {
+public struct KeyCombination: Sendable {
     public var key: Key
     public var modifierFlags: ModifierFlags
     public var string: String {
-        return modifierFlags.string + key.string
+        modifierFlags.string + key.string
     }
     
     public init(_ key: Key, _ modifierFlags: ModifierFlags) {
@@ -21,5 +21,5 @@ public struct KeyCombination {
 
 
 public func ==(lhs: KeyCombination, rhs: KeyCombination) -> Bool {
-    return lhs.key == rhs.key && lhs.modifierFlags == rhs.modifierFlags
+    lhs.key == rhs.key && lhs.modifierFlags == rhs.modifierFlags
 }

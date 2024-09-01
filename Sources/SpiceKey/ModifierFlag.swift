@@ -9,7 +9,7 @@
 import AppKit.NSEvent
 import SwiftUI
 
-public enum ModifierFlag: Int, CaseIterable {
+public enum ModifierFlag: Int, CaseIterable, Sendable {
     case control // ⌃
     case option  // ⌥
     case shift   // ⇧
@@ -27,37 +27,37 @@ public enum ModifierFlag: Int, CaseIterable {
     
     public var string: String {
         switch self {
-        case .control: return "⌃"
-        case .option:  return "⌥"
-        case .shift:   return "⇧"
-        case .command: return "⌘"
+        case .control: "⌃"
+        case .option:  "⌥"
+        case .shift:   "⇧"
+        case .command: "⌘"
         }
     }
 
     public var title: String {
         switch self {
-        case .control: return String(localized: "control", bundle: .module)
-        case .option:  return String(localized: "option", bundle: .module)
-        case .shift:   return String(localized: "shift", bundle: .module)
-        case .command: return String(localized: "command", bundle: .module)
+        case .control: String(localized: "control", bundle: .module)
+        case .option:  String(localized: "option", bundle: .module)
+        case .shift:   String(localized: "shift", bundle: .module)
+        case .command: String(localized: "command", bundle: .module)
         }
     }
 
     public var flags: ModifierFlags {
         switch self {
-        case .control: return .ctrl
-        case .option:  return .opt
-        case .shift:   return .sft
-        case .command: return .cmd
+        case .control: .ctrl
+        case .option:  .opt
+        case .shift:   .sft
+        case .command: .cmd
         }
     }
 
     public var eventModifiers: EventModifiers {
         switch self {
-        case .control: return .control
-        case .option:  return .option
-        case .shift:   return .shift
-        case .command: return .command
+        case .control: .control
+        case .option:  .option
+        case .shift:   .shift
+        case .command: .command
         }
     }
 }

@@ -34,6 +34,6 @@ public class SpiceKeyDeleteButton: NSButton {
     }
     
     private func bundleImage(name: String) -> NSImage? {
-        return Bundle.module.image(forResource: name)
+        Bundle.module.image(forResource: name)
     }
 }

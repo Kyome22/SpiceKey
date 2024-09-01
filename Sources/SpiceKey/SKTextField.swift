@@ -37,7 +37,7 @@ public struct SKTextField: NSViewRepresentable {
     }
 
     public func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        Coordinator(self)
     }
 
     public class Coordinator: NSObject, SpiceKeyFieldDelegate {

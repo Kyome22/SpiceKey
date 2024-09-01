@@ -12,16 +12,16 @@ import Carbon
 public extension NSEvent.ModifierFlags {
     var pureFlags: Self {
         var flags = Self.init()
-        if self.contains(.control) {
+        if contains(.control) {
             flags.insert(.control)
         }
-        if self.contains(.option) {
+        if contains(.option) {
             flags.insert(.option)
         }
-        if self.contains(.shift) {
+        if contains(.shift) {
             flags.insert(.shift)
         }
-        if self.contains(.command) {
+        if contains(.command) {
             flags.insert(.command)
         }
         return flags

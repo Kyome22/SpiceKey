@@ -10,7 +10,7 @@ import AppKit.NSEvent
 import Carbon.HIToolbox.Events
 import SwiftUI
 
-public enum ModifierFlags: Int, CaseIterable {
+public enum ModifierFlags: Int, CaseIterable, Sendable {
     case empty
     case ctrl           // ⌃
     case opt            // ⌥
@@ -77,118 +77,118 @@ public enum ModifierFlags: Int, CaseIterable {
     
     public var string: String {
         switch self {
-        case .empty:         return ""
-        case .ctrl:          return "⌃"
-        case .opt:           return "⌥"
-        case .sft:           return "⇧"
-        case .cmd:           return "⌘"
-        case .ctrlOpt:       return "⌃⌥"
-        case .ctrlSft:       return "⌃⇧"
-        case .ctrlCmd:       return "⌃⌘"
-        case .optSft:        return "⌥⇧"
-        case .optCmd:        return "⌥⌘"
-        case .sftCmd:        return "⇧⌘"
-        case .ctrlOptSft:    return "⌃⌥⇧"
-        case .ctrlOptCmd:    return "⌃⌥⌘"
-        case .ctrlSftCmd:    return "⌃⇧⌘"
-        case .optSftCmd:     return "⌥⇧⌘"
-        case .ctrlOptSftCmd: return "⌃⌥⇧⌘"
+        case .empty:         ""
+        case .ctrl:          "⌃"
+        case .opt:           "⌥"
+        case .sft:           "⇧"
+        case .cmd:           "⌘"
+        case .ctrlOpt:       "⌃⌥"
+        case .ctrlSft:       "⌃⇧"
+        case .ctrlCmd:       "⌃⌘"
+        case .optSft:        "⌥⇧"
+        case .optCmd:        "⌥⌘"
+        case .sftCmd:        "⇧⌘"
+        case .ctrlOptSft:    "⌃⌥⇧"
+        case .ctrlOptCmd:    "⌃⌥⌘"
+        case .ctrlSftCmd:    "⌃⇧⌘"
+        case .optSftCmd:     "⌥⇧⌘"
+        case .ctrlOptSftCmd: "⌃⌥⇧⌘"
         }
     }
 
     public var title: String {
         switch self {
-        case .empty:         return "empty"
-        case .ctrl:          return "control"
-        case .opt:           return "option"
-        case .sft:           return "shift"
-        case .cmd:           return "command"
-        case .ctrlOpt:       return "ctrl + opt"
-        case .ctrlSft:       return "ctrl + sft"
-        case .ctrlCmd:       return "ctrl + cmd"
-        case .optSft:        return "opt + sft"
-        case .optCmd:        return "opt + cmd"
-        case .sftCmd:        return "sft + cmd"
-        case .ctrlOptSft:    return "ctrl + opt + sft"
-        case .ctrlOptCmd:    return "ctrl + opt + cmd"
-        case .ctrlSftCmd:    return "ctrl + sft + cmd"
-        case .optSftCmd:     return "opt + sft + cmd"
-        case .ctrlOptSftCmd: return "ctrl + opt + sft + cmd"
+        case .empty:         "empty"
+        case .ctrl:          "control"
+        case .opt:           "option"
+        case .sft:           "shift"
+        case .cmd:           "command"
+        case .ctrlOpt:       "ctrl + opt"
+        case .ctrlSft:       "ctrl + sft"
+        case .ctrlCmd:       "ctrl + cmd"
+        case .optSft:        "opt + sft"
+        case .optCmd:        "opt + cmd"
+        case .sftCmd:        "sft + cmd"
+        case .ctrlOptSft:    "ctrl + opt + sft"
+        case .ctrlOptCmd:    "ctrl + opt + cmd"
+        case .ctrlSftCmd:    "ctrl + sft + cmd"
+        case .optSftCmd:     "opt + sft + cmd"
+        case .ctrlOptSftCmd: "ctrl + opt + sft + cmd"
         }
     }
     
     public var flags: NSEvent.ModifierFlags {
         switch self {
-        case .empty:         return NSEvent.ModifierFlags()
-        case .ctrl:          return [.control]
-        case .opt:           return [.option]
-        case .sft:           return [.shift]
-        case .cmd:           return [.command]
-        case .ctrlOpt:       return [.control, .option]
-        case .ctrlSft:       return [.control, .shift]
-        case .ctrlCmd:       return [.control, .command]
-        case .optSft:        return [.option,  .shift]
-        case .optCmd:        return [.option,  .command]
-        case .sftCmd:        return [.shift,   .command]
-        case .ctrlOptSft:    return [.control, .option, .shift]
-        case .ctrlOptCmd:    return [.control, .option, .command]
-        case .ctrlSftCmd:    return [.control, .shift,  .command]
-        case .optSftCmd:     return [.option,  .shift,  .command]
-        case .ctrlOptSftCmd: return [.control, .option, .shift, .command]
+        case .empty:         NSEvent.ModifierFlags()
+        case .ctrl:          [.control]
+        case .opt:           [.option]
+        case .sft:           [.shift]
+        case .cmd:           [.command]
+        case .ctrlOpt:       [.control, .option]
+        case .ctrlSft:       [.control, .shift]
+        case .ctrlCmd:       [.control, .command]
+        case .optSft:        [.option,  .shift]
+        case .optCmd:        [.option,  .command]
+        case .sftCmd:        [.shift,   .command]
+        case .ctrlOptSft:    [.control, .option, .shift]
+        case .ctrlOptCmd:    [.control, .option, .command]
+        case .ctrlSftCmd:    [.control, .shift,  .command]
+        case .optSftCmd:     [.option,  .shift,  .command]
+        case .ctrlOptSftCmd: [.control, .option, .shift, .command]
         }
     }
 
     public var eventModifiers: SwiftUI.EventModifiers {
         switch self {
-        case .empty:         return []
-        case .ctrl:          return [.control]
-        case .opt:           return [.option]
-        case .sft:           return [.shift]
-        case .cmd:           return [.command]
-        case .ctrlOpt:       return [.control, .option]
-        case .ctrlSft:       return [.control, .shift]
-        case .ctrlCmd:       return [.control, .command]
-        case .optSft:        return [.option,  .shift]
-        case .optCmd:        return [.option,  .command]
-        case .sftCmd:        return [.shift,   .command]
-        case .ctrlOptSft:    return [.control, .option, .shift]
-        case .ctrlOptCmd:    return [.control, .option, .command]
-        case .ctrlSftCmd:    return [.control, .shift,  .command]
-        case .optSftCmd:     return [.option,  .shift,  .command]
-        case .ctrlOptSftCmd: return [.control, .option, .shift, .command]
+        case .empty:         []
+        case .ctrl:          [.control]
+        case .opt:           [.option]
+        case .sft:           [.shift]
+        case .cmd:           [.command]
+        case .ctrlOpt:       [.control, .option]
+        case .ctrlSft:       [.control, .shift]
+        case .ctrlCmd:       [.control, .command]
+        case .optSft:        [.option,  .shift]
+        case .optCmd:        [.option,  .command]
+        case .sftCmd:        [.shift,   .command]
+        case .ctrlOptSft:    [.control, .option, .shift]
+        case .ctrlOptCmd:    [.control, .option, .command]
+        case .ctrlSftCmd:    [.control, .shift,  .command]
+        case .optSftCmd:     [.option,  .shift,  .command]
+        case .ctrlOptSftCmd: [.control, .option, .shift, .command]
         }
     }
 
     public var containsControl: Bool {
-        return self.flags.contains(NSEvent.ModifierFlags.control)
+        flags.contains(NSEvent.ModifierFlags.control)
     }
     
     public var containsOption: Bool {
-        return self.flags.contains(NSEvent.ModifierFlags.option)
+        flags.contains(NSEvent.ModifierFlags.option)
     }
     
     public var containsShift: Bool {
-        return self.flags.contains(NSEvent.ModifierFlags.shift)
+        flags.contains(NSEvent.ModifierFlags.shift)
     }
     
     public var containsCommand: Bool {
-        return self.flags.contains(NSEvent.ModifierFlags.command)
+        flags.contains(NSEvent.ModifierFlags.command)
     }
     
     internal var flags32: UInt32 {
-        var flags: UInt32 = 0
-        if self.flags.contains(.control) {
-            flags |= UInt32(controlKey)
+        var _flags: UInt32 = 0
+        if flags.contains(.control) {
+            _flags |= UInt32(controlKey)
         }
-        if self.flags.contains(.option) {
-            flags |= UInt32(optionKey)
+        if flags.contains(.option) {
+            _flags |= UInt32(optionKey)
         }
-        if self.flags.contains(.shift) {
-            flags |= UInt32(shiftKey)
+        if flags.contains(.shift) {
+            _flags |= UInt32(shiftKey)
         }
-        if self.flags.contains(.command) {
-            flags |= UInt32(cmdKey)
+        if flags.contains(.command) {
+            _flags |= UInt32(cmdKey)
         }
-        return flags
+        return _flags
     }
 }

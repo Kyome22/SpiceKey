@@ -16,7 +16,7 @@ public protocol SpiceKeyFieldDelegate: NSTextFieldDelegate {
 open class SpiceKeyField: NSTextField {
     private var isTyping: Bool = false
     private var skfDelegate: SpiceKeyFieldDelegate? {
-        return delegate as? SpiceKeyFieldDelegate
+        delegate as? SpiceKeyFieldDelegate
     }
     private var deleteButton: SpiceKeyDeleteButton!
     public var id: String?
@@ -66,9 +66,7 @@ open class SpiceKeyField: NSTextField {
     }
     
     open override func textDidChange(_ notification: Notification) {
-        guard let event = NSApp.currentEvent,
-              performKeyEquivalent(with: event)
-        else {
+        guard let event = NSApp.currentEvent, performKeyEquivalent(with: event) else {
             stringValue = ""
             return
         }
@@ -83,13 +81,13 @@ open class SpiceKeyField: NSTextField {
     }
     
     open override func performKeyEquivalent(with event: NSEvent) -> Bool {
-        if isTyping, let key = Key(keyCode: event.keyCode) {
-            let flags = event.modifierFlags.pureFlags
-            let modifierFlags = ModifierFlags(flags: flags)
-            register(key: key, modifierFlags: modifierFlags)
-            return true
+        guard isTyping, let key = Key(keyCode: event.keyCode) else {
+            return isTyping
         }
-        return isTyping
+        let flags = event.modifierFlags.pureFlags
+        let modifierFlags = ModifierFlags(flags: flags)
+        register(key: key, modifierFlags: modifierFlags)
+        return true
     }
     
     open override func resetCursorRects() {
@@ -106,9 +104,7 @@ open class SpiceKeyField: NSTextField {
         addCursorRect(rectR, cursor: NSCursor.pointingHand)
     }
     
-    open override var needsPanelToBecomeKey: Bool {
-        return true
-    }
+    open override var needsPanelToBecomeKey: Bool { true }
     
     @objc func delete() {
         stringValue = ""

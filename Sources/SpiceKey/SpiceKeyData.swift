@@ -28,10 +28,10 @@ open class SpiceKeyData: NSObject, NSCoding, Codable {
     public var spiceKey: SpiceKey?
     
     public var key: Key? {
-        return Key(keyCode: keyCode)
+        Key(keyCode: keyCode)
     }
     public var modifierFlags: ModifierFlags? {
-        return ModifierFlags(control: control, option: option, shift: shift, command: command)
+        ModifierFlags(control: control, option: option, shift: shift, command: command)
     }
     public var keyCombination: KeyCombination? {
         guard let key = key, let modifierFlags = modifierFlags else { return nil }

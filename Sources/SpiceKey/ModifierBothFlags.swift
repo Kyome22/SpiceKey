@@ -9,7 +9,7 @@
 import AppKit.NSEvent
 import Carbon.HIToolbox.Events
 
-public struct ModifierBothFlags {
+public struct ModifierBothFlags: Sendable {
     public let isLControl: Bool
     public let isRControl: Bool
     public let isLOption: Bool
@@ -30,28 +30,28 @@ public struct ModifierBothFlags {
         self.isRCommand = (modifierFlags.rawValue & UInt(NX_DEVICERCMDKEYMASK)) != 0
     }
 
-    public var isControl: Bool { return isLControl || isRControl }
+    public var isControl: Bool { isLControl || isRControl }
 
-    public var isOption: Bool { return isLOption || isROption }
+    public var isOption: Bool { isLOption || isROption }
 
-    public var isShift: Bool { return isLShift || isRShift }
+    public var isShift: Bool { isLShift || isRShift }
 
-    public var isCommand: Bool { return isLCommand || isRCommand }
+    public var isCommand: Bool { isLCommand || isRCommand }
 
     public var isBothControl: Bool {
-        return isLControl && isRControl && !isOption && !isShift && !isCommand
+        isLControl && isRControl && !isOption && !isShift && !isCommand
     }
 
     public var isBothOption: Bool {
-        return !isControl && isLOption && isROption && !isShift && !isCommand
+        !isControl && isLOption && isROption && !isShift && !isCommand
     }
 
     public var isBothShift: Bool {
-        return !isControl && !isOption && isLShift && isRShift && !isCommand
+        !isControl && !isOption && isLShift && isRShift && !isCommand
     }
 
     public var isBothCommand: Bool {
-        return !isControl && !isOption && !isShift && isLCommand && isRCommand
+        !isControl && !isOption && !isShift && isLCommand && isRCommand
     }
 
     public var isBoth: Bool {
