@@ -139,12 +139,16 @@ final class SpiceKeyManager {
                 switch GetEventKind(event) {
                 case OSType(kEventHotKeyPressed):
                     if let handler = spiceKey.keyDownHandler {
-                        handler()
+                        Task {
+                            await handler()
+                        }
                         return noErr
                     }
                 case OSType(kEventHotKeyReleased):
                     if let handler = spiceKey.keyUpHandler {
-                        handler()
+                        Task {
+                            await handler()
+                        }
                         return noErr
                     }
                 default:
@@ -162,7 +166,9 @@ final class SpiceKeyManager {
         }) {
             invoked = true
             bothSideSpiceKey.invoked = true
-            bothSideSpiceKey.bothModifierKeysPressHandler?()
+            Task {
+                await bothSideSpiceKey.bothModifierKeysPressHandler?()
+            }
         }
     }
     
@@ -174,7 +180,9 @@ final class SpiceKeyManager {
             timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
                 self?.invoked = true
                 longPressSpiceKey.invoked = true
-                longPressSpiceKey.modifierKeysLongPressHandler?()
+                Task {
+                    await longPressSpiceKey.modifierKeysLongPressHandler?()
+                }
             }
         }
     }
@@ -183,7 +191,9 @@ final class SpiceKeyManager {
         spiceKeys.values.forEach { (spiceKey) in
             if spiceKey.invoked {
                 spiceKey.invoked = false
-                spiceKey.releaseKeyHandler?()
+                Task {
+                    await spiceKey.releaseKeyHandler?()
+                }
             }
         }
     }
@@ -212,5 +222,5 @@ private func hotKeyHandleNegotiator(
     event: EventRef?,
     userData: UnsafeMutableRawPointer?
 ) -> OSStatus {
-    return SpiceKeyManager.shared.hotKeyHandleEvent(event)
+    SpiceKeyManager.shared.hotKeyHandleEvent(event)
 }

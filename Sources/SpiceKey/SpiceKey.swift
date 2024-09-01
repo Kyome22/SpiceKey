@@ -8,7 +8,7 @@
 
 import Carbon
 
-public typealias Handler = () -> Void
+public typealias Handler = () async -> Void
 
 public final class SpiceKey {
     internal let id: SpiceKeyID!
