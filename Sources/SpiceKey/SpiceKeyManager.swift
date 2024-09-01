@@ -81,7 +81,7 @@ final class SpiceKeyManager {
     }
     
     func register(_ spiceKey: SpiceKey) {
-        if spiceKeys.contains(where: { (keyData) -> Bool in
+        guard !spiceKeys.contains(where: { (keyData) -> Bool in
             if keyData.key == spiceKey.id {
                 return true
             }
@@ -92,29 +92,26 @@ final class SpiceKeyManager {
                 return (exist.isBothSide && spiceKey.isBothSide) || (exist.interval > 0.0 && spiceKey.interval > 0.0)
             }
             return false
-        }) {
+        }) else {
             return
         }
         spiceKeys[spiceKey.id] = spiceKey
-        if !spiceKey.isBothSide && spiceKey.interval == 0.0 {
-            let keyCode32 = spiceKey.keyCombination!.key.keyCode32
-            let flags32 = spiceKey.keyCombination!.modifierFlags.flags32
-            let hotKeyID = EventHotKeyID(signature: signature, id: spiceKey.id)
-            var eventHotKey: EventHotKeyRef? = nil
-            let error = RegisterEventHotKey(keyCode32, flags32, hotKeyID,
-                                            GetEventDispatcherTarget(),
-                                            0, &eventHotKey)
-            if error != noErr { return }
-            spiceKey.eventHotKey = eventHotKey
-        }
+        guard !spiceKey.isBothSide && spiceKey.interval == 0.0 else { return }
+        let keyCode32 = spiceKey.keyCombination!.key.keyCode32
+        let flags32 = spiceKey.keyCombination!.modifierFlags.flags32
+        let hotKeyID = EventHotKeyID(signature: signature, id: spiceKey.id)
+        var eventHotKey: EventHotKeyRef? = nil
+        let error = RegisterEventHotKey(keyCode32, flags32, hotKeyID,
+                                        GetEventDispatcherTarget(),
+                                        0, &eventHotKey)
+        guard error == noErr else { return }
+        spiceKey.eventHotKey = eventHotKey
     }
     
     func unregister(_ spiceKey: SpiceKey) {
-        if !spiceKeys.values.contains(where: { (spiceKey_) -> Bool in
+        guard spiceKeys.values.contains(where: { (spiceKey_) -> Bool in
             return spiceKey.id == spiceKey_.id
-        }) {
-            return
-        }
+        }) else { return }
         if !spiceKey.isBothSide && spiceKey.interval == 0.0 {
             UnregisterEventHotKey(spiceKey.eventHotKey)
         }
@@ -132,68 +129,66 @@ final class SpiceKeyManager {
                                       nil,
                                       &hotKeyID)
         if error != noErr { return error }
-        if hotKeyID.signature == signature {
-            if let spiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
-                return spiceKey.id == hotKeyID.id
-            }) {
-                switch GetEventKind(event) {
-                case OSType(kEventHotKeyPressed):
-                    if let handler = spiceKey.keyDownHandler {
-                        Task {
-                            await handler()
-                        }
-                        return noErr
-                    }
-                case OSType(kEventHotKeyReleased):
-                    if let handler = spiceKey.keyUpHandler {
-                        Task {
-                            await handler()
-                        }
-                        return noErr
-                    }
-                default:
-                    break
+        guard hotKeyID.signature == signature else {
+            return OSStatus(eventNotHandledErr)
+        }
+        guard let spiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
+            return spiceKey.id == hotKeyID.id
+        }) else {
+            return OSStatus(eventNotHandledErr)
+        }
+        switch GetEventKind(event) {
+        case OSType(kEventHotKeyPressed):
+            if let handler = spiceKey.keyDownHandler {
+                Task {
+                    await handler()
                 }
-                
+                return noErr
             }
+        case OSType(kEventHotKeyReleased):
+            if let handler = spiceKey.keyUpHandler {
+                Task {
+                    await handler()
+                }
+                return noErr
+            }
+        default:
+            break
         }
         return OSStatus(eventNotHandledErr)
     }
     
     private func invokeBothSideSpiceKey(_ flags: ModifierFlags) {
-        if let bothSideSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
+        guard let bothSideSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
             return spiceKey.isBothSide && spiceKey.modifierFlags == flags
-        }) {
-            invoked = true
-            bothSideSpiceKey.invoked = true
-            Task {
-                await bothSideSpiceKey.bothModifierKeysPressHandler?()
-            }
+        }) else { return }
+        invoked = true
+        bothSideSpiceKey.invoked = true
+        Task {
+            await bothSideSpiceKey.bothModifierKeysPressHandler?()
         }
     }
     
     private func invokeLongPressSpiceKey(_ flags: ModifierFlags) {
-        if let longPressSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
+        guard let longPressSpiceKey = spiceKeys.values.first(where: { (spiceKey) -> Bool in
             return 0.0 < spiceKey.interval && spiceKey.modifierFlags == flags
-        }) {
-            let interval = longPressSpiceKey.interval
-            timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
-                self?.invoked = true
-                longPressSpiceKey.invoked = true
-                Task {
-                    await longPressSpiceKey.modifierKeysLongPressHandler?()
-                }
+        }) else { return }
+        let interval = longPressSpiceKey.interval
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
+            self?.invoked = true
+            longPressSpiceKey.invoked = true
+            Task {
+                await longPressSpiceKey.modifierKeysLongPressHandler?()
             }
         }
     }
 
     private func invokeReleaseKey() {
         spiceKeys.values.forEach { (spiceKey) in
-            if spiceKey.invoked {
-                spiceKey.invoked = false
-                Task {
-                    await spiceKey.releaseKeyHandler?()
-                }
+            guard spiceKey.invoked else { return }
+            spiceKey.invoked = false
+            Task {
+                await spiceKey.releaseKeyHandler?()
             }
         }
     }
@@ -202,12 +197,12 @@ final class SpiceKeyManager {
         timer?.invalidate()
         let nsFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
         let flags = ModifierFlags(flags: nsFlags)
-        if flags == .empty {
+        guard flags != .empty else {
             invoked = false
             invokeReleaseKey()
             return
         }
-        if invoked { return }
+        guard !invoked else { return }
         let bothFlags = ModifierBothFlags(modifierFlags: event.modifierFlags)
         if bothFlags.isBoth {
             invokeBothSideSpiceKey(flags)
