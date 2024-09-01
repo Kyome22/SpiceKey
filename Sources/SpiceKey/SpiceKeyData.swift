@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-open class SpiceKeyData: NSObject, NSCoding, Codable {
+open class SpiceKeyData: NSObject, NSCoding, Codable, @unchecked Sendable {
     public enum CodingKeys: String, CodingKey {
         case primaryKey
         case keyCode
