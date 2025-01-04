@@ -10,13 +10,7 @@
 		1CC92D51286B5E9900D46424 /* SpiceKeyDemo_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC92D50286B5E9900D46424 /* SpiceKeyDemo_SwiftUIApp.swift */; };
 		1CC92D53286B5E9900D46424 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC92D52286B5E9900D46424 /* ContentView.swift */; };
 		1CC92D55286B5E9900D46424 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC92D54286B5E9900D46424 /* Assets.xcassets */; };
-		1CC92D58286B5E9900D46424 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC92D57286B5E9900D46424 /* Preview Assets.xcassets */; };
 		1CC92D5F286B5ED300D46424 /* SpiceKey in Frameworks */ = {isa = PBXBuildFile; productRef = 1CC92D5E286B5ED300D46424 /* SpiceKey */; };
-		1CC92D6D28707D2C00D46424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC92D6C28707D2C00D46424 /* AppDelegate.swift */; };
-		1CC92D6F28707D2C00D46424 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC92D6E28707D2C00D46424 /* ViewController.swift */; };
-		1CC92D7128707D2D00D46424 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC92D7028707D2D00D46424 /* Assets.xcassets */; };
-		1CC92D7428707D2D00D46424 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC92D7228707D2D00D46424 /* Main.storyboard */; };
-		1CC92D7B2870919900D46424 /* SpiceKey in Frameworks */ = {isa = PBXBuildFile; productRef = 1CC92D7A2870919900D46424 /* SpiceKey */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,14 +18,7 @@
 		1CC92D50286B5E9900D46424 /* SpiceKeyDemo_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiceKeyDemo_SwiftUIApp.swift; sourceTree = "<group>"; };
 		1CC92D52286B5E9900D46424 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1CC92D54286B5E9900D46424 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1CC92D57286B5E9900D46424 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1CC92D59286B5E9900D46424 /* SpiceKeyDemo_SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpiceKeyDemo_SwiftUI.entitlements; sourceTree = "<group>"; };
-		1CC92D6A28707D2C00D46424 /* SpiceKeyDemo_AppKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiceKeyDemo_AppKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CC92D6C28707D2C00D46424 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1CC92D6E28707D2C00D46424 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1CC92D7028707D2D00D46424 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1CC92D7328707D2D00D46424 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1CC92D7528707D2D00D46424 /* SpiceKeyDemo_AppKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpiceKeyDemo_AppKit.entitlements; sourceTree = "<group>"; };
 		1CC92D7E2872AAF300D46424 /* SpiceKey */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SpiceKey; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,14 +31,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1CC92D6728707D2C00D46424 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1CC92D7B2870919900D46424 /* SpiceKey in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,7 +38,6 @@
 			isa = PBXGroup;
 			children = (
 				1CC92D47286B5DA900D46424 /* Packages */,
-				1CC92D6B28707D2C00D46424 /* SpiceKeyDemo_AppKit */,
 				1CC92D4F286B5E9900D46424 /* SpiceKeyDemo_SwiftUI */,
 				1C22C6CC2581C4A00080C525 /* Products */,
 				1CC92D5D286B5ED300D46424 /* Frameworks */,
@@ -70,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				1CC92D4E286B5E9900D46424 /* SpiceKeyDemo_SwiftUI.app */,
-				1CC92D6A28707D2C00D46424 /* SpiceKeyDemo_AppKit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,21 +63,12 @@
 		1CC92D4F286B5E9900D46424 /* SpiceKeyDemo_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				1CC92D59286B5E9900D46424 /* SpiceKeyDemo_SwiftUI.entitlements */,
+				1CC92D54286B5E9900D46424 /* Assets.xcassets */,
 				1CC92D50286B5E9900D46424 /* SpiceKeyDemo_SwiftUIApp.swift */,
 				1CC92D52286B5E9900D46424 /* ContentView.swift */,
-				1CC92D54286B5E9900D46424 /* Assets.xcassets */,
-				1CC92D59286B5E9900D46424 /* SpiceKeyDemo_SwiftUI.entitlements */,
-				1CC92D56286B5E9900D46424 /* Preview Content */,
 			);
 			path = SpiceKeyDemo_SwiftUI;
-			sourceTree = "<group>";
-		};
-		1CC92D56286B5E9900D46424 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				1CC92D57286B5E9900D46424 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		1CC92D5D286B5ED300D46424 /* Frameworks */ = {
@@ -108,18 +76,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1CC92D6B28707D2C00D46424 /* SpiceKeyDemo_AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				1CC92D6C28707D2C00D46424 /* AppDelegate.swift */,
-				1CC92D6E28707D2C00D46424 /* ViewController.swift */,
-				1CC92D7028707D2D00D46424 /* Assets.xcassets */,
-				1CC92D7228707D2D00D46424 /* Main.storyboard */,
-				1CC92D7528707D2D00D46424 /* SpiceKeyDemo_AppKit.entitlements */,
-			);
-			path = SpiceKeyDemo_AppKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,26 +101,6 @@
 			productReference = 1CC92D4E286B5E9900D46424 /* SpiceKeyDemo_SwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1CC92D6928707D2C00D46424 /* SpiceKeyDemo_AppKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1CC92D7828707D2D00D46424 /* Build configuration list for PBXNativeTarget "SpiceKeyDemo_AppKit" */;
-			buildPhases = (
-				1CC92D6628707D2C00D46424 /* Sources */,
-				1CC92D6728707D2C00D46424 /* Frameworks */,
-				1CC92D6828707D2C00D46424 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SpiceKeyDemo_AppKit;
-			packageProductDependencies = (
-				1CC92D7A2870919900D46424 /* SpiceKey */,
-			);
-			productName = SpiceKeyDemo_AppKit;
-			productReference = 1CC92D6A28707D2C00D46424 /* SpiceKeyDemo_AppKit.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -176,9 +112,6 @@
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					1CC92D4D286B5E9900D46424 = {
-						CreatedOnToolsVersion = 13.4.1;
-					};
-					1CC92D6928707D2C00D46424 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -198,7 +131,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1CC92D6928707D2C00D46424 /* SpiceKeyDemo_AppKit */,
 				1CC92D4D286B5E9900D46424 /* SpiceKeyDemo_SwiftUI */,
 			);
 		};
@@ -209,17 +141,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CC92D58286B5E9900D46424 /* Preview Assets.xcassets in Resources */,
 				1CC92D55286B5E9900D46424 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1CC92D6828707D2C00D46424 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1CC92D7128707D2D00D46424 /* Assets.xcassets in Resources */,
-				1CC92D7428707D2D00D46424 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,27 +157,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1CC92D6628707D2C00D46424 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1CC92D6F28707D2C00D46424 /* ViewController.swift in Sources */,
-				1CC92D6D28707D2C00D46424 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1CC92D7228707D2D00D46424 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1CC92D7328707D2D00D46424 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1C22C6D92581C4A30080C525 /* Debug */ = {
@@ -312,7 +214,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -370,7 +272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -391,7 +293,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"SpiceKeyDemo_SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -401,7 +302,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kyome.SpiceKeyDemo-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,7 +322,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"SpiceKeyDemo_SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -432,67 +331,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kyome.SpiceKeyDemo-SwiftUI";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		1CC92D7628707D2D00D46424 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = SpiceKeyDemo_AppKit/SpiceKeyDemo_AppKit.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = VJ5N2X84K8;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kyome.SpiceKeyDemo-AppKit";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		1CC92D7728707D2D00D46424 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = SpiceKeyDemo_AppKit/SpiceKeyDemo_AppKit.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = VJ5N2X84K8;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kyome.SpiceKeyDemo-AppKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -520,23 +360,10 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1CC92D7828707D2D00D46424 /* Build configuration list for PBXNativeTarget "SpiceKeyDemo_AppKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1CC92D7628707D2D00D46424 /* Debug */,
-				1CC92D7728707D2D00D46424 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		1CC92D5E286B5ED300D46424 /* SpiceKey */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SpiceKey;
-		};
-		1CC92D7A2870919900D46424 /* SpiceKey */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SpiceKey;
 		};

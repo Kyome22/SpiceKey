@@ -6,7 +6,7 @@
  Copyright © 2019 Takuto Nakamura. All rights reserved.
 */
 
-public struct KeyCombination: Sendable {
+public struct KeyCombination: Equatable, Sendable {
     public var key: Key
     public var modifierFlags: ModifierFlags
     public var string: String {
@@ -17,9 +17,4 @@ public struct KeyCombination: Sendable {
         self.key = key
         self.modifierFlags = modifierFlags
     }
-}
-
-
-public func ==(lhs: KeyCombination, rhs: KeyCombination) -> Bool {
-    lhs.key == rhs.key && lhs.modifierFlags == rhs.modifierFlags
 }
