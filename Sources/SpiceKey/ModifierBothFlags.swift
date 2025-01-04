@@ -10,14 +10,14 @@ import AppKit.NSEvent
 import Carbon.HIToolbox.Events
 
 public struct ModifierBothFlags: Sendable {
-    public let isLControl: Bool
-    public let isRControl: Bool
-    public let isLOption: Bool
-    public let isROption: Bool
-    public let isLShift: Bool
-    public let isRShift: Bool
-    public let isLCommand: Bool
-    public let isRCommand: Bool
+    public var isLControl: Bool
+    public var isRControl: Bool
+    public var isLOption: Bool
+    public var isROption: Bool
+    public var isLShift: Bool
+    public var isRShift: Bool
+    public var isLCommand: Bool
+    public var isRCommand: Bool
 
     public init(modifierFlags: NSEvent.ModifierFlags) {
         self.isLControl = (modifierFlags.rawValue & UInt(NX_DEVICELCTLKEYMASK)) != 0

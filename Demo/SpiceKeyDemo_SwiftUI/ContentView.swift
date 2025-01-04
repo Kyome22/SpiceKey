@@ -9,39 +9,44 @@ import SwiftUI
 import SpiceKey
 
 struct ContentView: View {
-    @State var state: String = "Stand-by"
-    @State var bothSideSelection: ModifierFlag? = nil
-    @State var longPressSelection: ModifierFlags? = nil
-    @State var keyComboSpiceKey: SpiceKey? = nil
-    @State var bothSideSpiceKey: SpiceKey? = nil
-    @State var longPressSpiceKey: SpiceKey? = nil
+    @State private var state: String = "Stand-by"
+    @State private var keyCombination: KeyCombination?
+    @State private var bothSideSelection: ModifierFlag?
+    @State private var longPressSelection: ModifierFlags?
+    @State private var keyComboSpiceKey: SpiceKey?
+    @State private var bothSideSpiceKey: SpiceKey?
+    @State private var longPressSpiceKey: SpiceKey?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(alignment: .center, spacing: 8) {
+        Form {
+            LabeledContent {
+                SpiceKeyField(keyCombination: $keyCombination)
+                    .onChange(of: keyCombination) { newValue in
+                        if let keyCombination = newValue {
+                            keyComboSpiceKey = SpiceKey(keyCombination, keyDownHandler: {
+                                state = "Key Combo: Key Down"
+                            }, keyUpHandler: {
+                                state = "Key Combo: Key Up"
+                            })
+                            keyComboSpiceKey?.register()
+                            state = "Key Combo: Registered"
+                        } else {
+                            keyComboSpiceKey?.unregister()
+                            state = "Key Combo: Unregistered"
+                        }
+                    }
+            } label: {
                 Text("Key Combo:")
-                SKTextField(id: "sample")
-                    .onRegistered { (id, keyCombination) in
-                        keyComboSpiceKey = SpiceKey(keyCombination, keyDownHandler: {
-                            state = "Key Combo: Key Down"
-                        }, keyUpHandler: {
-                            state = "Key Combo: Key Up"
-                        })
-                        keyComboSpiceKey?.register()
-                        state = "Key Combo: Registered"
-                    }
-                    .onDeleted { id in
-                        keyComboSpiceKey?.unregister()
-                        state = "Key Combo: Unregistered"
-                    }
             }
-            Picker("Both Side:", selection: $bothSideSelection) {
+            Picker(selection: $bothSideSelection) {
                 Text("Please select")
-                    .tag(ModifierFlag?(nil))
+                    .tag(ModifierFlag?.none)
                 ForEach(ModifierFlag.allCases, id: \.rawValue) { modifierFlag in
                     Text("\(modifierFlag.string) \(modifierFlag.title)")
                         .tag(ModifierFlag?.some(modifierFlag))
                 }
+            } label: {
+                Text("Both Side:")
             }
             .onChange(of: bothSideSelection) { newValue in
                 if let modifierFlag = newValue {
@@ -57,13 +62,15 @@ struct ContentView: View {
                     state = "Both Side: Unregistered"
                 }
             }
-            Picker("Long Press:", selection: $longPressSelection) {
+            Picker(selection: $longPressSelection) {
                 Text("Please select")
-                    .tag(ModifierFlags?(nil))
+                    .tag(ModifierFlags?.none)
                 ForEach(Array(ModifierFlags.allCases.dropFirst()), id: \.rawValue) { modifierFlags in
                     Text("\(modifierFlags.string) \(modifierFlags.title)")
                         .tag(ModifierFlags?.some(modifierFlags))
                 }
+            } label: {
+                Text("Long Press:")
             }
             .onChange(of: longPressSelection) { newValue in
                 if let modifierFlags = newValue {
@@ -80,18 +87,18 @@ struct ContentView: View {
                 }
             }
             Divider()
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text("State:")
+            LabeledContent {
                 Text(state)
+            } label: {
+                Text("State:")
             }
         }
         .frame(width: 300)
+        .fixedSize()
         .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
