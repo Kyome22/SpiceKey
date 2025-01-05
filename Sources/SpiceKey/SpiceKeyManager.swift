@@ -56,9 +56,9 @@ final class SpiceKeyManager: Sendable {
             }))
         }
         protectedNotifyTask.withLock { task in
-            task = Task {
+            task = Task { [weak self] in
                 for await _ in NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification).values {
-                    stopMonitoring()
+                    self?.unregisterAll()
                 }
             }
         }
@@ -70,10 +70,6 @@ final class SpiceKeyManager: Sendable {
                 RemoveEventHandler(hotKeyEventHandler)
                 hotKeyEventHandler = nil
             }
-        }
-        protectedSpiceKeys.withLock { spiceKeys in
-            spiceKeys.values.forEach { unregister($0) }
-            spiceKeys.removeAll()
         }
         protectedMonitors.withLockUnchecked { monitors in
             monitors.forEach { NSEvent.removeMonitor($0!) }
@@ -144,8 +140,13 @@ final class SpiceKeyManager: Sendable {
         }
         if isEmpty { stopMonitoring() }
     }
-    
-    func hotKeyHandleEvent(_ event: EventRef?) -> OSStatus {
+
+    private func unregisterAll() {
+        protectedSpiceKeys.withLock(\.self).values.forEach { unregister($0) }
+        protectedSpiceKeys.withLock { $0.removeAll() }
+    }
+
+    private func hotKeyHandleEvent(_ event: EventRef?) -> OSStatus {
         if event == nil { return OSStatus(eventNotHandledErr) }
         var hotKeyID = EventHotKeyID()
         let error = GetEventParameter(
@@ -215,7 +216,7 @@ final class SpiceKeyManager: Sendable {
         }
     }
     
-    func modFlagHandleEvent(_ event: NSEvent) {
+    private func modFlagHandleEvent(_ event: NSEvent) {
         protectedTimerTask.withLock { task in
             task?.cancel()
             task = nil
