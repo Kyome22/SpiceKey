@@ -79,7 +79,7 @@ open class SpiceKeyData: NSObject, NSCoding, Codable, @unchecked Sendable {
         self.init(primaryKey, keyCombination.key, keyCombination.modifierFlags, spiceKey)
     }
 
-    // NSCoding
+    // MARK: NSCoding
     required public init?(coder: NSCoder) {
         primaryKey = (coder.decodeObject(forKey: "primaryKey") as? String) ?? ""
         keyCode = coder.decodeObject(forKey: "keyCode") as! CGKeyCode
@@ -98,8 +98,8 @@ open class SpiceKeyData: NSObject, NSCoding, Codable, @unchecked Sendable {
         coder.encode(command, forKey: "command")
     }
 
-    // Codable
-    public required init(from decoder: Decoder) throws {
+    // MARK: Codable
+    public required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         primaryKey = try container.decode(String.self, forKey: .primaryKey)
         keyCode = try container.decode(CGKeyCode.self, forKey: .keyCode)
@@ -109,7 +109,7 @@ open class SpiceKeyData: NSObject, NSCoding, Codable, @unchecked Sendable {
         command = try container.decode(Bool.self, forKey: .command)
     }
 
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(primaryKey, forKey: .primaryKey)
         try container.encode(keyCode, forKey: .keyCode)

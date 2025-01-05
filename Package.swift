@@ -1,6 +1,10 @@
-// swift-tools-version:5.10
+// swift-tools-version: 6.0
 
 import PackageDescription
+
+let swiftSettings: [SwiftSetting] = [
+    .enableUpcomingFeature("ExistentialAny"),
+]
 
 let package = Package(
     name: "SpiceKey",
@@ -17,11 +21,13 @@ let package = Package(
     targets: [
         .target(
             name: "SpiceKey",
-            resources: [.process("Resources")]
+            resources: [.process("Resources")],
+            swiftSettings: swiftSettings
         ),
         .testTarget(
             name: "SpiceKeyTests",
-            dependencies: ["SpiceKey"]
+            dependencies: ["SpiceKey"],
+            swiftSettings: swiftSettings
         )
     ]
 )

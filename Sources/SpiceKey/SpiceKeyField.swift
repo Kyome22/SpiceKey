@@ -35,7 +35,7 @@ public struct SpiceKeyField: NSViewRepresentable {
         Coordinator(self)
     }
 
-    public class Coordinator: NSObject, RawSpiceKeyFieldDelegate {
+    @MainActor public class Coordinator: NSObject, RawSpiceKeyFieldDelegate {
         let parent: SpiceKeyField
         var registeredHandler: ((String?, KeyCombination) -> Void)?
         var deletedHandler: ((String?) -> Void)?

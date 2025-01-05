@@ -23,11 +23,15 @@ struct ContentView: View {
                 SpiceKeyField(keyCombination: $keyCombination)
                     .onChange(of: keyCombination) { newValue in
                         if let keyCombination = newValue {
-                            keyComboSpiceKey = SpiceKey(keyCombination, keyDownHandler: {
-                                state = "Key Combo: Key Down"
-                            }, keyUpHandler: {
-                                state = "Key Combo: Key Up"
-                            })
+                            keyComboSpiceKey = SpiceKey(
+                                keyCombination,
+                                keyDownHandler: {
+                                    await MainActor.run { state = "Key Combo: Key Down" }
+                                },
+                                keyUpHandler: {
+                                    await MainActor.run { state = "Key Combo: Key Up" }
+                                }
+                            )
                             keyComboSpiceKey?.register()
                             state = "Key Combo: Registered"
                         } else {
@@ -50,11 +54,15 @@ struct ContentView: View {
             }
             .onChange(of: bothSideSelection) { newValue in
                 if let modifierFlag = newValue {
-                    bothSideSpiceKey = SpiceKey(modifierFlag, bothModifierKeysPressHandler: {
-                        state = "Both Side: Press"
-                    }, releaseKeyHandler: {
-                        state = "Both Side: Release"
-                    })
+                    bothSideSpiceKey = SpiceKey(
+                        modifierFlag,
+                        bothModifierKeysPressHandler: {
+                            await MainActor.run { state = "Both Side: Press" }
+                        },
+                        releaseKeyHandler: {
+                            await MainActor.run { state = "Both Side: Release" }
+                        }
+                    )
                     bothSideSpiceKey?.register()
                     state = "Both Side: Registered"
                 } else {
@@ -74,11 +82,16 @@ struct ContentView: View {
             }
             .onChange(of: longPressSelection) { newValue in
                 if let modifierFlags = newValue {
-                    longPressSpiceKey = SpiceKey(modifierFlags, 0.5, modifierKeysLongPressHandler: {
-                        state = "Long Press: Press"
-                    }, releaseKeyHandler: {
-                        state = "Long Press: Release"
-                    })
+                    longPressSpiceKey = SpiceKey(
+                        modifierFlags,
+                        interval: 0.5,
+                        modifierKeysLongPressHandler: {
+                            await MainActor.run { state = "Long Press: Press" }
+                        },
+                        releaseKeyHandler: {
+                            await MainActor.run { state = "Long Press: Release" }
+                        }
+                    )
                     longPressSpiceKey?.register()
                     state = "Long Press: Registered"
                 } else {

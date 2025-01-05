@@ -175,7 +175,7 @@ public enum ModifierFlags: Int, CaseIterable, Sendable {
         flags.contains(NSEvent.ModifierFlags.command)
     }
     
-    internal var flags32: UInt32 {
+    var flags32: UInt32 {
         var _flags: UInt32 = 0
         if flags.contains(.control) {
             _flags |= UInt32(controlKey)
