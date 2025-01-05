@@ -9,14 +9,14 @@
 import AppKit
 
 protocol RawSpiceKeyFieldDelegate: NSTextFieldDelegate {
-    func didRegisterSpiceKey(_ field: RawSpiceKeyField, _ key: Key, _ flags: ModifierFlags)
-    func didDelete(_ field: RawSpiceKeyField)
+    @MainActor func didRegisterSpiceKey(_ field: RawSpiceKeyField, _ key: Key, _ flags: ModifierFlags)
+    @MainActor func didDelete(_ field: RawSpiceKeyField)
 }
 
 public final class RawSpiceKeyField: NSTextField {
     private var isTyping: Bool = false
-    private var skfDelegate: RawSpiceKeyFieldDelegate? {
-        delegate as? RawSpiceKeyFieldDelegate
+    private var skfDelegate: (any RawSpiceKeyFieldDelegate)? {
+        delegate as? (any RawSpiceKeyFieldDelegate)
     }
     private var deleteButton: SpiceKeyDeleteButton!
 

@@ -399,7 +399,7 @@ public enum Key: Sendable {
         return CGKeyCode(keyCode)
     }
 
-    internal var keyCode32: UInt32 {
+    var keyCode32: UInt32 {
         return UInt32(self.keyCode)
     }
 

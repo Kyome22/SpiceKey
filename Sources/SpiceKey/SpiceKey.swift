@@ -8,22 +8,22 @@
 
 import Carbon
 
-public typealias Handler = () async -> Void
+public typealias Handler = @Sendable () async -> Void
 
-public final class SpiceKey {
-    internal let id: SpiceKeyID!
-    internal var eventHotKey: EventHotKeyRef?
-    internal var invoked: Bool = false
-    public let keyCombination: KeyCombination?
-    public let modifierFlags: ModifierFlags?
-    public let keyDownHandler: Handler?
-    public let keyUpHandler: Handler?
-    public let bothModifierKeysPressHandler: Handler?
-    public let modifierKeysLongPressHandler: Handler?
-    public let releaseKeyHandler: Handler?
+public struct SpiceKey: Sendable {
+    var id: SpiceKeyID
+    var invoked = false
 
-    public private(set) var interval: Double = 0.0
-    public private(set) var isBothSide: Bool = false
+    public var keyCombination: KeyCombination?
+    public var modifierFlags: ModifierFlags?
+    public var keyDownHandler: Handler?
+    public var keyUpHandler: Handler?
+    public var bothModifierKeysPressHandler: Handler?
+    public var modifierKeysLongPressHandler: Handler?
+    public var releaseKeyHandler: Handler?
+
+    public private(set) var interval = Double.zero
+    public private(set) var isBothSide = false
 
     public init(
         _ keyCombination: KeyCombination,
@@ -58,7 +58,7 @@ public final class SpiceKey {
 
     public init?(
         _ modifierFlags: ModifierFlags,
-        _ interval: Double,
+        interval: Double,
         modifierKeysLongPressHandler: Handler? = nil,
         releaseKeyHandler: Handler? = nil
     ) {
@@ -84,9 +84,9 @@ public final class SpiceKey {
 
     public var string: String {
         if let keyCombination = keyCombination {
-            return keyCombination.string
+            keyCombination.string
         } else if let modifierFlags = modifierFlags {
-            return modifierFlags.string
+            modifierFlags.string
         } else {
             fatalError("Impossible")
         }

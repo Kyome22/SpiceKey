@@ -4,10 +4,9 @@ Global Shortcuts for macOS written in Swift.
 
 ## Requirements
 
-- Development with Xcode 15.2+
-- Written in Swift 5.9
-- swift-tools-version: 5.9
-- Compatible with macOS 12.0+
+- Development with Xcode 16.0+
+- Written in Swift 6.0
+- Compatible with macOS 13.5+
 
 ## Privacy Manifest
 
@@ -55,7 +54,7 @@ Set `long press ⌘` shortcut.
 ```swift
 // run after 0.6 sec
 let flags = ModifierFlags.cmd
-let spiceKey = SpiceKey(flags, 0.6, modifierKeysLongPressHandler: {
+let spiceKey = SpiceKey(flags, interval: 0.6, modifierKeysLongPressHandler: {
     // process (press)
 }, releaseKeyHandler: {
     // process (release)
@@ -120,8 +119,10 @@ let spiceKeyData = SpiceKeyData(
 )
 
 // NSCoding
-let data = try! NSKeyedArchiver.archivedData(withRootObject: spiceKeyData,
-                                             requiringSecureCoding: false)
+let data = try! NSKeyedArchiver.archivedData(
+    withRootObject: spiceKeyData,
+    requiringSecureCoding: false
+)
 UserDefaults.standard.set(data, forKey: "spiceKeyData")
 
 // Codable
@@ -141,12 +142,3 @@ let spiceKeyData = try! NSKeyedUnarchiver
 let data = UserDefaults.standard.data(forKey: "spiceKeyData")!
 let spiceKeyData = try! JSONDecoder().decode(SpiceKeyData.self, from: data)
 ```
-
-## SpiceKeyField & SKTextField
-
-A special text field that can be used to register SpiceKey.
-
-- SpiceKeyField is for AppKit only.
-- SKTextField is a SpiceKeyField made available from SwiftUI.
-
-Please see the Demo App for detailed instructions.
