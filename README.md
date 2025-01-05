@@ -16,7 +16,6 @@ This library does not collect or track user information, so it does not include 
 
 Demo App is in this Project.
 
-<img src="Materials/demo_app_appkit.png" alt="demo_appkit" height="177px" />
 <img src="Materials/demo_app_swiftui.png" alt="demo_swiftui" height="168px" />
 
 ## Usage
